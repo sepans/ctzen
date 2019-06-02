@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash af842971f2a758f4bd304629170e5d85
+ * @relayHash ca9a5dac4305f4f7bb4059ccd043b822
  */
 
 /* eslint-disable */
@@ -36,7 +36,8 @@ query App_Candidate_Query(
 }
 
 fragment CandidateInfo_candidate on Candidate {
-  name
+  firstName
+  lastName
   age
 }
 */
@@ -101,7 +102,14 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "name",
+            "name": "firstName",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "lastName",
             "args": null,
             "storageKey": null
           },
@@ -127,7 +135,7 @@ return {
     "operationKind": "query",
     "name": "App_Candidate_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $candidateId: ID!\n) {\n  candidate(id: $candidateId) {\n    ...CandidateInfo_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name\n  age\n}\n",
+    "text": "query App_Candidate_Query(\n  $candidateId: ID!\n) {\n  candidate(id: $candidateId) {\n    ...CandidateInfo_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  firstName\n  lastName\n  age\n}\n",
     "metadata": {}
   }
 };

@@ -22,7 +22,7 @@ const Header = styled.div`
 `
 
 function App() {
-  const candidateId = 1
+  const candidateId = 3
   return (
     <QueryRenderer
       environment={environment}

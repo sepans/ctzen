@@ -12,7 +12,8 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type CandidateInfo_candidate$ref: FragmentReference;
 declare export opaque type CandidateInfo_candidate$fragmentType: CandidateInfo_candidate$ref;
 export type CandidateInfo_candidate = {|
-  +name: ?string,
+  +firstName: ?string,
+  +lastName: ?string,
   +age: ?number,
   +$refType: CandidateInfo_candidate$ref,
 |};
@@ -34,7 +35,14 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "firstName",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "lastName",
       "args": null,
       "storageKey": null
     },
@@ -48,5 +56,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'b9a0327e2f743d3d728834961d3192cc';
+(node/*: any*/).hash = 'be023ad64bcc1fbe2b7d3954c4ebddcd';
 module.exports = node;

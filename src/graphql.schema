@@ -1,6 +1,7 @@
 type Candidate {
   id: ID
-  name: String
+  firstName: String
+  lastName: String
   age: Int
 }
 

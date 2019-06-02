@@ -8,7 +8,7 @@ const CandidateInfo = ({candidate}) => {
 
   return (
     <>
-      <h1>{candidate.name}</h1>
+      <h1>{candidate.firstName} {candidate.lastName}</h1>
       <h2>Age: {candidate.age}</h2>
     </>
   )
@@ -18,7 +18,8 @@ export default createFragmentContainer(
   CandidateInfo, {
   candidate: graphql`
     fragment CandidateInfo_candidate on Candidate {
-      name
+      firstName
+      lastName
       age
     }
   `}

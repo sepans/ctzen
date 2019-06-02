@@ -1,5 +1,8 @@
 const gql = require('graphql-tag');
 const { buildASTSchema } = require('graphql');
+const { connection } = require('../database')
+const Sequelize = require('sequelize');
+const Candidate = require('../models/candidate')(connection, Sequelize)
 
 const schema = buildASTSchema(gql`
   type Query {
@@ -9,21 +12,15 @@ const schema = buildASTSchema(gql`
 
   type Candidate {
     id: ID
-    name: String
+    firstName: String
+    lastName: String
     age: Int
   }
 `);
 
-const CANDIDATES = [
-  { name: "Bernie Sanders", age: 77 },
-  { name: "Elizabeth Warren", age: 60 },
-];
-
-const mapCandidate = (candidate, id) => candidate && ({ id, ...candidate });
-
 const resolvers = {
-  candidates: () => CANDIDATES.map(mapCandidate),
-  candidate: ({ id }) => mapCandidate(CANDIDATES[id], id),
+  candidates: () => Candidate.findAll(),
+  candidate: ({ id }) => Candidate.findByPk(parseInt(id)),
 };
 
 module.exports = {
