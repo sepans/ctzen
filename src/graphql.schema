@@ -1,0 +1,11 @@
+type Candidate {
+  id: ID
+  name: String
+  age: Int
+}
+
+type Query {
+  candidates: [Candidate]
+  candidate(id: ID!): Candidate
+}
+
