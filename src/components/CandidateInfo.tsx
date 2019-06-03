@@ -1,15 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import {graphql, createFragmentContainer} from 'react-relay';
-import environment from '../config/relayEnvironment'
 
-const CandidateInfo = ({candidate}) => {
-
+const CandidateInfo = (props) => {
+  console.log(props)
   return (
     <>
-      <h1>{candidate.firstName} {candidate.lastName}</h1>
-      <h2>Age: {candidate.age}</h2>
+      <h1>{props.candidate.firstName} {props.candidate.lastName}</h1>
+      <h2>Age: {props.candidate.age}</h2>
     </>
   )
 }

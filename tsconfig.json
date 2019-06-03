@@ -24,9 +24,6 @@
     "src"
   ],
   "exclude": [
-    "src/server",
-    "src/__generated__",
-    "src/components/__generated__",
-    "*.graphql.js"
+    "src/server"
   ]
 }

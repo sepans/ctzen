@@ -1,8 +1,8 @@
 import React from 'react';
 import { CandidatePosition } from './components/CandidatePosition'
+import Home from './components/Home'
 
-
-import {graphql, QueryRenderer} from 'react-relay';
+import { graphql } from 'react-relay';
 import environment from './config/relayEnvironment'
 // import CandidateInfo_candidate from './components/__generated__/CandidateInfo_candidate.graphql';
 
@@ -12,16 +12,28 @@ import {
   createRender,
   makeRouteConfig,
   Route,
-  Link
 } from 'found';
 import { Resolver } from 'found-relay';
+
+const Loading = () => <div>loading</div>
 
 const Router = createFarceRouter({
   historyProtocol: new BrowserProtocol(),
   historyMiddlewares: [queryMiddleware],
   routeConfig: makeRouteConfig(
     <>
-      <Route path="/" render={() => <Link to="/candidate/3">warren</Link>} >
+      <Route 
+        path="/" 
+        render={({ props} ) => { return props ? <Home {...props} /> : <Loading />}} 
+        query={graphql`
+          query App_Candidates_Query {
+            candidates {
+              ...Home_candidates
+            }
+          }
+        `}
+        
+      >
       </Route>
       <Route
         path="candidate/:id"
@@ -36,7 +48,7 @@ const Router = createFarceRouter({
           return props ? (
             <CandidatePosition {...props} />
 
-          ) : <div>loading</div>
+          ) : <Loading />
         }}   
     
       />

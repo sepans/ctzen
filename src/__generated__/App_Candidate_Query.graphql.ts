@@ -1,28 +1,20 @@
-/**
- * @flow
- * @relayHash bdeee308f01597e66418be36143535e3
- */
+/* tslint:disable */
 
-/* eslint-disable */
-
-'use strict';
-
-/*::
-import type { ConcreteRequest } from 'relay-runtime';
+import { ConcreteRequest } from "relay-runtime";
 type CandidateInfo_candidate$ref = any;
-export type App_Candidate_QueryVariables = {|
-  id: string
-|};
-export type App_Candidate_QueryResponse = {|
-  +candidate: ?{|
-    +$fragmentRefs: CandidateInfo_candidate$ref
-  |}
-|};
-export type App_Candidate_Query = {|
-  variables: App_Candidate_QueryVariables,
-  response: App_Candidate_QueryResponse,
-|};
-*/
+export type App_Candidate_QueryVariables = {
+    readonly id: string;
+};
+export type App_Candidate_QueryResponse = {
+    readonly candidate: {
+        readonly " $fragmentRefs": CandidateInfo_candidate$ref;
+    } | null;
+};
+export type App_Candidate_Query = {
+    readonly response: App_Candidate_QueryResponse;
+    readonly variables: App_Candidate_QueryVariables;
+};
+
 
 
 /*
@@ -42,7 +34,7 @@ fragment CandidateInfo_candidate on Candidate {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
@@ -140,6 +132,5 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node/*: any*/).hash = '27d2cff8c24b3393ea2170bb423447f9';
-module.exports = node;
+(node as any).hash = '27d2cff8c24b3393ea2170bb423447f9';
+export default node;

@@ -25,6 +25,7 @@
     "react-dom": "^16.8.6",
     "react-relay": "^4.0.0",
     "react-scripts": "3.0.0",
+    "relay-compiler-language-typescript": "^4.3.0",
     "relay-runtime": "^4.0.0",
     "sequelize": "^5.8.7",
     "sequelize-cli": "^5.4.0",
@@ -39,7 +40,7 @@
     "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --extensions ts tsx"
+    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx"
   },
   "eslintConfig": {
     "extends": "react-app"
