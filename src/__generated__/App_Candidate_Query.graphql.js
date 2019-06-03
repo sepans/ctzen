@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ca9a5dac4305f4f7bb4059ccd043b822
+ * @relayHash bdeee308f01597e66418be36143535e3
  */
 
 /* eslint-disable */
@@ -11,7 +11,7 @@
 import type { ConcreteRequest } from 'relay-runtime';
 type CandidateInfo_candidate$ref = any;
 export type App_Candidate_QueryVariables = {|
-  candidateId: string
+  id: string
 |};
 export type App_Candidate_QueryResponse = {|
   +candidate: ?{|
@@ -27,9 +27,9 @@ export type App_Candidate_Query = {|
 
 /*
 query App_Candidate_Query(
-  $candidateId: ID!
+  $id: ID!
 ) {
-  candidate(id: $candidateId) {
+  candidate(id: $id) {
     ...CandidateInfo_candidate
     id
   }
@@ -46,7 +46,7 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "candidateId",
+    "name": "id",
     "type": "ID!",
     "defaultValue": null
   }
@@ -55,7 +55,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "candidateId"
+    "variableName": "id"
   }
 ];
 return {
@@ -135,11 +135,11 @@ return {
     "operationKind": "query",
     "name": "App_Candidate_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $candidateId: ID!\n) {\n  candidate(id: $candidateId) {\n    ...CandidateInfo_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  firstName\n  lastName\n  age\n}\n",
+    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidateInfo_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  firstName\n  lastName\n  age\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '7307e05cae38b54a8c535f752cfb7a1a';
+(node/*: any*/).hash = '27d2cff8c24b3393ea2170bb423447f9';
 module.exports = node;
