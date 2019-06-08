@@ -47,6 +47,7 @@ export default createFragmentContainer(
     candidate: graphql`
     fragment CandidatePosition_candidate on Candidate {
       image
+      ...CandidateInfo_candidate
     }
   `}
 )

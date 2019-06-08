@@ -13,9 +13,11 @@ const CandidateInfo: React.FC<Props> = ({candidate}) => {
   return (
     <>
       <img src={candidate.image as string} />
-      <h1 key="name">{candidate.name}</h1>
+      <h2 key="name">{candidate.name}</h2>
+      <h3 key="exp">{candidate.experience}</h3>
+      <div key="state">state: {candidate.state}</div>
       <div key="dobs">age: {age}</div>
-      <div key="exp">{candidate.experience}</div>
+      <div key="from">Place of birth: {candidate.pob}</div>
     </>
   )
 }
@@ -27,6 +29,8 @@ export default createFragmentContainer(
       name: displayName
       image
       dob
+      state
+      pob
       experience
     }
   `}

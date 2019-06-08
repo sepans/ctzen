@@ -39,7 +39,6 @@ const Router = createFarceRouter({
         query={graphql`
           query App_Candidate_Query($id: ID!) {
             candidate(id: $id) {
-              ...CandidateInfo_candidate
               ...CandidatePosition_candidate
             }
           }
