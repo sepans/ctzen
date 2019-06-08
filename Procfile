@@ -1,0 +1,1 @@
+web: node src/server && ./node_modules/.bin/react-app-rewired start

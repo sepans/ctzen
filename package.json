@@ -34,7 +34,7 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "npm-run-all --parallel watch:server start:web",
+    "start": "./node_modules/.bin/npm-run-all --parallel watch:server start:web",
     "start:server": "node src/server",
     "watch:server": "nodemon --watch src/server src/server",
     "start:web": "react-app-rewired start",
