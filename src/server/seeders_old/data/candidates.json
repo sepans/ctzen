@@ -1,0 +1,218 @@
+[
+  {
+    "name": "Michael Bennet",
+    "DOB": "November 28 1964",
+    "POB": "New Delhi, India",
+    "experience": "U.S. Senator from Colorado (2009–present)",
+    "campainStart": "May 2, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Michael_Bennet_Official_Photo_%28cropped%29.jpg/123px-Michael_Bennet_Official_Photo_%28cropped%29.jpg",
+    "state": "Colorado"
+  },
+  {
+    "name": "Joe Biden",
+    "DOB": "November 20 1942",
+    "POB": "Scranton, Pennsylvania",
+    "experience": "Vice President of the United States (2009–2017)",
+    "campainStart": "April 25, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Joe_Biden_2013.jpg/117px-Joe_Biden_2013.jpg",
+    "state": "Delaware"
+  },
+  {
+    "name": "Cory Booker",
+    "DOB": "April 27 1969",
+    "POB": "Washington, D.C.",
+    "experience": "U.S. Senator from New Jersey (2013–present)",
+    "campainStart": "February 1, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Cory_Booker%2C_official_portrait%2C_114th_Congress.jpg/131px-Cory_Booker%2C_official_portrait%2C_114th_Congress.jpg",
+    "state": "New Jersey"
+  },
+  {
+    "name": "Steve Bullock",
+    "DOB": "April 11 1966",
+    "POB": "Missoula, Montana",
+    "experience": "\tGovernor of Montana (2013–present)",
+    "campainStart": "May 14, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Montana_Governor_Steve_Bullock_%2828963844060%29_%28cropped%29_%28cropped%29.jpg/122px-Montana_Governor_Steve_Bullock_%2828963844060%29_%28cropped%29_%28cropped%29.jpg",
+    "state": "Montana"
+  },
+  {
+    "name": "Pete Buttigieg",
+    "DOB": "January 19, 1982",
+    "POB": "South Bend, Indiana",
+    "experience": " Mayor of South Bend, Indiana (2012–present)",
+    "campainStart": "April 14, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pete_Buttigieg_in_February_2019.jpg/120px-Pete_Buttigieg_in_February_2019.jpg",
+    "state": "Indiana"
+  },
+  {
+    "name": "Julian Castro",
+    "DOB": "September16, 1974",
+    "POB": "San Antonio, Texas",
+    "experience": "U.S. Secretary of Housing and Urban Development (2014–2017)",
+    "campainStart": "January 12, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Juli%C3%A1n_Castro%27s_Official_HUD_Portrait_%28cropped%29.jpg/113px-Juli%C3%A1n_Castro%27s_Official_HUD_Portrait_%28cropped%29.jpg",
+    "state": "Texas"
+  },
+  {
+    "name": "Bill de Blasio",
+    "DOB": "May 8, 1961",
+    "POB": "Manhattan, New York",
+    "experience": "Mayor of New York City, New York (2014–present)",
+    "campainStart": "May 16, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Bill_de_Blasio_11-2-2013.jpg/119px-Bill_de_Blasio_11-2-2013.jpg",
+    "state": "New York"
+  },
+  {
+    "name": "John Delaney",
+    "DOB": "April 16, 1963",
+    "POB": "Wood-Ridge, New Jersey",
+    "experience": "U.S. Representative from MD-06 (2013–2019)",
+    "campainStart": "July 28, 2017",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/John_Delaney_113th_Congress_official_photo_%28cropped%29_2.jpg/122px-John_Delaney_113th_Congress_official_photo_%28cropped%29_2.jpg",
+    "state": "Maryland"
+  },
+  {
+    "name": "Tulsi Gabbard",
+    "DOB": "April 12, 1981",
+    "POB": "Leloaloa, American Samoa",
+    "experience": "U.S. Representative from HI-02 (2013–present)",
+    "campainStart": "January 11, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Tulsi_Gabbard%2C_official_portrait%2C_113th_Congress_%28cropped_3%29.jpg/122px-Tulsi_Gabbard%2C_official_portrait%2C_113th_Congress_%28cropped_3%29.jpg",
+    "state": "Hawaii"
+  },
+  {
+    "name": "Kirsten Gillibrand",
+    "DOB": "\tDecember 9, 1966",
+    "POB": "Albany, New York\t",
+    "experience": "U.S. Senator from New York (2009–present)",
+    "campainStart": "March 17, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Kirsten_Gillibrand%2C_official_portrait%2C_112th_Congress_%28cropped%29.jpg/109px-Kirsten_Gillibrand%2C_official_portrait%2C_112th_Congress_%28cropped%29.jpg",
+    "state": "New York"
+  },
+  {
+    "name": "Mike Gravel",
+    "DOB": "May 13, 1930",
+    "POB": "Springfield, Massachusetts",
+    "experience": "U.S. Senator from Alaska (1969–1981)",
+    "campainStart": "April 8, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mike_Gravel_cropped.png/112px-Mike_Gravel_cropped.png",
+    "state": "California"
+  },
+  {
+    "name": "Kamala Harris",
+    "DOB": "October 20, 1964",
+    "POB": "Oakland, California",
+    "experience": "U.S. Senator from California (2017–present)",
+    "campainStart": "January 21, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kamala_Harris_official_photo_%28cropped%29.jpg/118px-Kamala_Harris_official_photo_%28cropped%29.jpg",
+    "state": "California"
+  },
+  {
+    "name": "John Hickenlooper",
+    "DOB": "February 7, 1952",
+    "POB": "Narberth, Pennsylvania",
+    "experience": "Governor of Colorado (2011–2019)",
+    "campainStart": "March 4, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/John_Hickenlooper_by_Gage_Skidmore.jpg/119px-John_Hickenlooper_by_Gage_Skidmore.jpg",
+    "state": "Colorado"
+  },
+  {
+    "name": "Jay Inslee",
+    "DOB": "February 9, 1951",
+    "POB": "Seattle, Washington",
+    "experience": "Governor of Washington (2013–present)",
+    "campainStart": "March 1, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jay_Inslee_official_portrait_%28cropped_2%29.jpg/123px-Jay_Inslee_official_portrait_%28cropped_2%29.jpg",
+    "state": "Washington"
+  },
+  {
+    "name": "Amy Klobuchar",
+    "DOB": "May 25, 1960",
+    "POB": "Plymouth, Minnesota\t",
+    "experience": "U.S. Senator from Minnesota (2007–present)",
+    "campainStart": "February 10, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Amy_Klobuchar%2C_official_portrait%2C_113th_Congress_%28cropped_2%29.jpg/124px-Amy_Klobuchar%2C_official_portrait%2C_113th_Congress_%28cropped_2%29.jpg",
+    "state": "Minnesota"
+  },
+  {
+    "name": "Wayne Messam",
+    "DOB": "June 7, 1974",
+    "POB": "South Bay, Florida",
+    "experience": "Mayor of Miramar, Florida (2015–present)",
+    "campainStart": "March 28, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mayor_Messam.jpg/128px-Mayor_Messam.jpg",
+    "state": "Florida"
+  },
+  {
+    "name": "Seth Moulton",
+    "DOB": "October 24, 1978",
+    "POB": "Salem, Massachusetts",
+    "experience": "U.S. Representative from MA-06 (2015–present)",
+    "campainStart": "April 22, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Seth_Moulton_%28cropped_2%29.jpg/118px-Seth_Moulton_%28cropped_2%29.jpg",
+    "state": "Massachusetts"
+  },
+  {
+    "name": "Beto O'Rourke",
+    "DOB": "September 26, 1972",
+    "POB": "El Paso, Texas",
+    "experience": "U.S. Representative from TX-16 (2013–2019)",
+    "campainStart": "March 14, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Beto_O%27Rourke%2C_Official_portrait%2C_113th_Congress_%28cropped_3%29.jpg/123px-Beto_O%27Rourke%2C_Official_portrait%2C_113th_Congress_%28cropped_3%29.jpg",
+    "state": "Texas"
+  },
+  {
+    "name": "Tim Ryan",
+    "DOB": "July 16, 1973",
+    "POB": "Niles, Ohio\tU.S. Representative from OH-13 (2013–present)",
+    "experience": "April 4, 2019",
+    "campainStart": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Rep._Tim_Ryan_Congressional_Head_Shot_2010_%28cropped_3%29.jpg/114px-Rep._Tim_Ryan_Congressional_Head_Shot_2010_%28cropped_3%29.jpg",
+    "image": "Ohio",
+    "state": ""
+  },
+  {
+    "name": "Bernie Sanders",
+    "DOB": "September 8, 1941",
+    "POB": "Brooklyn, New York",
+    "experience": "\tU.S. Senator from Vermont (2007–present)",
+    "campainStart": "February 19, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Bernie_Sanders.jpg/126px-Bernie_Sanders.jpg",
+    "state": "Vermont"
+  },
+  {
+    "name": "Eric Swalwell",
+    "DOB": "November 16, 1980",
+    "POB": "Sac City, Iowa",
+    "experience": "U.S. Representative from CA-15 (2013–present)",
+    "campainStart": "April 8, 2019",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Eric_Swalwell_114th_official_photo_%28cropped%29.jpg/112px-Eric_Swalwell_114th_official_photo_%28cropped%29.jpg",
+    "state": "California"
+  },
+  {
+    "name": "Elizabeth Warren",
+    "DOB": "June 22, 1949",
+    "POB": "Oklahoma City, Oklahoma",
+    "experience": "U.S. Senator from Massachusetts (2013–present)",
+    "campainStart": "February 9, 2019",
+    "image": "https://en.wikipedia.org/wiki/File:Elizabeth_Warren,_official_portrait,_114th_Congress_(cropped)(2).jpg",
+    "state": "Massachusetts"
+  },
+  {
+    "name": "Marianne Williamson",
+    "DOB": "July 8, 1952",
+    "POB": "Houston, Texas",
+    "experience": "Author, lecturer, and activist",
+    "campainStart": "January 28, 2019",
+    "image": "https://en.wikipedia.org/wiki/File:Marianne_Williamson_-_33252886458_(cropped).jpg",
+    "state": "California"
+  },
+  {
+    "name": "Andrew Yang",
+    "DOB": "January 13, 1975",
+    "POB": "Schenectady, New York\tEntrepreneur, philanthropist, and founder of Venture for America",
+    "experience": "November 6, 2017",
+    "campainStart": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Andrew_Yang_talking_about_urban_entrepreneurship_at_Techonomy_Conference_2015_in_Detroit%2C_MI_%28cropped%29.jpg/111px-Andrew_Yang_talking_about_urban_entrepreneurship_at_Techonomy_Conference_2015_in_Detroit%2C_MI_%28cropped%29.jpg",
+    "image": "New York",
+    "state": ""
+  }
+]

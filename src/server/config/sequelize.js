@@ -4,7 +4,7 @@ module.exports = {
   "development": {
     "username": "sepans",
     "password": null,
-    "database": "democracy_development",
+    "database": "ctizen_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
