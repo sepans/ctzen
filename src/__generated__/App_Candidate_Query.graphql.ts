@@ -2,12 +2,13 @@
 
 import { ConcreteRequest } from "relay-runtime";
 type CandidateInfo_candidate$ref = any;
+type CandidatePosition_candidate$ref = any;
 export type App_Candidate_QueryVariables = {
     readonly id: string;
 };
 export type App_Candidate_QueryResponse = {
     readonly candidate: {
-        readonly " $fragmentRefs": CandidateInfo_candidate$ref;
+        readonly " $fragmentRefs": CandidateInfo_candidate$ref & CandidatePosition_candidate$ref;
     } | null;
 };
 export type App_Candidate_Query = {
@@ -23,14 +24,20 @@ query App_Candidate_Query(
 ) {
   candidate(id: $id) {
     ...CandidateInfo_candidate
+    ...CandidatePosition_candidate
     id
   }
 }
 
 fragment CandidateInfo_candidate on Candidate {
-  firstName
-  lastName
-  age
+  name: displayName
+  image
+  dob
+  experience
+}
+
+fragment CandidatePosition_candidate on Candidate {
+  image
 }
 */
 
@@ -72,6 +79,11 @@ return {
             "kind": "FragmentSpread",
             "name": "CandidateInfo_candidate",
             "args": null
+          },
+          {
+            "kind": "FragmentSpread",
+            "name": "CandidatePosition_candidate",
+            "args": null
           }
         ]
       }
@@ -93,22 +105,29 @@ return {
         "selections": [
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "firstName",
+            "alias": "name",
+            "name": "displayName",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "lastName",
+            "name": "image",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "age",
+            "name": "dob",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "experience",
             "args": null,
             "storageKey": null
           },
@@ -127,10 +146,10 @@ return {
     "operationKind": "query",
     "name": "App_Candidate_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidateInfo_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  firstName\n  lastName\n  age\n}\n",
+    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidateInfo_candidate\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  experience\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  image\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '27d2cff8c24b3393ea2170bb423447f9';
+(node as any).hash = 'ff29eb5e3d0f877f17fa7881c4835f84';
 export default node;

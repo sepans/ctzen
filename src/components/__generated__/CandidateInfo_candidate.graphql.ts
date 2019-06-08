@@ -3,9 +3,10 @@
 import { ReaderFragment } from "relay-runtime";
 export type CandidateInfo_candidate$ref = any;
 export type CandidateInfo_candidate = {
-    readonly firstName: string | null;
-    readonly lastName: string | null;
-    readonly age: number | null;
+    readonly name: string | null;
+    readonly image: string | null;
+    readonly dob: any | null;
+    readonly experience: string | null;
     readonly " $refType": CandidateInfo_candidate$ref;
 };
 
@@ -20,26 +21,33 @@ const node: ReaderFragment = {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "firstName",
+      "alias": "name",
+      "name": "displayName",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "lastName",
+      "name": "image",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "age",
+      "name": "dob",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "experience",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = 'be023ad64bcc1fbe2b7d3954c4ebddcd';
+(node as any).hash = 'fdac875564259f50c8c5168514f1bf2c';
 export default node;

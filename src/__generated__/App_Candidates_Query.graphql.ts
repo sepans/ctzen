@@ -25,8 +25,8 @@ query App_Candidates_Query {
 
 fragment Home_candidates on Candidate {
   id
-  firstName
-  lastName
+  name: displayName
+  image
 }
 */
 
@@ -80,15 +80,15 @@ const node: ConcreteRequest = {
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "firstName",
+            "alias": "name",
+            "name": "displayName",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "lastName",
+            "name": "image",
             "args": null,
             "storageKey": null
           }
@@ -100,7 +100,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...Home_candidates\n    id\n  }\n}\n\nfragment Home_candidates on Candidate {\n  id\n  firstName\n  lastName\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...Home_candidates\n    id\n  }\n}\n\nfragment Home_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n",
     "metadata": {}
   }
 };

@@ -4,8 +4,8 @@ import { ReaderFragment } from "relay-runtime";
 export type Home_candidates$ref = any;
 export type Home_candidates = ReadonlyArray<{
     readonly id: string | null;
-    readonly firstName: string | null;
-    readonly lastName: string | null;
+    readonly name: string | null;
+    readonly image: string | null;
     readonly " $refType": Home_candidates$ref;
 }>;
 
@@ -29,19 +29,19 @@ const node: ReaderFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "firstName",
+      "alias": "name",
+      "name": "displayName",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "lastName",
+      "name": "image",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = 'c61bcb9a786b897e964639f307f09f0e';
+(node as any).hash = '9092dede12214f46af3b0d89b3163580';
 export default node;

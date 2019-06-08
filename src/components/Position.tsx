@@ -4,7 +4,8 @@ import { CandidateAvatar, SectionTitle } from './Layout'
 
 interface P {
   title: string
-  position: number
+  position: number,
+  candidate: any
 }
 
 const Spectrum = styled.div`
@@ -50,8 +51,13 @@ const AvatarPositon = styled.div`
   z-index: 2;
 `
 
-export const Position = ({title, position}: P) => {
-  const imageUrl: string = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg/1280px-Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg"
+export const Position = (props: P) => {
+  const {title, position, candidate} = props
+  console.log(props)
+  console.log(candidate)
+  console.log(candidate.id)
+   
+  const imageUrl: string = candidate.image
   const labels = ['very liberal', 'liberal', 'conservative', 'very conservative'].map((d, i) => (
     <SpectrumLabels i={i}>{d}</SpectrumLabels>
   ))

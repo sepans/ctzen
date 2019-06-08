@@ -9,19 +9,36 @@ interface CandidateListProps {
 }
 
 const Home: React.FC<CandidateListProps> = ({candidates}) => {
-  const candidateList = candidates.map(candidate => (
-    <CandidateListItem key={candidate.lastName || 'aa'}> {/* TODO: why || 'aa */}
-      <Link to={`/candidate/${candidate.id}`}>{candidate.firstName} {candidate.lastName}</Link>
+  const candidateList = candidates.map((candidate, i) => (
+    <CandidateListItem key={i}> {/* TODO: why || 'aa */}
+    
+    <Link to={`/candidate/${candidate.id}`}>
+      <CandidateImage src={candidate.image as string} />
+        <h3>{candidate.name}</h3>
+      </Link>
     </CandidateListItem>
   ))
   return (
-    <ul>
+    <CandidateList>
       {candidateList}
-    </ul>
+    </CandidateList>
   )
 }
 
+const CandidateImage = styled.img`
+  margin-right: 5px;
+`
+
+const CandidateList = styled.ul`
+  list-style: none;
+`
+
 const CandidateListItem = styled.li`
+  a, a:visited, a:hover {
+    text-decoration: none;
+    color: black;
+
+  }
 `
 
 export default createFragmentContainer(
@@ -29,8 +46,8 @@ export default createFragmentContainer(
     candidates: graphql`
     fragment Home_candidates on Candidate @relay(plural: true) {
       id
-      firstName
-      lastName
+      name: displayName
+      image
     }
   `}
 )

@@ -1,10 +1,9 @@
 import React from 'react';
-import { CandidatePosition } from './components/CandidatePosition'
+import CandidatePosition from './components/CandidatePosition'
 import Home from './components/Home'
 
 import { graphql } from 'react-relay';
 import environment from './config/relayEnvironment'
-// import CandidateInfo_candidate from './components/__generated__/CandidateInfo_candidate.graphql';
 
 import { BrowserProtocol, queryMiddleware } from 'farce';
 import {
@@ -41,6 +40,7 @@ const Router = createFarceRouter({
           query App_Candidate_Query($id: ID!) {
             candidate(id: $id) {
               ...CandidateInfo_candidate
+              ...CandidatePosition_candidate
             }
           }
         `}

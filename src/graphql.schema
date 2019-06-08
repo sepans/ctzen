@@ -1,9 +1,24 @@
 type Candidate {
   id: ID
-  firstName: String
-  lastName: String
-  age: Int
+  name: String
+  displayName: String
+  image: String
+  campaignLogo: String
+  dob: Date
+  pob: String
+  state: String
+  campaignStart: Date
+  campaignEnd: Date
+  experience: String
+  bio: String
+  miscInfo: JSON
+  createdAt: Date
+  updatedAt: Date
 }
+
+scalar Date
+
+scalar JSON
 
 type Query {
   candidates: [Candidate]
