@@ -11,8 +11,12 @@ const GraphQLJSON = require('graphql-type-json');
 
 const resolvers = {
   candidates: () => Candidate.findAll(),
-  candidate: ({ id }) => Candidate.findByPk(parseInt(id)),
-
+  candidate: ({ id }) => { 
+    const candidate = Candidate.findByPk(parseInt(id))
+    console.log(candidate)
+    console.log(candidate.response)
+    return candidate
+  },
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'Date custom scalar type',

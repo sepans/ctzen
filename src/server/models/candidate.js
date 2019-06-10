@@ -1,4 +1,8 @@
 'use strict';
+
+const CandidateResponse = require("./candidateresponse")
+const Question = require("./question")
+
 module.exports = (sequelize, DataTypes) => {
   const Candidate = sequelize.define('Candidate', {
     name: DataTypes.STRING,
@@ -15,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     miscInfo: DataTypes.JSON,
   }, {});
   Candidate.associate = function(models) {
-    // associations can be defined here
+    Candidate.belongsToMany(Question, { through: CandidateResponse })
   };
   return Candidate;
 };

@@ -19,6 +19,8 @@ const connection = new Sequelize(config[env].database, config[env].username, con
   pool
 });
 
+connection.sync()
+
 module.exports = {
   connection
 }

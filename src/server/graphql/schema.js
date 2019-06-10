@@ -8,6 +8,11 @@ const schema = buildASTSchema(gql`
   type Query {
     candidates: [Candidate]
     candidate(id: ID!): Candidate
+    user(id: ID!): User
+  }
+
+  type User {
+    username: String
   }
 
   type Candidate {
@@ -21,32 +26,19 @@ const schema = buildASTSchema(gql`
     state: String
     campaignStart: Date
     campaignEnd: Date
-    experience:   String
+    experience: String
     bio: String
     miscInfo: JSON
     createdAt: Date
-    updatedAt:  Date
+    updatedAt: Date
+    responses: [Response]
+  }
+
+  type Response {
+    response: Int
   }
 `);
 
 module.exports = {
   schema
 }
-/*
-    id:       
-      name: String
-            displayName: String
-            image:      String
-            campaignLogo: String
-            dob: Date
-            pob: String
-            state: String
-            campaignStart: Date
-            campaignEnd: Date
-              experience:   String
-                bio: String
-            miscInfo: JSON
-            createdAt: DATE
-            updatedAt:  DATE
-      }
-      */
