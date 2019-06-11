@@ -59,7 +59,7 @@ export const Position = (props: P) => {
    
   const imageUrl: string = candidate.image
   const labels = ['very liberal', 'liberal', 'conservative', 'very conservative'].map((d, i) => (
-    <SpectrumLabels i={i}>{d}</SpectrumLabels>
+    <SpectrumLabels key={i} i={i}>{d}</SpectrumLabels>
   ))
 
   return (

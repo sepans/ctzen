@@ -1,9 +1,11 @@
 import React from 'react';
-import CandidatePosition from './components/CandidatePosition'
-import Home from './components/Home'
+import CandidatePosition from './pages/CandidatePosition'
+import CandidateList from './pages/CandidateList'
 
 import { graphql } from 'react-relay';
 import environment from './config/relayEnvironment'
+import { ThemeProvider } from '@smooth-ui/core-sc'
+import { theme } from "./theme"
 
 import { BrowserProtocol, queryMiddleware } from 'farce';
 import {
@@ -23,11 +25,11 @@ const Router = createFarceRouter({
     <>
       <Route 
         path="/" 
-        render={({ props} ) => { return props ? <Home {...props} /> : <Loading />}} 
+        render={({ props }) => { return props ? <CandidateList {...props} /> : <Loading />}} 
         query={graphql`
           query App_Candidates_Query {
             candidates {
-              ...Home_candidates
+              ...CandidateList_candidates
             }
           }
         `}
@@ -59,6 +61,10 @@ const Router = createFarceRouter({
   render: createRender({}),
 });    
 
-const App = () => <Router resolver={new Resolver(environment)} />
+
+
+const App = () => <ThemeProvider theme={theme}>
+    <Router resolver={new Resolver(environment)} />
+  </ThemeProvider>
 
 export default App;

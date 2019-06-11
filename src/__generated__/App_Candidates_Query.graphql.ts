@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-type Home_candidates$ref = any;
+type CandidateList_candidates$ref = any;
 export type App_Candidates_QueryVariables = {};
 export type App_Candidates_QueryResponse = {
     readonly candidates: ReadonlyArray<{
-        readonly " $fragmentRefs": Home_candidates$ref;
+        readonly " $fragmentRefs": CandidateList_candidates$ref;
     } | null> | null;
 };
 export type App_Candidates_Query = {
@@ -18,12 +18,12 @@ export type App_Candidates_Query = {
 /*
 query App_Candidates_Query {
   candidates {
-    ...Home_candidates
+    ...CandidateList_candidates
     id
   }
 }
 
-fragment Home_candidates on Candidate {
+fragment CandidateList_candidates on Candidate {
   id
   name: displayName
   image
@@ -50,7 +50,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Home_candidates",
+            "name": "CandidateList_candidates",
             "args": null
           }
         ]
@@ -100,9 +100,9 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...Home_candidates\n    id\n  }\n}\n\nfragment Home_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = '0925fee53120c217c3b9ff5f0c0624d8';
+(node as any).hash = '15305f8f902b1ac0d0a8f4928c2b9a12';
 export default node;

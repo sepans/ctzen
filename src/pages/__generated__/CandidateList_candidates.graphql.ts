@@ -1,19 +1,19 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type Home_candidates$ref = any;
-export type Home_candidates = ReadonlyArray<{
+export type CandidateList_candidates$ref = any;
+export type CandidateList_candidates = ReadonlyArray<{
     readonly id: string | null;
     readonly name: string | null;
     readonly image: string | null;
-    readonly " $refType": Home_candidates$ref;
+    readonly " $refType": CandidateList_candidates$ref;
 }>;
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Home_candidates",
+  "name": "CandidateList_candidates",
   "type": "Candidate",
   "metadata": {
     "plural": true
@@ -43,5 +43,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '9092dede12214f46af3b0d89b3163580';
+(node as any).hash = '00c3bb72348b39371c6098d7742be206';
 export default node;
