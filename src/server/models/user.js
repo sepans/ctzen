@@ -1,8 +1,5 @@
 'use strict';
 
-const UserResponse = require("./userresponse")
-const Question = require("./question")
-
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     firstName: DataTypes.STRING,
@@ -14,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     roles: DataTypes.JSON
   }, {});
   User.associate = function(models) {
-    User.belongsToMany(Question, { through: UserResponse })
+    User.belongsToMany(models.Question, { through: models.UserResponse, foreignKey: 'userId' })
   };
   return User;
 };

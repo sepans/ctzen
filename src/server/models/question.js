@@ -1,9 +1,5 @@
 'use strict';
 
-const CandidateResponse = require("./candidateresponse")
-const Candidate = require("./candidate")
-const UserResponse = require("./userresponse")
-const User = require("./user")
 
 module.exports = (sequelize, DataTypes) => {
   const Question = sequelize.define('Question', {
@@ -13,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     option3: DataTypes.STRING,
     option4: DataTypes.STRING,
     option5: DataTypes.STRING,
-    level: DataTypes.Integer
+    level: DataTypes.INTEGER
   }, {});
   Question.associate = function(models) {
-    Question.belongsToMany(Candidate, { through: CandidateResponse })
-    Question.belongsToMany(User, { through: UserResponse })
+    Question.belongsToMany(models.Candidate, { through: models.CandidateResponse, foreignKey: 'questionId' })
+    Question.belongsToMany(models.User, { through: models.UserResponse, foreignKey: 'questionId' })
   };
   return Question;
 };
