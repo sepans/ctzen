@@ -44,8 +44,8 @@ const GraphQLJSON = require('graphql-type-json');
 // sampleData() 
 
 const resolvers = {
-  candidates: () => {
-     const list = db.Candidate.findAll({ include: [{model: db.Question, as: 'responses'}]})
+  candidates: async () => {
+     const list = await db.Candidate.findAll({ include: [{model: db.Question, as: 'responses'}]})
      console.log('list', list)
      return list
   },
