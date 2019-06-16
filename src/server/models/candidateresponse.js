@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   CandidateResponse.associate = function(models) {
     // associations can be defined here
-    CandidateResponse.hasOne(models.Question, { foreignKey: 'questionId'})
+    // CandidateResponse.hasOne(models.Question, { foreignKey: 'questionId'})
   };
   return CandidateResponse;
 };

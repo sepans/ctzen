@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     roles: DataTypes.JSON
   }, {});
   User.associate = function(models) {
-    User.belongsToMany(models.Question, { through: models.UserResponse, foreignKey: 'userId' })
+    // User.belongsToMany(models.Question, { through: models.UserResponse, foreignKey: 'userId' })
   };
   return User;
 };

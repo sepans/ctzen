@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Question.associate = function(models) {
     Question.belongsToMany(models.Candidate, { through: models.CandidateResponse, foreignKey: 'questionId' })
-    Question.belongsToMany(models.User, { through: models.UserResponse, foreignKey: 'questionId' })
+    // Question.belongsToMany(models.User, { through: models.UserResponse, foreignKey: 'questionId' })
   };
   return Question;
 };

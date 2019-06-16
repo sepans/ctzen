@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     miscInfo: DataTypes.JSON,
   }, {});
   Candidate.associate = function(models) {
-    Candidate.belongsToMany(models.Question, { as: 'responses', through: models.CandidateResponse, foreignKey: 'candidateId'})
+    Candidate.belongsToMany(models.Question, { through: models.CandidateResponse, foreignKey: 'candidateId'})
   };
   return Candidate;
 };
