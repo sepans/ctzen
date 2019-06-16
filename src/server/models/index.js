@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 const env = process.env.NODE_ENV || 'development' // TODO: load'
+console.log('ENV', env, config[env].database)
 
 const pool = {
   max: 5,
@@ -21,9 +22,8 @@ const db = new Sequelize(config[env].database, config[env].username, config[env]
 // load models similar to https://github.com/sequelize/express-example/blob/master/models/index.js
 fs
   .readdirSync(__dirname)
-  .filter((file) => file !=='index.js')
+  .filter((file) => file !== 'index.js' && file !== 'sequelize.test.js')
   .forEach(file => {
-    console.log('file', file)
     const model = db['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
