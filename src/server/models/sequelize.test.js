@@ -8,6 +8,8 @@ describe("test sequelize", () => {
   beforeEach(async (done) => {
     await db.Candidate.destroy(({ where: {}, force: true }))
     await db.CandidateResponse.destroy(({ where: {}, force: true }))
+    await db.User.destroy(({ where: {}, force: true }))
+    await db.UserResponse.destroy(({ where: {}, force: true }))
     await db.Question.destroy(({ where: {}, force: true }))
     done()
   })
@@ -47,9 +49,9 @@ describe("test sequelize", () => {
       done()
   })
 
-  xit("create and retrieve user and responses", async (done) => {
+  it("create and retrieve user and responses", async (done) => {
     expect.assertions(3)
-    const candidate = await db.Candidate.create({ name: 'barack obama' })
+    const user = await db.User.create({ username: 'barackobama2000', email: 'barackobama.aol.com' })
     const q = await db.Question.create({
       title: 'what is you name?',
       option1: 'barack',
@@ -57,24 +59,25 @@ describe("test sequelize", () => {
       option3: 'obama',
     })
 
-    await candidate.addQuestion(q, { through: { response: 1 } })
+    await user.addAnswer(q, { through: { response: 3 } })
 
-    const candidates = await db.Candidate.findAll({
+    const users = await db.User.findAll({
       include: [{
-        model: db.Question
+        model: db.Question,
+        as: 'answers'
       }]
     })
 
-    expect(candidates.length).toBe(1)
+    expect(users.length).toBe(1)
 
-    const candidateQuestions = await candidates[0].getQuestions()
-    const pickIndex = candidateQuestions[0].CandidateResponse.response
-    const options = [candidateQuestions[0].option1, candidateQuestions[0].option3, candidateQuestions[0].option3]
+    const userAnswers = await users[0].getAnswers()
+    const pickIndex = userAnswers[0].UserResponse.response
+    const options = [userAnswers[0].option1, userAnswers[0].option3, userAnswers[0].option3]
     const pick = options[pickIndex - 1]
-    console.log('first question: ', candidateQuestions[0].title, ' answer: ', pick)
+    console.log('first question: ', userAnswers[0].title, ' answer: ', pick)
 
-    expect(pickIndex).toBe(1)
-    expect(candidateQuestions[0].title).toContain('what is you name?')
+    expect(pickIndex).toBe(3)
+    expect(userAnswers[0].title).toContain('what is you name?')
 
     done()
   })
