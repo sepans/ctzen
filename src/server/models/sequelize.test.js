@@ -24,24 +24,25 @@ describe("test sequelize", () => {
         option3: 'obama',
       })
 
-      await candidate.addQuestion(q, {through: {response: 1}})
+      await candidate.addAnswer(q, {through: {response: 1}})
 
       const candidates = await db.Candidate.findAll({
         include: [{
-          model: db.Question
+          model: db.Question,
+          as: 'answers'
         }]
       })
       
       expect(candidates.length).toBe(1)
 
-      const candidateQuestions =  await candidates[0].getQuestions()
-      const pickIndex = candidateQuestions[0].CandidateResponse.response
-      const options = [candidateQuestions[0].option1, candidateQuestions[0].option3, candidateQuestions[0].option3]
+      const candidateAnswers =  await candidates[0].getAnswers()
+      const pickIndex = candidateAnswers[0].CandidateResponse.response
+      const options = [candidateAnswers[0].option1, candidateAnswers[0].option3, candidateAnswers[0].option3]
       const pick = options[pickIndex - 1]
-      console.log('first question: ', candidateQuestions[0].title, ' answer: ', pick)
+      console.log('first question: ', candidateAnswers[0].title, ' answer: ', pick)
 
       expect(pickIndex).toBe(1)
-      expect(candidateQuestions[0].title).toContain('what is you name?')
+      expect(candidateAnswers[0].title).toContain('what is you name?')
 
       done()
   })
