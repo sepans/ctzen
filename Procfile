@@ -1,1 +1,1 @@
-web: node src/server
+web: yarn run sequelize db:migrate & node src/server
