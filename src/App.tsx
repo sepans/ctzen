@@ -15,6 +15,7 @@ import {
   Route,
 } from 'found';
 import { Resolver } from 'found-relay';
+import Question from './pages/Question';
 
 const Loading = () => <div>loading</div>
 
@@ -52,6 +53,23 @@ const Router = createFarceRouter({
           ) : <Loading />
         }}   
     
+      />
+      <Route
+        path="question/:id"
+        query={graphql`
+          query App_Question_Query($id: ID!) {
+            question(id: $id) {
+              ...Question_question
+            }
+          }
+        `}
+        render={({ props }) => {
+          return props ? (
+            <Question {...props} />
+
+          ) : <Loading />
+        }}
+
       />
     </>
 

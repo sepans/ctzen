@@ -1,3 +1,7 @@
+type AnswerPick {
+  response: Int
+}
+
 type Candidate {
   id: ID
   name: String
@@ -14,14 +18,101 @@ type Candidate {
   miscInfo: JSON
   createdAt: Date
   updatedAt: Date
+  answers: [CandidateAnswer]
+}
+
+type CandidateAnswer {
+  id: ID
+  title: String
+  option1: String
+  option2: String
+  option3: String
+  option4: String
+  option5: String
+  level: Int
+  CandidateResponse: AnswerPick
 }
 
 scalar Date
 
+type Error {
+  message: String
+}
+
 scalar JSON
+
+type Mutation {
+  addQuestion(input: QuestionInput): Question
+  addUser(input: UserInput): User
+  userAnswerQuestion(userId: ID!, questionId: ID!, response: Int): User
+  candidateAnswerQuestion(candidateId: ID!, questionId: ID!, response: Int): Candidate
+}
 
 type Query {
   candidates: [Candidate]
   candidate(id: ID!): Candidate
+  users: [User]
+  user(id: ID!): User
+  question(id: ID!): Question
+  questions: [Question]
+}
+
+type Question {
+  id: ID
+  title: String
+  option1: String
+  option2: String
+  option3: String
+  option4: String
+  option5: String
+  level: Int
+}
+
+input QuestionInput {
+  title: String!
+  option1: String
+  option2: String
+  option3: String
+  option4: String
+  option5: String
+  level: Int!
+}
+
+type Response {
+  id: ID
+  response: Int
+  question: Question
+}
+
+type User {
+  id: ID
+  username: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  roles: JSON
+  answers: [UserAnswer]
+}
+
+type UserAnswer {
+  id: ID
+  title: String
+  option1: String
+  option2: String
+  option3: String
+  option4: String
+  option5: String
+  level: Int
+  UserResponse: AnswerPick
+}
+
+input UserInput {
+  username: String!
+  firstName: String
+  lastName: String
+  email: String!
+  password: String!
+  roles: JSON
 }
 
