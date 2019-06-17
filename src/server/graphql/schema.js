@@ -11,9 +11,28 @@ const schema = buildASTSchema(gql`
     users: [User]
     user(id: ID!): User
     question(id: ID!): Question
+    questions: [Question]
+  }
+
+  type Mutation {
+    addQuestion(input: QuestionInput): Question
+    addUser(input: UserInput): User
+    userAnswerQuestion(userId: ID!, questionId: ID!, response: Int): User
+    candidateAnswerQuestion(candidateId: ID!, questionId: ID!, response: Int): Candidate
+  }
+
+  input QuestionInput {
+    title: String!
+    option1: String
+    option2: String
+    option3: String
+    option4: String
+    option5: String
+    level: Int!
   }
 
   type Question {
+    id: ID
     title: String
     option1: String
     option2: String
@@ -23,8 +42,52 @@ const schema = buildASTSchema(gql`
     level: Int
   }
 
+  input UserInput {
+    username: String!
+    firstName: String
+    lastName: String
+    email: String!
+    password: String!
+    roles: JSON
+  }
+
   type User {
+    id: ID
     username: String
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    roles: JSON
+    answers: [UserAnswer]
+  }
+
+  type UserAnswer {
+    id: ID
+    title: String
+    option1: String
+    option2: String
+    option3: String
+    option4: String
+    option5: String
+    level: Int
+    UserResponse: AnswerPick
+  }
+
+  type CandidateAnswer {
+    id: ID
+    title: String
+    option1: String
+    option2: String
+    option3: String
+    option4: String
+    option5: String
+    level: Int
+    CandidateResponse: AnswerPick
+  }
+
+  type AnswerPick {
+    response: Int
   }
 
   type Candidate {
@@ -43,12 +106,17 @@ const schema = buildASTSchema(gql`
     miscInfo: JSON
     createdAt: Date
     updatedAt: Date
-    responses: [Response]
+    answers: [CandidateAnswer]
   }
 
   type Response {
+    id: ID
     response: Int
     question: Question
+  }
+
+  type Error {
+    message: String
   }
 `);
 

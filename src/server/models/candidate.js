@@ -4,7 +4,6 @@
 // const Question = require("./question")
 
 module.exports = (sequelize, DataTypes) => {
-  debugger
   const Candidate = sequelize.define('Candidate', {
     name: DataTypes.STRING,
     displayName: DataTypes.STRING,

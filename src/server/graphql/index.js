@@ -2,77 +2,94 @@ const { GraphQLScalarType} = require('graphql')
 const { Kind } = require('graphql/language')
 const { schema } = require('./schema')
 const { db } = require('../models')
-// const Sequelize = require('sequelize');
-// const Candidate = require('../models/candidate')(sequelize, Sequelize)
-// const CandidateResponse = require('../models/candidateresponse')(sequelize, Sequelize)
-// const Question = require('../models/question')(sequelize, Sequelize)
-
-console.log(__dirname)
-// const Candidate = sequelize.import('../models/candidate')
-// const CandidateResponse = sequelize.import('../models/candidateresponse')
-// const Question = sequelize.import('../models/question')
-
 const GraphQLJSON = require('graphql-type-json');
 
-// async function sampleData() {
-//   try {
-//     console.log('adding some data')
-//     const question = await db.Question.create({title: 'whats your name?',
-//       level: 1
-    
-//     })
-//     const candidate = await db.Candidate.findByPk(1)
-//     // console.log('fetched', candidate)
-//     // console.log(candidate.CandidateResponses)
-//     //candidate.responses.add(response)
-//     // const response = await db.CandidateResponse.create({ response: 2, questionId: question.id, candidateId: candidate.id})
-//     // console.log(response)
-//     // candidate.createCandidateResponse({response: 2})
-//     candidate.addQuestion(question, { through: {response: 5 }})
-//     console.log('properties', Object.getOwnPropertyNames(candidate))
-//     // candidate.setResponses([response])
-  
-//     console.log(candidate.getQuestions())
-
-//   }
-//   catch(e) {
-//     console.log('db err', e)
-//   }
-  
-// }
-
-// sampleData() 
-
 const resolvers = {
-  candidates: async () => {
-     const list = await db.Candidate.findAll({ include: [{model: db.Question, as: 'responses'}]})
-     console.log('list', list)
-     return list
+  candidates: async () =>  await db.Candidate.findAll({ 
+    include: [{
+      model: db.Question, 
+      as: 'answers'
+    }]
+  }),
+  candidate: async ({ id }) => await db.Candidate.findByPk(parseInt(id), {
+    include: [{
+      model: db.Question,
+      as: 'answers'
+    }]
+  }),
+  question: async ({ id }) => await db.Question.findByPk(parseInt(id)),
+  questions: async () => await db.Question.findAll(),
+  user: async ({ id }) => await db.User.findByPk(parseInt(id), { 
+    include: [{
+      model: db.Question,
+      as: 'answers'
+    }]
+  }),
+  users: async () => await db.User.findAll({
+    include: [{
+      model: db.Question,
+      as: 'answers'
+    }]
+  }),
+  addQuestion: async ( {input}) => {
+    const question = await db.Question.create(input)
+    return question
   },
-  candidate: ({ id }) => { 
-    const candidate = db.Candidate.findByPk(parseInt(id))
-    return candidate
+  addUser: async ({ input }) => {
+    const user = await db.User.create(input)
+    return user
   },
-  question: ({ id }) => {
-    return db.Question.findByPk(parseInt(id))
-  },
-  users: () => db.User.findAll(),
+  userAnswerQuestion: async ({ userId, questionId, response }) => {
+    const user = await db.User.findByPk(parseInt(userId), {
+      include: [{
+        model: db.Question,
+        as: 'answers'
+      }]
+    })
+    const question = await db.Question.findByPk(parseInt(questionId))
+    if(user==null) {
+      throw new Error('user does not exist')
+    }
+    if (question == null) {
+      throw new Error('question does not exist')
+    }    
+    await user.addAnswer(question, { through: { response } })
+    return await user.reload()
+  },  
+  candidateAnswerQuestion: async ({ candidateId, questionId, response }) => {
+    const candidate = await db.Candidate.findByPk(parseInt(candidateId), {
+      include: [{
+        model: db.Question,
+        as: 'answers'
+      }]
+    })
+    const question = await db.Question.findByPk(parseInt(questionId))
+    if (candidate == null) {
+      throw new Error('candidate does not exist')
+    }
+    if (question == null) {
+      throw new Error('question does not exist')
+    }
+    await candidate.addAnswer(question, { through: { response } })
+    return await candidate.reload()
+  },    
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'Date custom scalar type',
     parseValue(value) {
-      return new Date(value); // value from the client
+      return new Date(value);
     },
     serialize(value) {
-      return value.getTime(); // value sent to the client
+      return value.getTime();
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.INT) {
-        return parseInt(ast.value, 10); // ast value is always in string format
+        return parseInt(ast.value, 10);
       }
       return null;
     },
   }), 
+
   JSON: GraphQLJSON, 
 };
 
