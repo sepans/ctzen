@@ -15,7 +15,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-// TODO: fixme: for heroku serve static files from build direcory
+// TODO: fixme: for heroku serve static files from build directory
 if (process.env.NODE_ENV === 'production') {
   const buildPath = '../../build/'
   const buildDir = path.join(__dirname, buildPath)

@@ -2,6 +2,7 @@
 
 
 module.exports = (sequelize, DataTypes) => {
+  // TODO: foreign key parent? or category, sub category (e.g. E2.5)
   const Question = sequelize.define('Question', {
     title: DataTypes.STRING,
     option1: DataTypes.STRING,

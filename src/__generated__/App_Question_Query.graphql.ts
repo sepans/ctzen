@@ -33,6 +33,9 @@ fragment Question_question on Question {
   level
   option1
   option2
+  option3
+  option4
+  option5
 }
 */
 
@@ -127,6 +130,27 @@ return {
             "name": "option2",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "option3",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "option4",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "option5",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -136,7 +160,7 @@ return {
     "operationKind": "query",
     "name": "App_Question_Query",
     "id": null,
-    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n}\n",
+    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n}\n",
     "metadata": {}
   }
 };
