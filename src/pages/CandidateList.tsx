@@ -4,7 +4,7 @@ import { graphql, createFragmentContainer } from 'react-relay';
 import { CandidateList_candidates } from "./__generated__/CandidateList_candidates.graphql"
 import styled from 'styled-components';
 import { PageWrapper } from '../components/Layout';
-import { Typography } from "@smooth-ui/core-sc"
+import { Typography, Box, Button } from "@smooth-ui/core-sc"
 import { CandidateImage } from "../components/Layout"
 
 interface CandidateListProps {
@@ -12,6 +12,7 @@ interface CandidateListProps {
 }
 
 const CandidateList: React.FC<CandidateListProps> = ({candidates}) => {
+  const firstQuestionLink = `/question/1` // TODO: Fixme get first question
   const candidateList = candidates.map((candidate, i) => (
     <Item key={i}> {/* TODO: why || 'aa */}
     
@@ -23,6 +24,11 @@ const CandidateList: React.FC<CandidateListProps> = ({candidates}) => {
   ))
   return (
     <PageWrapper>
+      <Box>
+        <Link to={firstQuestionLink}>
+          <Button>Start answering questions</Button>
+        </Link>
+      </Box>
       <List>
         {candidateList}
       </List>
@@ -35,11 +41,7 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  a, a:visited, a:hover {
-    text-decoration: none;
-    color: black;
 
-  }
 `
 
 export default createFragmentContainer(

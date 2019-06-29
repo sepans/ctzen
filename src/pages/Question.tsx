@@ -41,6 +41,8 @@ const Question: React.FC<Props> = ({ question }) => {
   const [answerReceived, setAnswerReceived] = useState(false)
   const { title } = question
 
+  const getNextQuestion = () => `/question/${parseInt(question.id || '0') + 1}` // TODO: get from graphql, from mutation response?
+
   const submitSelection = () => {
     const variables = {
       userId: 1,
@@ -83,7 +85,11 @@ const Question: React.FC<Props> = ({ question }) => {
         You picked {optionArray(question)[selection]}
       </Box>
       <Box mt={2}>
-        <Link to={`/question/${parseInt(question.id || '0') + 1}`}>Next question</Link> {/* TODO: Fixme get next question from graphql */}
+        <Link to={getNextQuestion()}>
+          <Button variant="light">
+            Next question
+          </Button> 
+        </Link>
       </Box>
     </>
   )
