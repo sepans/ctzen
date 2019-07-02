@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     lastLogin: DataTypes.DATE,
-    roles: DataTypes.JSON
+    roles: DataTypes.JSON,
+    token: DataTypes.STRING
   }, {});
   User.associate = function(models) {
     User.belongsToMany(models.Question, { through: models.UserResponse, as: 'answers', foreignKey: 'userId' })

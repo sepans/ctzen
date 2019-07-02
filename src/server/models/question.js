@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     option3: DataTypes.STRING,
     option4: DataTypes.STRING,
     option5: DataTypes.STRING,
-    level: DataTypes.INTEGER
+    level: DataTypes.INTEGER  
   }, {});
   Question.associate = function(models) {
     Question.belongsToMany(models.Candidate, { through: models.CandidateResponse, foreignKey: 'questionId' })
