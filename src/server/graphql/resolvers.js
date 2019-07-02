@@ -2,6 +2,8 @@ const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 const { db } = require('../models')
 const GraphQLJSON = require('graphql-type-json');
+const { hasCurrentUser } = require("./utils") 
+
 const resolvers = {
   candidates: async () => await db.Candidate.findAll({
     include: [{
@@ -39,7 +41,8 @@ const resolvers = {
     const user = await db.User.create(input)
     return user
   },
-  userAnswerQuestion: async ({ userId, questionId, response }) => {
+  userAnswerQuestion: hasCurrentUser(async ({questionId, response }, context) => {
+    const userId = context.currentUser.id
     const user = await db.User.findByPk(parseInt(userId), {
       include: [{
         model: db.Question,
@@ -55,7 +58,7 @@ const resolvers = {
     }
     await user.addAnswer(question, { through: { response } })
     return await user.reload()
-  },
+  }),
   candidateAnswerQuestion: async ({ candidateId, questionId, response }) => {
     const candidate = await db.Candidate.findByPk(parseInt(candidateId), {
       include: [{

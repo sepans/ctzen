@@ -33,6 +33,15 @@ const createGraphQLContext = async (req) => {
   }
 }
 
+
+const hasCurrentUser = next => (args, context, info) => {
+  if (!context.currentUser) {
+    throw new Error(`Unauthenticated!`);
+  }
+  return next(args, context, info);
+}
+
 module.exports = {
-  createGraphQLContext
+  createGraphQLContext,
+  hasCurrentUser
 }

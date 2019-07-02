@@ -17,7 +17,7 @@ const schema = buildASTSchema(gql`
   type Mutation {
     addQuestion(input: QuestionInput): Question
     addUser(input: UserInput): User
-    userAnswerQuestion(userId: ID!, questionId: ID!, response: Int): User
+    userAnswerQuestion(questionId: ID!, response: Int): User
     candidateAnswerQuestion(candidateId: ID!, questionId: ID!, response: Int): Candidate
   }
 
