@@ -1,19 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const graphqlHTTP = require('express-graphql');
 const path = require('path');
-
-const { schema, resolvers } = require('./graphql')
+const cookieSession = require('cookie-session')
+const { graphql } = require("./graphql")
 
 const app = express();
 app.use(cors());
 
-// TODO: limit access
-app.use('/graphql', graphqlHTTP({
-  schema,
-  rootValue: resolvers,
-  graphiql: true,
-}));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+app.use('/graphql', graphql)
 
 // TODO: fixme: for heroku serve static files from build directory
 if (process.env.NODE_ENV === 'production') {
