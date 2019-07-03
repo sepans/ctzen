@@ -3,6 +3,9 @@ const { Kind } = require('graphql/language')
 const { db } = require('../models')
 const GraphQLJSON = require('graphql-type-json');
 const { hasCurrentUser } = require("./utils") 
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op
 
 const resolvers = {
   candidates: async () => await db.Candidate.findAll({
@@ -43,7 +46,7 @@ const resolvers = {
   },
   userAnswerQuestion: hasCurrentUser(async ({questionId, response }, context) => {
     const userId = context.currentUser.id
-    const user = await db.User.findByPk(parseInt(userId), {
+    let user = await db.User.findByPk(parseInt(userId), {
       include: [{
         model: db.Question,
         as: 'answers'
@@ -57,7 +60,24 @@ const resolvers = {
       throw new Error('question does not exist')
     }
     await user.addAnswer(question, { through: { response } })
-    return await user.reload()
+
+    user = await user.reload()
+
+    const answeredQuestionIds = user.answers.map(answer => answer.id)
+
+    const nextQuestion = await db.Question.findOne({
+      where: {
+        id: {
+          [Op.notIn]: answeredQuestionIds
+        }
+      }
+    })
+
+    const mutationResponse = {
+      user,
+      nextQuestion
+    }
+    return mutationResponse
   }),
   candidateAnswerQuestion: async ({ candidateId, questionId, response }) => {
     const candidate = await db.Candidate.findByPk(parseInt(candidateId), {
