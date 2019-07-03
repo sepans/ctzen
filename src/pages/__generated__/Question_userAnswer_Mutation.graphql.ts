@@ -2,19 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type Question_userAnswer_MutationVariables = {
-    readonly userId: string;
     readonly questionId: string;
     readonly response?: number | null;
 };
 export type Question_userAnswer_MutationResponse = {
     readonly userAnswerQuestion: {
-        readonly answers: ReadonlyArray<{
-            readonly title: string | null;
-            readonly level: number | null;
-            readonly UserResponse: {
-                readonly response: number | null;
-            } | null;
-        } | null> | null;
+        readonly user: {
+            readonly answers: ReadonlyArray<{
+                readonly title: string | null;
+                readonly level: number | null;
+                readonly UserResponse: {
+                    readonly response: number | null;
+                } | null;
+            } | null> | null;
+        } | null;
+        readonly nextQuestion: {
+            readonly id: string | null;
+        } | null;
     } | null;
 };
 export type Question_userAnswer_Mutation = {
@@ -26,32 +30,30 @@ export type Question_userAnswer_Mutation = {
 
 /*
 mutation Question_userAnswer_Mutation(
-  $userId: ID!
   $questionId: ID!
   $response: Int
 ) {
-  userAnswerQuestion(userId: $userId, questionId: $questionId, response: $response) {
-    answers {
-      title
-      level
-      UserResponse {
-        response
+  userAnswerQuestion(questionId: $questionId, response: $response) {
+    user {
+      answers {
+        title
+        level
+        UserResponse {
+          response
+        }
+        id
       }
       id
     }
-    id
+    nextQuestion {
+      id
+    }
   }
 }
 */
 
 const node: ConcreteRequest = (function(){
 var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "userId",
-    "type": "ID!",
-    "defaultValue": null
-  },
   {
     "kind": "LocalArgument",
     "name": "questionId",
@@ -75,11 +77,6 @@ v1 = [
     "kind": "Variable",
     "name": "response",
     "variableName": "response"
-  },
-  {
-    "kind": "Variable",
-    "name": "userId",
-    "variableName": "userId"
   }
 ],
 v2 = {
@@ -120,6 +117,18 @@ v5 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v6 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "nextQuestion",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Question",
+  "plural": false,
+  "selections": [
+    (v5/*: any*/)
+  ]
 };
 return {
   "kind": "Request",
@@ -136,23 +145,35 @@ return {
         "name": "userAnswerQuestion",
         "storageKey": null,
         "args": (v1/*: any*/),
-        "concreteType": "User",
+        "concreteType": "UserQuestionAnswered",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "answers",
+            "name": "user",
             "storageKey": null,
             "args": null,
-            "concreteType": "UserAnswer",
-            "plural": true,
+            "concreteType": "User",
+            "plural": false,
             "selections": [
-              (v2/*: any*/),
-              (v3/*: any*/),
-              (v4/*: any*/)
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "answers",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "UserAnswer",
+                "plural": true,
+                "selections": [
+                  (v2/*: any*/),
+                  (v3/*: any*/),
+                  (v4/*: any*/)
+                ]
+              }
             ]
-          }
+          },
+          (v6/*: any*/)
         ]
       }
     ]
@@ -168,25 +189,37 @@ return {
         "name": "userAnswerQuestion",
         "storageKey": null,
         "args": (v1/*: any*/),
-        "concreteType": "User",
+        "concreteType": "UserQuestionAnswered",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "answers",
+            "name": "user",
             "storageKey": null,
             "args": null,
-            "concreteType": "UserAnswer",
-            "plural": true,
+            "concreteType": "User",
+            "plural": false,
             "selections": [
-              (v2/*: any*/),
-              (v3/*: any*/),
-              (v4/*: any*/),
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "answers",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "UserAnswer",
+                "plural": true,
+                "selections": [
+                  (v2/*: any*/),
+                  (v3/*: any*/),
+                  (v4/*: any*/),
+                  (v5/*: any*/)
+                ]
+              },
               (v5/*: any*/)
             ]
           },
-          (v5/*: any*/)
+          (v6/*: any*/)
         ]
       }
     ]
@@ -195,10 +228,10 @@ return {
     "operationKind": "mutation",
     "name": "Question_userAnswer_Mutation",
     "id": null,
-    "text": "mutation Question_userAnswer_Mutation(\n  $userId: ID!\n  $questionId: ID!\n  $response: Int\n) {\n  userAnswerQuestion(userId: $userId, questionId: $questionId, response: $response) {\n    answers {\n      title\n      level\n      UserResponse {\n        response\n      }\n      id\n    }\n    id\n  }\n}\n",
+    "text": "mutation Question_userAnswer_Mutation(\n  $questionId: ID!\n  $response: Int\n) {\n  userAnswerQuestion(questionId: $questionId, response: $response) {\n    user {\n      answers {\n        title\n        level\n        UserResponse {\n          response\n        }\n        id\n      }\n      id\n    }\n    nextQuestion {\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'df3b9d0f833c29d5122959ed48a5626c';
+(node as any).hash = '9fe38d2ff9f31204a03dee15e6673d38';
 export default node;

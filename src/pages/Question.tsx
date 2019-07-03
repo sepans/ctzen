@@ -7,22 +7,26 @@ import { Typography, Box, Button } from "@smooth-ui/core-sc"
 import { Question_question } from "./__generated__/Question_question.graphql"
 import environment from '../config/relayEnvironment'
 
-
 interface Props {
   question: Question_question
 }
 
 const mutation = graphql`
   mutation Question_userAnswer_Mutation(
-    $userId: ID!, $questionId: ID!, $response: Int
+    $questionId: ID!, $response: Int
   ) {
-    userAnswerQuestion(userId: $userId, questionId: $questionId, response: $response) {
-      answers {
-        title
-        level
-        UserResponse {
-          response
+    userAnswerQuestion(questionId: $questionId, response: $response) {
+      user {
+        answers {
+          title
+          level
+          UserResponse {
+            response
+          }
         }
+      }
+      nextQuestion {
+        id
       }
     }
   }
@@ -39,13 +43,13 @@ const optionArray = ({ option1, option2, option3, option4, option5 }: Question_q
 const Question: React.FC<Props> = ({ question }) => {
   const [selection, setSelection] = useState(-1)
   const [answerReceived, setAnswerReceived] = useState(false)
+  const [nextQuestion, setNextQuestion] = useState(null)
   const { title } = question
 
-  const getNextQuestion = () => `/question/${parseInt(question.id || '0') + 1}` // TODO: get from graphql, from mutation response?
+  const getNextQuestion = () => `/question/${nextQuestion}` // TODO: get from graphql, from mutation response?
 
   const submitSelection = () => {
     const variables = {
-      userId: 1,
       questionId: parseInt(question.id as string),
       response: selection
     }
@@ -55,6 +59,8 @@ const Question: React.FC<Props> = ({ question }) => {
         mutation,
         variables,
         onCompleted: (response, errors) => {
+          const { nextQuestion } = response.userAnswerQuestion
+          nextQuestion && setNextQuestion(nextQuestion.id)
           setAnswerReceived(true)
         },
         onError: err => console.error(err),
