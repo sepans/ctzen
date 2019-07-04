@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 `
 
 const CandidatePosition = (props) => {
-  console.log('position', props)
   return (
       <Wrapper>
       <Typography variant="h1">Candidate positions:</Typography>

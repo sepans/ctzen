@@ -53,9 +53,6 @@ const AvatarPositon = styled.div`
 
 export const Position = (props: P) => {
   const {title, position, candidate} = props
-  console.log(props)
-  console.log(candidate)
-  console.log(candidate.id)
    
   const imageUrl: string = candidate.image
   const labels = ['very liberal', 'liberal', 'conservative', 'very conservative'].map((d, i) => (

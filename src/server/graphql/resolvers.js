@@ -76,7 +76,6 @@ const resolvers = {
         as: 'answers'
       }]
     })
-    console.log(user)
     return await getNextQuestion(user)
   }),
   candidateAnswerQuestion: async ({ candidateId, questionId, response }) => {

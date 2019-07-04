@@ -14,7 +14,6 @@ const findUserByToken = async (token) => {
 const createUser = async () => {
   const rand = await randomBytes(16)
   const token = rand.toString('base64').replace(/\W/g, '')
-  console.log('creating user with token', token)
   return await db.User.create({ token })
 
 }
@@ -46,7 +45,6 @@ const hasCurrentUser = next => (args, context, info) => {
 
 const getNextQuestion = async (user) => {
   const answeredQuestionIds = user.answers.map(answer => answer.id)
-  console.log('answered', answeredQuestionIds)
   return await db.Question.findOne({
     where: {
       id: {
