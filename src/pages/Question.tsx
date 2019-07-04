@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay';
-import styled from 'styled-components';
 import { PageWrapper } from '../components/Layout';
 import { Typography, Box, Button } from "@smooth-ui/core-sc"
 import { Question_question } from "./__generated__/Question_question.graphql"
@@ -46,7 +45,7 @@ const Question: React.FC<Props> = ({ question }) => {
   const [nextQuestion, setNextQuestion] = useState(null)
   const { title } = question
 
-  const getNextQuestion = () => `/question/${nextQuestion}` // TODO: get from graphql, from mutation response?
+  const nextQuestionLink = () => `/question/${nextQuestion}`
 
   const submitSelection = () => {
     const variables = {
@@ -60,7 +59,7 @@ const Question: React.FC<Props> = ({ question }) => {
         variables,
         onCompleted: (response, errors) => {
           const { nextQuestion } = response.userAnswerQuestion
-          nextQuestion && setNextQuestion(nextQuestion.id)
+          setNextQuestion(nextQuestion ? nextQuestion.id : null)
           setAnswerReceived(true)
         },
         onError: err => console.error(err),
@@ -91,11 +90,18 @@ const Question: React.FC<Props> = ({ question }) => {
         You picked {optionArray(question)[selection]}
       </Box>
       <Box mt={2}>
-        <Link to={getNextQuestion()}>
+        {nextQuestion ? (
+          <Link to={nextQuestionLink()}>
+            <Button variant="light">
+              Next question
+            </Button> 
+          </Link>
+        ) : 
+        (
           <Button variant="light">
-            Next question
-          </Button> 
-        </Link>
+            You have answered all questions
+          </Button>
+        )}
       </Box>
     </>
   )
