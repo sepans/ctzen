@@ -20,7 +20,12 @@ if (process.env.NODE_ENV === 'production') {
   const buildDir = path.join(__dirname, buildPath)
   console.log(__dirname, 'serving client from', buildDir)
 
+  // use static to serve css/js files and app.get('*') to send routes to index.html
   app.use(express.static(buildDir))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(buildDir + '/index.html'));
+  })
 }
 
 const port = process.env.PORT || 4000
