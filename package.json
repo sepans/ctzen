@@ -38,8 +38,8 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/npm-run-all --parallel watch:server start:web",
-    "start:server": "node src/server",
-    "watch:server": "nodemon --watch src/server src/server",
+    "start:server": "node src/server/server.js",
+    "watch:server": "nodemon --watch src/server src/server/server.js",
     "start:web": "react-app-rewired start",
     "build": "react-app-rewired build",
     "setuptest:server": "NODE_ENV=test yarn run sequelize db:create && NODE_ENV=test yarn run sequelize db:migrate",
