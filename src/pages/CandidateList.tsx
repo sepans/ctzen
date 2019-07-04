@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay';
 import { CandidateList_candidates } from "./__generated__/CandidateList_candidates.graphql"
+import { CandidateList_myNextQuestion } from "./__generated__/CandidateList_myNextQuestion.graphql"
 import styled from 'styled-components';
 import { PageWrapper } from '../components/Layout';
 import { Typography, Box, Button } from "@smooth-ui/core-sc"
@@ -9,10 +10,10 @@ import { CandidateImage } from "../components/Layout"
 
 interface CandidateListProps {
   candidates: CandidateList_candidates
+  myNextQuestion: CandidateList_myNextQuestion
 }
 
-const CandidateList: React.FC<CandidateListProps> = ({candidates}) => {
-  const firstQuestionLink = `/question/1` // TODO: Fixme get first question
+const CandidateList: React.FC<CandidateListProps> = ({ candidates, myNextQuestion }) => {
   const candidateList = candidates.map((candidate, i) => (
     <Item key={i}> {/* TODO: why || 'aa */}
     
@@ -25,9 +26,11 @@ const CandidateList: React.FC<CandidateListProps> = ({candidates}) => {
   return (
     <PageWrapper>
       <Box>
-        <Link to={firstQuestionLink}>
+        {myNextQuestion ? <Link to={`/question/${myNextQuestion.id}`}>
           <Button>Start answering questions</Button>
-        </Link>
+        </Link> :
+        <Button>View your answers</Button>
+      }
       </Box>
       <List>
         {candidateList}
@@ -51,6 +54,11 @@ export default createFragmentContainer(
       id
       name: displayName
       image
+    }
+  `,
+    myNextQuestion: graphql`
+    fragment CandidateList_myNextQuestion on Question  {
+      id
     }
   `}
 )

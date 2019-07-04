@@ -2,11 +2,15 @@
 
 import { ConcreteRequest } from "relay-runtime";
 type CandidateList_candidates$ref = any;
+type CandidateList_myNextQuestion$ref = any;
 export type App_Candidates_QueryVariables = {};
 export type App_Candidates_QueryResponse = {
     readonly candidates: ReadonlyArray<{
         readonly " $fragmentRefs": CandidateList_candidates$ref;
     } | null> | null;
+    readonly myNextQuestion: {
+        readonly " $fragmentRefs": CandidateList_myNextQuestion$ref;
+    } | null;
 };
 export type App_Candidates_Query = {
     readonly response: App_Candidates_QueryResponse;
@@ -21,6 +25,10 @@ query App_Candidates_Query {
     ...CandidateList_candidates
     id
   }
+  myNextQuestion {
+    ...CandidateList_myNextQuestion
+    id
+  }
 }
 
 fragment CandidateList_candidates on Candidate {
@@ -28,9 +36,21 @@ fragment CandidateList_candidates on Candidate {
   name: displayName
   image
 }
+
+fragment CandidateList_myNextQuestion on Question {
+  id
+}
 */
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
@@ -54,6 +74,22 @@ const node: ConcreteRequest = {
             "args": null
           }
         ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "myNextQuestion",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Question",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "CandidateList_myNextQuestion",
+            "args": null
+          }
+        ]
       }
     ]
   },
@@ -71,13 +107,7 @@ const node: ConcreteRequest = {
         "concreteType": "Candidate",
         "plural": true,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v0/*: any*/),
           {
             "kind": "ScalarField",
             "alias": "name",
@@ -93,6 +123,18 @@ const node: ConcreteRequest = {
             "storageKey": null
           }
         ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "myNextQuestion",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Question",
+        "plural": false,
+        "selections": [
+          (v0/*: any*/)
+        ]
       }
     ]
   },
@@ -100,9 +142,10 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  myNextQuestion {\n    ...CandidateList_myNextQuestion\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n\nfragment CandidateList_myNextQuestion on Question {\n  id\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = '15305f8f902b1ac0d0a8f4928c2b9a12';
+})();
+(node as any).hash = '8830e598a2480d3aee8a3e935e3fa298';
 export default node;

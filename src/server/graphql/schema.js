@@ -10,6 +10,7 @@ const schema = buildASTSchema(gql`
     candidate(id: ID!): Candidate
     users: [User]
     user(id: ID!): User
+    myNextQuestion: Question
     question(id: ID!): Question
     questions: [Question]
   }

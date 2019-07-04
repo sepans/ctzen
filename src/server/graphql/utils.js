@@ -1,6 +1,9 @@
 const crypto = require('crypto')
 const util = require('util')
 const { db } = require('../models')
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op
+
 
 const randomBytes = util.promisify(crypto.randomBytes)
 
@@ -41,7 +44,21 @@ const hasCurrentUser = next => (args, context, info) => {
   return next(args, context, info);
 }
 
+const getNextQuestion = async (user) => {
+  const answeredQuestionIds = user.answers.map(answer => answer.id)
+  console.log('answered', answeredQuestionIds)
+  return await db.Question.findOne({
+    where: {
+      id: {
+        [Op.notIn]: answeredQuestionIds
+      }
+    }
+  })
+}
+
 module.exports = {
   createGraphQLContext,
-  hasCurrentUser
+  hasCurrentUser,
+  getNextQuestion
 }
+

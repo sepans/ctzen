@@ -32,6 +32,9 @@ const Router = createFarceRouter({
             candidates {
               ...CandidateList_candidates
             }
+            myNextQuestion {
+              ...CandidateList_myNextQuestion
+            }
           }
         `}
         
