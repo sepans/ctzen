@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay';
-import { PageWrapper } from '../components/Layout';
-import { Typography, Box, Button } from "@smooth-ui/core-sc"
+import { PageWrapper, Title, Button } from '../components/Layout';
+import { Box } from "@smooth-ui/core-sc"
 import { Question_question } from "./__generated__/Question_question.graphql"
 import environment from '../config/relayEnvironment'
 
@@ -77,9 +77,11 @@ const Question: React.FC<Props> = ({ question }) => {
 
   const options = optionArray(question).map((option, i) => {
     const selected = i === selection
-    return (<Button key={i} m={1} 
+    return (
+      <Button key={i}
+        mr={2}
         onClick={() => buttonClick(i)}
-        variant={selected ? 'dark' : 'light'}>
+        type={selected ? 'selected' : 'answer'}>
       {option + (selected ? ' ▶ ': '')}
       </Button>)
   })
@@ -92,13 +94,13 @@ const Question: React.FC<Props> = ({ question }) => {
       <Box mt={2}>
         {nextQuestion ? (
           <Link to={nextQuestionLink()}>
-            <Button variant="light">
+            <Button>
               Next question
             </Button> 
           </Link>
         ) : 
         (
-          <Button variant="light">
+          <Button>
             You have answered all questions
           </Button>
         )}
@@ -108,7 +110,7 @@ const Question: React.FC<Props> = ({ question }) => {
   
   return (
     <PageWrapper>
-      <Typography>{title}</Typography>
+      <Title>{title}</Title>
       <Box my={3}>
         {!answerReceived ? 
           (<Box display="flex">

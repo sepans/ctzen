@@ -4,9 +4,9 @@ import { graphql, createFragmentContainer } from 'react-relay';
 import { CandidateList_candidates } from "./__generated__/CandidateList_candidates.graphql"
 import { CandidateList_myNextQuestion } from "./__generated__/CandidateList_myNextQuestion.graphql"
 import styled from 'styled-components';
-import { PageWrapper } from '../components/Layout';
-import { Typography, Box, Button } from "@smooth-ui/core-sc"
-import { CandidateImage } from "../components/Layout"
+import { PageWrapper, Button } from '../components/Layout';
+import { Box } from "@smooth-ui/core-sc"
+import { CandidateImage, Text } from "../components/Layout"
 
 interface CandidateListProps {
   candidates: CandidateList_candidates
@@ -15,37 +15,35 @@ interface CandidateListProps {
 
 const CandidateList: React.FC<CandidateListProps> = ({ candidates, myNextQuestion }) => {
   const candidateList = candidates.map((candidate, i) => (
-    <Item key={i}> {/* TODO: why || 'aa */}
-    
-    <Link to={`/candidate/${candidate.id}`}>
-      <CandidateImage img={candidate.image as string} />
-        <Typography variant="h3" fontSize="3">{candidate.name}</Typography>
+    <Box key={i} my={2}> {/* TODO: why || 'aa */}
+      <Link to={`/candidate/${candidate.id}`}>
+        <Box display="flex">
+          <CandidateImage img={candidate.image as string} />
+          <Box pl={2}>
+            <Text block type="primary">{candidate.name}</Text>
+            <Text>{candidate.experience}</Text>
+          </Box>
+        </Box>
       </Link>
-    </Item>
+    </Box>
   ))
   return (
     <PageWrapper>
       <Box>
         {myNextQuestion ? <Link to={`/question/${myNextQuestion.id}`}>
-          <Button>Start answering questions</Button>
+          <Button type="cta">Start answering questions</Button>
         </Link> :
-        <Button>View your answers</Button>
+          <Button type="cta">View your answers</Button>
       }
       </Box>
-      <List>
+      <Box mt={2}>
         {candidateList}
-      </List>
+      </Box>
     </PageWrapper>
   )
 }
 
-const List = styled.ul`
-  list-style: none;
-`
 
-const Item = styled.li`
-
-`
 
 export default createFragmentContainer(
   CandidateList, {
@@ -53,6 +51,7 @@ export default createFragmentContainer(
     fragment CandidateList_candidates on Candidate @relay(plural: true) {
       id
       name: displayName
+      experience
       image
     }
   `,

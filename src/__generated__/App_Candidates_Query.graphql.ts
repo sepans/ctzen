@@ -34,6 +34,7 @@ query App_Candidates_Query {
 fragment CandidateList_candidates on Candidate {
   id
   name: displayName
+  experience
   image
 }
 
@@ -118,6 +119,13 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "experience",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "image",
             "args": null,
             "storageKey": null
@@ -142,7 +150,7 @@ return {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  myNextQuestion {\n    ...CandidateList_myNextQuestion\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  image\n}\n\nfragment CandidateList_myNextQuestion on Question {\n  id\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  myNextQuestion {\n    ...CandidateList_myNextQuestion\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n\nfragment CandidateList_myNextQuestion on Question {\n  id\n}\n",
     "metadata": {}
   }
 };

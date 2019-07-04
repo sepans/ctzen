@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CandidateAvatar, SectionTitle } from './Layout'
+import { CandidateAvatar, Text } from './Layout'
+import { Box } from "@smooth-ui/core-sc"
+
 
 interface P {
   title: string
@@ -15,20 +17,28 @@ const Spectrum = styled.div`
   display: inline-block;
   position: relative;
   margin-top: 10px;
-  margin-left: 10px;
+  span:last-of-type {
+    &:before {
+      width: 20px;
+    }
+    background-color: red;
+  }
 `
 
 const SpectrumLabels = styled.span`
-  position: absolute;
+  /* position: absolute;
   left: ${(p: {i: number}) => p.i* 33.3}%;
-  top: 35px;
+  top: 35px; */
   font-size: 12px;
+  position: relative;
+  margin-top: 15px;
 
   &:before {
     content: ' ';
     position: absolute;
     border-left: 2px solid black;
-    top: -35px;
+    left: ${(p: { i: number }) => p.i * 33}%;
+    top: -32px;
     height: 15px;
   }
 
@@ -46,8 +56,8 @@ const Wrapper = styled.div`
 
 const AvatarPositon = styled.div`
   position: absolute;
-  top: -20px;
-  left: calc(${(p: {left: number}) => p.left * 32}% - 5px);
+  top: -10px;
+  left: calc(${(p: {left: number}) => p.left * 30}%);
   z-index: 2;
 `
 
@@ -61,13 +71,17 @@ export const Position = (props: P) => {
 
   return (
     <Wrapper>
-      <SectionTitle>{title}</SectionTitle>
-      <Spectrum>
+      <Text block type="primary">{title}</Text>
+      <Box pl={1} mt={2} position="relative">
+        <Spectrum />
+        
         <AvatarPositon left={position}>
-          <CandidateAvatar img={imageUrl}/>
+          <CandidateAvatar img={imageUrl} />
         </AvatarPositon>
-        {labels}
-      </Spectrum>
+        <Box display="flex" justifyContent="space-between">
+          {labels}
+        </Box>
+      </Box>
     </Wrapper>
   )
 

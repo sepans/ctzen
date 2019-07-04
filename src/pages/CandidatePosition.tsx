@@ -2,25 +2,19 @@ import React from 'react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import styled from 'styled-components'
 import { Position } from '../components/Position'
-import { Section } from '../components/Layout'
+import { Section, Title, PageWrapper } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidatePosition_candidate } from "./__generated__/CandidatePosition_candidate.graphql"
-import { Typography, Box } from "@smooth-ui/core-sc"
+import { Box } from "@smooth-ui/core-sc"
 
 interface Props {
   candidate: CandidatePosition_candidate
 }
 
-const Wrapper = styled.div`
-  padding: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-`
-
 const CandidatePosition = (props) => {
   return (
-      <Wrapper>
-      <Typography variant="h1">Candidate positions:</Typography>
+    <PageWrapper>
+      <Title>Candidate positions:</Title>
       <CandidateInfo candidate={props.candidate}/>
       <Box display="flex"  flexWrap="wrap">
         <Section>
@@ -32,7 +26,7 @@ const CandidatePosition = (props) => {
           <Position title="Economy" position={0} candidate={props.candidate} />
         </Section>      
       </Box>
-    </Wrapper>
+    </PageWrapper>
   )
 }
 

@@ -6,6 +6,7 @@ import { graphql } from 'react-relay';
 import environment from './config/relayEnvironment'
 import { ThemeProvider } from '@smooth-ui/core-sc'
 import { theme } from "./theme"
+import { Normalize } from '@smooth-ui/core-sc'
 
 import { BrowserProtocol, queryMiddleware } from 'farce';
 import {
@@ -84,8 +85,13 @@ const Router = createFarceRouter({
 
 
 
-const App = () => <ThemeProvider theme={theme}>
-    <Router resolver={new Resolver(environment)} />
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <>
+      <Normalize />
+      <Router resolver={new Resolver(environment)} />
+    </>
   </ThemeProvider>
+)
 
 export default App;
