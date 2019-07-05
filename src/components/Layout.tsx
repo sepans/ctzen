@@ -20,6 +20,7 @@ interface TextProps {
   type?: keyof typeof TextTypes
   block?: boolean
   style?: any
+  [rest: string]: any
 }
 
 enum ButtonType {
@@ -27,65 +28,37 @@ enum ButtonType {
   answer = "answer",
   selected = "selected"
 }
+
 interface ButtonProps {
   type?: keyof typeof ButtonType
+  [rest: string]: any
 }
 
 export const Title: React.FC = ({children}) => <Typography variant="h2" fontSize="4">{children}</Typography>
 
-export const Text: React.FC<TextProps> = ({ children, type = TextTypes.secondary, style = {}, block = false }) => {
-  return <Typography style={style} display={block ? "block" : "auto"} fontSize={ type===TextTypes.primary ? "2" : "1"}>{children}</Typography>
+export const Text: React.FC<TextProps> = ({ children, type = TextTypes.secondary, style = {}, block = false, ...rest }) => {
+  return <Typography {...rest} style={style} display={block ? "block" : "auto"} fontSize={ type===TextTypes.primary ? "2" : "1"}>{children}</Typography>
 }
 
-// TODO: styled extend instead of :point-down ?
-// export const Button: React.FC<ButtonProps> = ({children, style = {}, onClick, variant}) => {
-//   const smoothVariant = switch()
-//   return <SmoothButton onClick={onClick} variant="black" style={style}>{children}</SmoothButton>
-// }
-
-const buttonTypeToColor = (type: ButtonType): any => {
-  let c 
-  switch(type) {
-    case ButtonType.cta:
-     c =  "black100"
-      break;
-    case ButtonType.answer:
-      c = "black20"
-      break;
-    case ButtonType.selected:
-     c = "black"
-      break;        
-  }
-
-  return c
-}
-
-const buttonTypeToTextColor = (type: ButtonType): any => {
+const typeToVariant = (type) => {
   let c
   switch (type) {
     case ButtonType.cta:
-      c = "black20"
+      c = "primary"
       break;
     case ButtonType.answer:
-      c = "black100"
+      c = "light"
       break;
     case ButtonType.selected:
-      c = "black20"
+      c = "dark"
       break;
   }
   return c
 }
 
-// TODO: somehow use variant? try export const Button = (props) => <SmoothButton {...props} variant={typeToVariant(props.type)}>{children}<SmoothProps>
-export const Button = styled(SmoothButton)<ButtonProps>`
-  background-color: ${({ type = ButtonType.cta }) => th(buttonTypeToColor(type))};
-  color: ${({ type = ButtonType.cta }) => th(buttonTypeToTextColor(type))};
-  &:hover {
-    background-color: ${({ type = ButtonType.cta }) => th(buttonTypeToColor(type))} !important;
-  }
-`
-
-
+export const Button: React.FC<ButtonProps> = ({type = ButtonType.cta, children, ...rest}) => <SmoothButton {...rest} variant={typeToVariant(type)}>
+      {children}
+  </SmoothButton>
 
 export const CandidateImage = styled.div`
   border-radius: 50%;
