@@ -243,7 +243,7 @@ module.exports = {
           pob: "Oklahoma City, Oklahoma",
           experience: "U.S. Senator from Massachusetts (2013–present)",
           campaignStart: "February 9, 2019",
-          image: "https://en.wikipedia.org/wiki/File:Elizabeth_Warren,_official_portrait,_114th_Congress_(cropped)(2).jpg",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg/1024px-Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg",
           state: "Massachusetts",
           createdAt: new Date(),
           updatedAt: new Date()
@@ -254,7 +254,7 @@ module.exports = {
           pob: "Houston, Texas",
           experience: "Author, lecturer, and activist",
           campaignStart: "January 28, 2019",
-          image: "https://en.wikipedia.org/wiki/File:Marianne_Williamson_-_33252886458_(cropped).jpg",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Marianne_Williamson_-_33252886458_%28cropped%29.jpg/1280px-Marianne_Williamson_-_33252886458_%28cropped%29.jpg",
           state: "California",
           createdAt: new Date(),
           updatedAt: new Date()
