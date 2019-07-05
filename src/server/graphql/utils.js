@@ -43,6 +43,14 @@ const hasCurrentUser = next => (args, context, info) => {
   return next(args, context, info);
 }
 
+// TODO: implement
+const authenticated = next => (args, context, info) => {
+  if (!context.currentUser) {
+    throw new Error(`Unauthenticated!`);
+  }
+  return next(args, context, info);
+}
+
 const getNextQuestion = async (user) => {
   const answeredQuestionIds = user.answers.map(answer => answer.id)
   return await db.Question.findOne({
@@ -57,6 +65,7 @@ const getNextQuestion = async (user) => {
 module.exports = {
   createGraphQLContext,
   hasCurrentUser,
+  authenticated,
   getNextQuestion
 }
 
