@@ -33,7 +33,9 @@ const CandidateList: React.FC<CandidateListProps> = ({ candidates, myNextQuestio
         {myNextQuestion ? <Link to={`/question/${myNextQuestion.id}`}>
           <Button type="cta">Start answering questions</Button>
         </Link> :
+        <Link to="/responses">
           <Button type="cta">View your answers</Button>
+        </Link>
       }
       </Box>
       <Box mt={2}>

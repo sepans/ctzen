@@ -2,7 +2,7 @@ const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 const { db } = require('../models')
 const GraphQLJSON = require('graphql-type-json');
-const { hasCurrentUser, getNextQuestion } = require("./utils") 
+const { hasCurrentUser, authenticated, getNextQuestion } = require("./utils") 
 
 const resolvers = {
   candidates: async () => await db.Candidate.findAll({
@@ -21,26 +21,35 @@ const resolvers = {
     return await db.Question.findByPk(parseInt(id))
   },
   questions: async () => await db.Question.findAll(),
-  user: async ({ id }) => await db.User.findByPk(parseInt(id), {
+  me: hasCurrentUser(async ({ id }, context) => { 
+    const userId = context.currentUser.id
+    return await db.User.findByPk(userId, {
+      include: [{
+        model: db.Question,
+        as: 'answers'
+      }]
+    })
+  }),  
+  user: authenticated(async ({ id }) => await db.User.findByPk(parseInt(id), {
     include: [{
       model: db.Question,
       as: 'answers'
     }]
-  }),
-  users: async () => await db.User.findAll({
+  })),
+  users: authenticated(async () => await db.User.findAll({
     include: [{
       model: db.Question,
       as: 'answers'
     }]
-  }),
-  addQuestion: async ({ input }) => {
+  })),
+  addQuestion: authenticated(async ({ input }) => {
     const question = await db.Question.create(input)
     return question
-  },
-  addUser: async ({ input }) => {
+  }),
+  addUser: authenticated(async ({ input }) => {
     const user = await db.User.create(input)
     return user
-  },
+  }),
   userAnswerQuestion: hasCurrentUser(async ({questionId, response }, context) => {
     const userId = context.currentUser.id
     let user = await db.User.findByPk(parseInt(userId), {
@@ -78,7 +87,7 @@ const resolvers = {
     })
     return await getNextQuestion(user)
   }),
-  candidateAnswerQuestion: async ({ candidateId, questionId, response }) => {
+  candidateAnswerQuestion: authenticated(async ({ candidateId, questionId, response }) => {
     const candidate = await db.Candidate.findByPk(parseInt(candidateId), {
       include: [{
         model: db.Question,
@@ -94,7 +103,7 @@ const resolvers = {
     }
     await candidate.addAnswer(question, { through: { response } })
     return await candidate.reload()
-  },
+  }),
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'Date custom scalar type',

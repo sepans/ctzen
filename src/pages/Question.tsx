@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay';
-import { PageWrapper, Title, Button } from '../components/Layout';
+import { PageWrapper, Title, Button, Text } from '../components/Layout';
 import { Box } from "@smooth-ui/core-sc"
 import { Question_question } from "./__generated__/Question_question.graphql"
 import environment from '../config/relayEnvironment'
+import { optionArray } from '../components/helpers/question_helpers';
 
 interface Props {
   question: Question_question
@@ -30,14 +31,6 @@ const mutation = graphql`
     }
   }
 `
-
-const optionArray = ({ option1, option2, option3, option4, option5 }: Question_question): Array<String> => [
-  option1 || 'strongly agree',
-  option2 || 'somehow agree',
-  option3 || 'neither agree nor disagree',
-  option4 || 'somehow disagree',
-  option5 || 'strongly disagree'
-]
 
 const Question: React.FC<Props> = ({ question }) => {
   const [selection, setSelection] = useState(-1)
@@ -82,7 +75,7 @@ const Question: React.FC<Props> = ({ question }) => {
         mr={2}
         onClick={() => buttonClick(i)}
         type={selected ? 'selected' : 'answer'}>
-      {option + (selected ? ' ▶ ': '')}
+      {option}
       </Button>)
   })
 
@@ -92,18 +85,21 @@ const Question: React.FC<Props> = ({ question }) => {
         You picked {optionArray(question)[selection]}
       </Box>
       <Box mt={2}>
-        {nextQuestion ? (
-          <Link to={nextQuestionLink()}>
-            <Button>
-              Next question
-            </Button> 
-          </Link>
-        ) : 
-        (
-          <Button>
-            You have answered all questions
+        <>
+          {nextQuestion ? (
+            <Link to={nextQuestionLink()}>
+              <Button>
+                Next question
+              </Button> 
+            </Link>
+          ) : 
+          <Text block>You have answered all questions</Text>}
+        </>
+        <Link to="/responses">
+          <Button my={1}>
+            View answers
           </Button>
-        )}
+        </Link>
       </Box>
     </>
   )
