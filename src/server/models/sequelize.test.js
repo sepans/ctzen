@@ -51,7 +51,7 @@ describe("test sequelize", () => {
 
   it("create and retrieve user and responses", async (done) => {
     expect.assertions(3)
-    const user = await db.User.create({ username: 'barackobama2000', email: 'barackobama.aol.com' })
+    const user = await db.User.create({ username: 'barackobama2000', email: 'barackobama.aol.com', token: 'abc' })
     const q = await db.Question.create({
       title: 'what is you name?',
       option1: 'barack',
