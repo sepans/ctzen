@@ -16,14 +16,44 @@ describe("test sequelize", () => {
   afterAll(() => {
     db.close()
   })
+
+  it("creates question with parent/child associateion", async(done) => {
+    expect.assertions(2)
+
+    const child1 = await db.Question.create({
+      title: 'how old are you?'
+    })
+
+    const child2 = await db.Question.create({
+      title: 'how many cups of coffee do you drink every day?',
+      option1: '1',
+      option2: '2',
+      option3: '3',
+    })
+
+    const parent = await db.Question.create({
+      title: 'what is you name?'
+      
+    })
+
+    await parent.addChildren(child1)
+    await parent.addChildren(child2)
+
+
+    const children = await parent.getChildren()
+
+    expect(children.length).toBe(2)
+    expect(children[0].title).toEqual(child1.title)
+
+    done()
+
+  })
+
   it("create and retrieve candidate and responses", async (done) => {
       expect.assertions(3)
       const candidate = await db.Candidate.create({name: 'barack obama'})
       const q = await db.Question.create({
-        title: 'what is you name?',
-        option1: 'barack',
-        option2: 'hussain',
-        option3: 'obama',
+        title: 'what is you name?'
       })
 
       await candidate.addAnswer(q, {through: {response: 1}})
