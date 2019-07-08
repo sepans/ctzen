@@ -75,7 +75,7 @@ const Question: React.FC<Props> = ({ question }) => {
         mr={2}
         onClick={() => buttonClick(i)}
         type={selected ? 'selected' : 'answer'}>
-      {option}
+        {option}
       </Button>)
   })
 
@@ -88,7 +88,7 @@ const Question: React.FC<Props> = ({ question }) => {
         <>
           {nextQuestion ? (
             <Link to={nextQuestionLink()}>
-              <Button>
+              <Button mr={1}>
                 Next question
               </Button> 
             </Link>

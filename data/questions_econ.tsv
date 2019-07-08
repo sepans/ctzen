@@ -1,0 +1,45 @@
+id	question	option1	option2	option3	option4	option5	level	parent
+E0_Economic Policy	To what extent should the economy be managed through social means	State owned and operated	Public private partnerships	Highly regulated private sector	Lightly regulated private sector	Unregulated private sector	0	
+E1_Trade Policy	To what extent should the government take an active approach towards restricting international trade?	Promote autarky (completely restrict international trade)	Promote autarky (completely restrict international trade)	Promote autarky (completely restrict international trade)	Promote autarky (completely restrict international trade)	Promote autarky (completely restrict international trade)	1	E0_Economic Policy
+E1_Fiscal Policy	To what extent should the government tax the private sector for public spending and redistribution?	Extremely progressive tax rate & high public/social spending	Relatively progressive tax rate & moderately high public/social spending	Moderate tax rate & medium public/social spending	Low tax rate & low public/social spending	Bare minimum tax rate to fund defense and federal law enforcement only	1	E0_Economic Policy
+E1_Labor Policy	To what extent should the labor market be regulated by the government?	Majority of labor employed by the government	Laws promoting and strengthening labor unions and collective bargaining	Government floor on wages & employer conduct	Weak labor laws protecting employer flexibility	Abolishing all labor laws	1	E0_Economic Policy
+E1_Industry Regulations	To what extent should the government manage economic sectors?	The government should fully own and operate all firms within every economic sector	Economic sectors should be predominantly public or public-private partnerships	Economic sectors should be predominantly private yet heavily regulated and/or include state-run competitors	Economic sectors should remain private and minimally regulated	Economic sectors should remain private and minimally regulated	1	E0_Economic Policy
+E1_Monetary Policy	To what extent should the government manage monetary policy?	The government should fully control monetary policy	Monetary policy should be run by an independent central bank, with heavy government oversight and controls	Monetary policy should be run by an independent central bank, with moderate government oversight and controls	Monetary policy should be run by an independent central bank, with moderate government oversight and controls	Private entities should be able to choose to create and transact in their currency of choice	1	E0_Economic Policy
+E1_T.1	Current international trade arrangements (e.g., WTO, NAFTA) are to the detriment of the US economy and should be renegotiated						2	E1_Trade Policy
+E1_T.2	The government should increase tariffs on products imported into the country						2	E1_Trade Policy
+E2_F.1	Current taxes on the rich (e.g., ppl with >$10M in wealth) are too low and should be increased						2	E1_Fiscal Policy
+E2_F.1.1	I support a marginal individual tax rate of 70 percent on the very highest earners, those making more than $10 million a year						3	E2_F.1
+E2_F.1.2	Should we tax capital gains at the same rates that we tax ordinary income?						3	E2_F.1
+E2_F.2	The government should provide guarenteed income to every citizen						2	E1_Fiscal Policy
+E2_F.2.1	The government should provide universal basic income of $1,000 per month to every citizen						3	E2_F.2
+E2_F.2.2	The government should expand the earned income tax credit						3	E2_F.2
+E2_F.3	The government should raise the tax rate for corporations						2	E1_Fiscal Policy
+E2_F.3.1	The government should increase the corporate tax rate above 21 percent						3	E2_F.3
+E2_F.3.2	The government should reduce 'tax loopholes' that cause corporations pay a much lower effective tax rate than 21 percent						3	E2_F.3
+E2_F.4	The government should make cuts to public spending in order to reduce the national debt						2	E1_Fiscal Policy
+E2_F.5	Economic welfare programs should be expanded						2	E1_Fiscal Policy
+E2_F.6	The government should increase property taxes						2	E1_Fiscal Policy
+E2_F.7	The government should reallocate the budget from military spending / wars towards domestic programs (e.g., healthcare)						2	E1_Fiscal Policy
+E2_F.8	The government should have an active industrial policy						2	E1_Fiscal Policy
+E2_F.8.1	The government should support (through grants, tax breaks, subsidies) the clean energy sector						3	E2_F.8
+E2_L.1	The government should provide government job guarantees						2	E1_Labor Policy
+E2_L.2	The government should introduce $15/hr federally mandate minimum wage						2	E1_Labor Policy
+E2_L.3	The government should require employers to pay men and women the same salary for the same job						2	E1_Labor Policy
+E2_L.4	All businesses should be required by the federal government to provide at least 2 months of paid maternity leave to women						2	E1_Labor Policy
+E2_L.5	All businesses should be required by the federal government to provide at least 3 days of paid sick leave to full-time employees						2	E1_Labor Policy
+E2_L.6	All businesses should be required by the federal government to provide at least 2 weeks of paid paternity leave to full-time male employees						2	E1_Labor Policy
+E2_L.7	The government should institute policies that sreangthen and encourage labor unions						2	E1_Labor Policy
+E2_L.8	The government shouldincrease the amount of work permits it provides to non-US nationals						2	E1_Labor Policy
+E2_L.9	The government should employ a "merit-based" system to allocate work-permits to non-US nationals						2	E1_Labor Policy
+E3_I.1	The government should break up large financial intituttions to solve concerns around "too big to fail"						2	E1_Industry Regulations
+E3_I.2	The government should prevent "mega mergers" of corporations that could potentially control a large percentage of market share within its industry						2	E1_Industry Regulations
+E3_I.3	The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms						2	E1_Industry Regulations
+E3_I.4	The government should increase its regulation of large tech firms (e.g., Alphabet, Facebook, Amazon), especially as it relates to protecting consumers' data privacy						2	E1_Industry Regulations
+E3_I.5	The government should regulate prices in the market (e.g., controlling the rent landlords can charge tenants)						2	E1_Industry Regulations
+E3_I.6	I support a public single-payer healthcare system						2	E1_Industry Regulations
+E3_I.7	Health insurers should not be able to deny coverage to individuals with pre-existing conditions						2	E1_Industry Regulations
+E3_I.8	The government should regulate prices of life-saving drugs						2	E1_Industry Regulations
+E3_I.9	The government should regulate prices of all pharmaceuticals						2	E1_Industry Regulations
+E3_I.10	I support the Patient Protection and Affordable Care Act (Obamacare)						2	E1_Industry Regulations
+E3_I.11	Veteran's healthcare should be privatized						2	E1_Industry Regulations
+E3_I.12	Pivate health insurance should be abolished in favor of a government-run plan						2	E1_Industry Regulations

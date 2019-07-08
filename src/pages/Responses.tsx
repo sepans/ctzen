@@ -5,6 +5,7 @@ import { PageWrapper, Text, Button } from '../components/Layout';
 import { Box } from "@smooth-ui/core-sc"
 import { Responses_me } from "./__generated__/Responses_me.graphql"
 import { optionArray } from '../components/helpers/question_helpers';
+import styled from 'styled-components';
 
 interface Props {
   me: Responses_me
@@ -17,22 +18,34 @@ const Responses: React.FC<Props> = ({ me }) => {
     const pick = answer.UserResponse.response || 0
     const pickText = optionArray(answer)[pick]
 
-    return answer && <Box maxWidth={"500px"} my={1} display="flex" justifyContent="space-between">
-      <Text type="primary">{answer.title}</Text>
-      <Text>{pickText}</Text>
-      <Link to={`/question/${answer.id}`}>
-        <Button>Edit</Button>
-      </Link>
-    </Box>
+    return answer && (
+      <tr>
+        <td>
+          <Text type="primary">{answer.title}</Text>
+        </td>
+        <td>
+          <Text>{pickText}</Text>
+        </td>
+        <td>
+          <Link to={`/question/${answer.id}`}>
+            <Button>Edit</Button>
+          </Link>
+        </td >
+      </tr>
+    )
   })
 
   return (
     <PageWrapper>
-      {responses}
+      <ResponseTable>
+        {responses}
+      </ResponseTable>
     </PageWrapper>
   )
 }
 
+const ResponseTable = styled.table`
+`
 
 export default createFragmentContainer(
   Responses, {
