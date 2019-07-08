@@ -88,7 +88,7 @@ const Question: React.FC<Props> = ({ question }) => {
         <>
           {nextQuestion ? (
             <Link to={nextQuestionLink()}>
-              <Button>
+              <Button mr={1}>
                 Next question
               </Button> 
             </Link>
