@@ -9,6 +9,7 @@ import { optionArray } from '../components/helpers/question_helpers';
 
 interface Props {
   question: Question_question
+  router: any
 }
 
 const mutation = graphql`
@@ -32,13 +33,11 @@ const mutation = graphql`
   }
 `
 
-const Question: React.FC<Props> = ({ question }) => {
+const Question: React.FC<Props> = ({ question, router }) => {
   const [selection, setSelection] = useState(-1)
-  const [answerReceived, setAnswerReceived] = useState(false)
-  const [nextQuestion, setNextQuestion] = useState(null)
   const { title } = question
 
-  const nextQuestionLink = () => `/question/${nextQuestion}`
+  const nextQuestionLink = (questionId) => `/question/${questionId}`
 
   const submitSelection = () => {
     const variables = {
@@ -52,8 +51,7 @@ const Question: React.FC<Props> = ({ question }) => {
         variables,
         onCompleted: (response, errors) => {
           const { nextQuestion } = response.userAnswerQuestion
-          setNextQuestion(nextQuestion ? nextQuestion.id : null)
-          setAnswerReceived(true)
+          router.replace(nextQuestionLink(nextQuestion.id))
         },
         onError: err => console.error(err),
       },
@@ -63,56 +61,51 @@ const Question: React.FC<Props> = ({ question }) => {
     if(selection!==i) {
       setSelection(i)
     }
-    else {
-      submitSelection()
-    }
   }
 
   const options = optionArray(question).map((option, i) => {
     const selected = i === selection
     return (
-      <Button key={i}
-        mr={2}
-        onClick={() => buttonClick(i)}
-        type={selected ? 'selected' : 'answer'}>
-        {option}
-      </Button>)
+      <Box key={i} width={{ xs: 1, md: 0.5, lg: 0.33, xl: 0.2 }} pr={1} py={1}>
+        <Button
+          width="100%"
+          py={1}
+          onClick={() => buttonClick(i)}
+          type={selected ? 'selected' : 'answer'}>
+          {option}
+        </Button>
+      </Box>  
+    )
+
   })
 
   const afterAnswerSection = (
     <>
-      <Box>
-        You picked {optionArray(question)[selection]}
-      </Box>
-      <Box mt={2}>
+      <Box mt={2} display="flex" justifyContent="space-between">
         <>
-          {nextQuestion ? (
-            <Link to={nextQuestionLink()}>
-              <Button mr={1}>
-                Next question
-              </Button> 
-            </Link>
-          ) : 
-          <Text block>You have answered all questions</Text>}
-        </>
         <Link to="/responses">
-          <Button my={1}>
+          <Button>
             View answers
           </Button>
         </Link>
+          <Button onClick={submitSelection}>
+            Next >
+        </Button> 
+        </>
       </Box>
     </>
   )
+
+  const showNext = selection !== -1
   
   return (
     <PageWrapper>
       <Title>{title}</Title>
       <Box my={3}>
-        {!answerReceived ? 
-          (<Box display="flex">
+        <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
             {options}
-          </Box>) :
-        afterAnswerSection}
+        </Box>
+        {showNext && afterAnswerSection}
       </Box>
     </PageWrapper>
   )

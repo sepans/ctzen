@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'found'
-import { graphql, createFragmentContainer, commitMutation } from 'react-relay';
+import { graphql, createFragmentContainer } from 'react-relay';
 import { PageWrapper, Text, Button } from '../components/Layout';
 import { Box } from "@smooth-ui/core-sc"
 import { Responses_me } from "./__generated__/Responses_me.graphql"
 import { optionArray } from '../components/helpers/question_helpers';
-import styled from 'styled-components';
 
 interface Props {
   me: Responses_me
@@ -19,33 +18,29 @@ const Responses: React.FC<Props> = ({ me }) => {
     const pickText = optionArray(answer)[pick]
 
     return answer && (
-      <tr>
-        <td>
+      <Box my={2} borderBottom="1px solid #EEE">
+        <Box>
           <Text type="primary">{answer.title}</Text>
-        </td>
-        <td>
+        </Box>
+        <Box my={1} display="flex" justifyContent="space-between">
           <Text>{pickText}</Text>
-        </td>
-        <td>
           <Link to={`/question/${answer.id}`}>
             <Button>Edit</Button>
           </Link>
-        </td >
-      </tr>
+        </Box>
+      </Box>
     )
+      
   })
 
   return (
     <PageWrapper>
-      <ResponseTable>
+      <Box>
         {responses}
-      </ResponseTable>
+      </Box>
     </PageWrapper>
   )
 }
-
-const ResponseTable = styled.table`
-`
 
 export default createFragmentContainer(
   Responses, {

@@ -11,9 +11,10 @@ interface P {
 }
 
 const Spectrum = styled.div`
-  height: 10px;
+  height: 15px;
   width: 100%;
-  background: linear-gradient(to right, #3377d6 0%,#d62c40 100%);
+  background: linear-gradient(to right, #EEE 0%,#333 100%);
+  border: 1px solid #000;
   display: inline-block;
   position: relative;
   margin-top: 10px;
@@ -38,7 +39,7 @@ const SpectrumLabels = styled.span`
     position: absolute;
     border-left: 2px solid black;
     left: ${(p: { i: number }) => p.i * 33}%;
-    top: -32px;
+    top: -37px;
     height: 15px;
   }
 

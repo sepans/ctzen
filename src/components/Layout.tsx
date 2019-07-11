@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React from 'react'
-import { Typography, Box, Button as SmoothButton, th } from '@smooth-ui/core-sc'
+import { Typography, Box, Button as SmoothButton } from '@smooth-ui/core-sc'
 
 export const Section = styled.div`
   padding: 20px 0;
@@ -56,9 +56,13 @@ const typeToVariant = (type) => {
   return c
 }
 
-export const Button: React.FC<ButtonProps> = ({type = ButtonType.cta, children, ...rest}) => <SmoothButton {...rest} variant={typeToVariant(type)}>
-      {children}
-  </SmoothButton>
+export const Button: React.FC<ButtonProps> = ({type = ButtonType.cta, children, ...rest}) => {
+  const variant = typeToVariant(type)
+  const border = "1px solid #000"
+  return <SmoothButton border={border} borderRadius="0px" {...rest} variant={variant}>
+        {children}
+    </SmoothButton>
+} 
 
 export const CandidateImage = styled.div`
   border-radius: 50%;
