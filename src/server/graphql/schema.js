@@ -42,6 +42,8 @@ const schema = buildASTSchema(gql`
     option4: String
     option5: String
     level: Int
+    parent: Question
+    children: [Question]
   }
 
   input UserInput {

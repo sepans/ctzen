@@ -18,7 +18,7 @@ describe("test sequelize", () => {
   })
 
   it("creates question with parent/child associateion", async(done) => {
-    expect.assertions(2)
+    expect.assertions(3)
 
     const child1 = await db.Question.create({
       title: 'how old are you?'
@@ -44,6 +44,11 @@ describe("test sequelize", () => {
 
     expect(children.length).toBe(2)
     expect(children[0].title).toEqual(child1.title)
+
+    await child1.reload()
+    const child1Parent = await child1.getParent()
+
+    expect(child1Parent.title).toEqual(parent.title)
 
     done()
 

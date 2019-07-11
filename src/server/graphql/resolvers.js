@@ -20,7 +20,22 @@ const resolvers = {
   question: async ({ id }) => {
     return await db.Question.findByPk(parseInt(id))
   },
-  questions: async () => await db.Question.findAll(),
+  questions: async (parent, args, context, info) => {
+    console.log(parent)
+    const questions =  await db.Question.findAll({
+      include: [
+        {
+          model: db.Question,
+          as: 'parent'
+        },
+        {
+          model: db.Question,
+          as: 'children'
+        }
+      ]
+    })
+    return questions
+  },
   me: hasCurrentUser(async ({ id }, context) => { 
     const userId = context.currentUser.id
     return await db.User.findByPk(userId, {
