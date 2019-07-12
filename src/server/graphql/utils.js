@@ -62,10 +62,17 @@ const getNextQuestion = async (user) => {
   })
 }
 
+const getQueryArgs = (info) => {
+  return info.fieldNodes[0].selectionSet.selections.map(
+    selection => selection.name.value
+  )
+}
+
 module.exports = {
   createGraphQLContext,
   hasCurrentUser,
   authenticated,
-  getNextQuestion
+  getNextQuestion,
+  getQueryArgs
 }
 

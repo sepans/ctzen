@@ -2,7 +2,12 @@ const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 const { db } = require('../models')
 const GraphQLJSON = require('graphql-type-json');
-const { hasCurrentUser, authenticated, getNextQuestion } = require("./utils") 
+const {
+  hasCurrentUser,
+  authenticated,
+  getNextQuestion,
+  getQueryArgs
+} = require("./utils"); 
 
 const resolvers = {
   candidates: async () => await db.Candidate.findAll({
@@ -20,19 +25,25 @@ const resolvers = {
   question: async ({ id }) => {
     return await db.Question.findByPk(parseInt(id))
   },
-  questions: async (parent, args, context, info) => {
-    console.log(parent)
+  questions: async (args, context, info) => {
+    const  queryArgs= getQueryArgs(info)
+    const includes = []
+    if(queryArgs.includes("children")) {
+      includes.push({
+        model: db.Question,
+        as: 'children'
+      })
+    }
+    if (queryArgs.includes("parent")) {
+      includes.push({
+        model: db.Question,
+        as: "parent"
+      });
+    }
+    console.log(includes)
     const questions =  await db.Question.findAll({
-      include: [
-        {
-          model: db.Question,
-          as: 'parent'
-        },
-        {
-          model: db.Question,
-          as: 'children'
-        }
-      ]
+      attrubutes: queryArgs,
+      include: includes
     })
     return questions
   },
