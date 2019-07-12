@@ -68,11 +68,15 @@ const getQueryArgs = (info) => {
   )
 }
 
+const arrayIntersection = (array1, array2) =>
+  array1.filter(value => array2.includes(value))
+
 module.exports = {
   createGraphQLContext,
   hasCurrentUser,
   authenticated,
   getNextQuestion,
-  getQueryArgs
-}
+  getQueryArgs,
+  arrayIntersection
+};
 

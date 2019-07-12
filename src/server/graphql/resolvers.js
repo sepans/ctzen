@@ -6,7 +6,8 @@ const {
   hasCurrentUser,
   authenticated,
   getNextQuestion,
-  getQueryArgs
+  getQueryArgs,
+  arrayIntersection
 } = require("./utils"); 
 
 const resolvers = {
@@ -26,23 +27,18 @@ const resolvers = {
     return await db.Question.findByPk(parseInt(id))
   },
   questions: async (args, context, info) => {
+    const relations = ['children', 'parent']
     const  queryArgs= getQueryArgs(info)
-    const includes = []
-    if(queryArgs.includes("children")) {
-      includes.push({
+    const relationsInQueryArgs = arrayIntersection(relations, queryArgs)
+    const includes = relationsInQueryArgs.map(relation => {
+      return {
         model: db.Question,
-        as: 'children'
-      })
-    }
-    if (queryArgs.includes("parent")) {
-      includes.push({
-        model: db.Question,
-        as: "parent"
-      });
-    }
-    console.log(includes)
+        as: relation
+      }
+    })
+
     const questions =  await db.Question.findAll({
-      attrubutes: queryArgs,
+      attributes: queryArgs,
       include: includes
     })
     return questions
