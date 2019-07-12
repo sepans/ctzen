@@ -68,6 +68,8 @@ type Question {
   option4: String
   option5: String
   level: Int
+  parent: Question
+  children: [Question]
 }
 
 input QuestionInput {

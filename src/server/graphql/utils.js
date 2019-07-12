@@ -3,6 +3,7 @@ const util = require('util')
 const { db } = require('../models')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op
+const getFieldList  =  require("graphql-list-fields")
 
 
 const randomBytes = util.promisify(crypto.randomBytes)
@@ -62,21 +63,33 @@ const getNextQuestion = async (user) => {
   })
 }
 
-const getQueryArgs = (info) => {
-  return info.fieldNodes[0].selectionSet.selections.map(
-    selection => selection.name.value
-  )
-}
-
 const arrayIntersection = (array1, array2) =>
   array1.filter(value => array2.includes(value))
+
+const arraySubtract = (array1, array2) => array1.filter(n => !array2.includes(n))
+
+const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
+  const queryArgs = getFieldList(queryInfo).map(item => item.replace(ignorePrefix, ''));
+  const topLevelArgs = queryArgs.filter(name => name.indexOf('.') < 0)
+  const deepArgs = new Set( queryArgs.filter(name => name.indexOf('.') > 0).map(item => item.split('.')[0]))
+  const relationsInQueryArgs = arrayIntersection(relations, Array.from(deepArgs))
+  const include = Array.from(relationsInQueryArgs).map(relation => {
+    return {
+      model: db.Question,
+      as: relation
+    };
+  });
+  return {
+    include,
+    attributes: topLevelArgs
+  };
+}
 
 module.exports = {
   createGraphQLContext,
   hasCurrentUser,
   authenticated,
   getNextQuestion,
-  getQueryArgs,
-  arrayIntersection
-};
+  getAttributesAndIncludesFromArgs
+}
 
