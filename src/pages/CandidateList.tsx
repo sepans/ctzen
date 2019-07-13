@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay';
 import { CandidateList_candidates } from "./__generated__/CandidateList_candidates.graphql"
-import { CandidateList_myNextQuestion } from "./__generated__/CandidateList_myNextQuestion.graphql"
+import { CandidateList_me } from "./__generated__/CandidateList_me.graphql"
 import styled from 'styled-components';
 import { PageWrapper, Button } from '../components/Layout';
 import { Box } from "@smooth-ui/core-sc"
@@ -10,10 +10,12 @@ import { CandidateImage, Text } from "../components/Layout"
 
 interface CandidateListProps {
   candidates: CandidateList_candidates
-  myNextQuestion: CandidateList_myNextQuestion
+  me: CandidateList_me
 }
 
-const CandidateList: React.FC<CandidateListProps> = ({ candidates, myNextQuestion }) => {
+const CandidateList: React.FC<CandidateListProps> = (props) => {
+  console.log(props)
+  const { candidates, me } = props
   const candidateList = candidates.map((candidate, i) => (
     <Box key={i} my={2}> {/* TODO: why || 'aa */}
       <Link to={`/candidate/${candidate.id}`}>
@@ -30,7 +32,7 @@ const CandidateList: React.FC<CandidateListProps> = ({ candidates, myNextQuestio
   return (
     <PageWrapper>
       <Box>
-        {myNextQuestion ? <Link to={`/question/${myNextQuestion.id}`}>
+        {me.nextQuestion && me.nextQuestion ? <Link to={`/question/${me.nextQuestion.id}`}>
           <Button type="cta">Start answering questions</Button>
         </Link> :
         <Link to="/responses">
@@ -57,9 +59,11 @@ export default createFragmentContainer(
       image
     }
   `,
-    myNextQuestion: graphql`
-    fragment CandidateList_myNextQuestion on Question  {
-      id
+    me: graphql`
+    fragment CandidateList_me on UserNextQuestion  {
+      nextQuestion {
+        id
+      }
     }
   `}
 )

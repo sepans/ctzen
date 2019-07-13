@@ -53,7 +53,8 @@ const authenticated = next => (args, context, info) => {
 }
 
 const getNextQuestion = async (user) => {
-  const answeredQuestionIds = user.answers.map(answer => answer.id)
+  const answers = await user.getAnswers()
+  const answeredQuestionIds = answers.map(answer => answer.id)
   return await db.Question.findOne({
     where: {
       id: {
@@ -69,10 +70,15 @@ const arrayIntersection = (array1, array2) =>
 const arraySubtract = (array1, array2) => array1.filter(n => !array2.includes(n))
 
 const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
-  const queryArgs = getFieldList(queryInfo).map(item => item.replace(ignorePrefix, ''));
+  const queryArgs = getFieldList(queryInfo).map(item => {
+    return item.replace(ignorePrefix, '')
+  });
   const topLevelArgs = queryArgs.filter(name => name.indexOf('.') < 0)
+  // always load id
+  topLevelArgs.push('id')
   const deepArgs = new Set( queryArgs.filter(name => name.indexOf('.') > 0).map(item => item.split('.')[0]))
   const relationsInQueryArgs = arrayIntersection(relations, Array.from(deepArgs))
+  const otherFields = arraySubtract(Array.from(deepArgs), relations)
   const include = Array.from(relationsInQueryArgs).map(relation => {
     return {
       model: db.Question,
@@ -81,7 +87,8 @@ const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '
   });
   return {
     include,
-    attributes: topLevelArgs
+    attributes: topLevelArgs,
+    otherFields
   };
 }
 

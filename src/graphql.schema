@@ -51,10 +51,9 @@ type Mutation {
 type Query {
   candidates: [Candidate]
   candidate(id: ID!): Candidate
-  me: User
+  me: UserNextQuestion
   users: [User]
   user(id: ID!): User
-  myNextQuestion: Question
   question(id: ID!): Question
   questions: [Question]
 }
@@ -118,6 +117,11 @@ input UserInput {
   email: String!
   password: String!
   roles: JSON
+}
+
+type UserNextQuestion {
+  user: User
+  nextQuestion: Question
 }
 
 type UserQuestionAnswered {

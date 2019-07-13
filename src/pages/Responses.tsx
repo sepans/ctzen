@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Responses: React.FC<Props> = ({ me }) => {
-  const responses = me.answers && me.answers.map(answer => {
+  const responses = me.user && me.user.answers && me.user.answers.map(answer => {
     if(!answer || !answer.UserResponse) 
       return
     const pick = answer.UserResponse.response || 0
@@ -45,19 +45,21 @@ const Responses: React.FC<Props> = ({ me }) => {
 export default createFragmentContainer(
   Responses, {
     me: graphql`
-    fragment Responses_me on User {
-      id
-      answers {
-        UserResponse {
-          response
-        }
+    fragment Responses_me on UserNextQuestion {
+      user {
         id
-        title
-        option1
-        option2
-        option3
-        option4
-        option5
+        answers {
+          UserResponse {
+            response
+          }
+          id
+          title
+          option1
+          option2
+          option3
+          option4
+          option5
+        }
       }
     }
   `}

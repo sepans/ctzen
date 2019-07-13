@@ -2,14 +2,14 @@
 
 import { ConcreteRequest } from "relay-runtime";
 type CandidateList_candidates$ref = any;
-type CandidateList_myNextQuestion$ref = any;
+type CandidateList_me$ref = any;
 export type App_Candidates_QueryVariables = {};
 export type App_Candidates_QueryResponse = {
     readonly candidates: ReadonlyArray<{
         readonly " $fragmentRefs": CandidateList_candidates$ref;
     } | null> | null;
-    readonly myNextQuestion: {
-        readonly " $fragmentRefs": CandidateList_myNextQuestion$ref;
+    readonly me: {
+        readonly " $fragmentRefs": CandidateList_me$ref;
     } | null;
 };
 export type App_Candidates_Query = {
@@ -25,9 +25,8 @@ query App_Candidates_Query {
     ...CandidateList_candidates
     id
   }
-  myNextQuestion {
-    ...CandidateList_myNextQuestion
-    id
+  me {
+    ...CandidateList_me
   }
 }
 
@@ -38,8 +37,10 @@ fragment CandidateList_candidates on Candidate {
   image
 }
 
-fragment CandidateList_myNextQuestion on Question {
-  id
+fragment CandidateList_me on UserNextQuestion {
+  nextQuestion {
+    id
+  }
 }
 */
 
@@ -79,15 +80,15 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "myNextQuestion",
+        "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "Question",
+        "concreteType": "UserNextQuestion",
         "plural": false,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CandidateList_myNextQuestion",
+            "name": "CandidateList_me",
             "args": null
           }
         ]
@@ -135,13 +136,24 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "myNextQuestion",
+        "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "Question",
+        "concreteType": "UserNextQuestion",
         "plural": false,
         "selections": [
-          (v0/*: any*/)
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "nextQuestion",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Question",
+            "plural": false,
+            "selections": [
+              (v0/*: any*/)
+            ]
+          }
         ]
       }
     ]
@@ -150,10 +162,10 @@ return {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  myNextQuestion {\n    ...CandidateList_myNextQuestion\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n\nfragment CandidateList_myNextQuestion on Question {\n  id\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  me {\n    ...CandidateList_me\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n\nfragment CandidateList_me on UserNextQuestion {\n  nextQuestion {\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '8830e598a2480d3aee8a3e935e3fa298';
+(node as any).hash = '5c7989355f61669f39ae674ea4a0425a';
 export default node;

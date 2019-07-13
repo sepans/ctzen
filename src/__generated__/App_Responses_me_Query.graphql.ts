@@ -19,23 +19,24 @@ export type App_Responses_me_Query = {
 query App_Responses_me_Query {
   me {
     ...Responses_me
-    id
   }
 }
 
-fragment Responses_me on User {
-  id
-  answers {
-    UserResponse {
-      response
-    }
+fragment Responses_me on UserNextQuestion {
+  user {
     id
-    title
-    option1
-    option2
-    option3
-    option4
-    option5
+    answers {
+      UserResponse {
+        response
+      }
+      id
+      title
+      option1
+      option2
+      option3
+      option4
+      option5
+    }
   }
 }
 */
@@ -63,7 +64,7 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "UserNextQuestion",
         "plural": false,
         "selections": [
           {
@@ -86,79 +87,90 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "UserNextQuestion",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "answers",
+            "name": "user",
             "storageKey": null,
             "args": null,
-            "concreteType": "UserAnswer",
-            "plural": true,
+            "concreteType": "User",
+            "plural": false,
             "selections": [
+              (v0/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "UserResponse",
+                "name": "answers",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "AnswerPick",
-                "plural": false,
+                "concreteType": "UserAnswer",
+                "plural": true,
                 "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "UserResponse",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "AnswerPick",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "response",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  },
+                  (v0/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "response",
+                    "name": "title",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "option1",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "option2",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "option3",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "option4",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "option5",
                     "args": null,
                     "storageKey": null
                   }
                 ]
-              },
-              (v0/*: any*/),
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "title",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "option1",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "option2",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "option3",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "option4",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "option5",
-                "args": null,
-                "storageKey": null
               }
             ]
           }
@@ -170,7 +182,7 @@ return {
     "operationKind": "query",
     "name": "App_Responses_me_Query",
     "id": null,
-    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n    id\n  }\n}\n\nfragment Responses_me on User {\n  id\n  answers {\n    UserResponse {\n      response\n    }\n    id\n    title\n    option1\n    option2\n    option3\n    option4\n    option5\n  }\n}\n",
+    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n  }\n}\n\nfragment Responses_me on UserNextQuestion {\n  user {\n    id\n    answers {\n      UserResponse {\n        response\n      }\n      id\n      title\n      option1\n      option2\n      option3\n      option4\n      option5\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

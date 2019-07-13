@@ -33,8 +33,21 @@ const resolvers = {
   me: hasCurrentUser(async ({ id }, context, info) => {
     const userId = context.currentUser.id;
     const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    return await db.User.findByPk(userId, attrIncs);
+    const attrIncs = getAttributesAndIncludesFromArgs(info, relations, 'user.');
+    console.log('query user')
+    const user = await db.User.findByPk(userId, attrIncs);
+    console.log('user', user)
+    let nextQuestion
+    if (attrIncs.otherFields.includes('nextQuestion')) {
+      console.log('nextQuestion')
+      nextQuestion = await getNextQuestion(user)
+      console.log('nextQuestion', nextQuestion)
+    }
+    console.log('returning', user, nextQuestion)
+    return {
+      user,
+      nextQuestion
+    }
   }),
   user: authenticated(async ({ id }, context, info) => {
     const relations = ["answers"];
@@ -78,16 +91,6 @@ const resolvers = {
         nextQuestion
       };
       return mutationResponse;
-    }
-  ),
-  myNextQuestion: hasCurrentUser(
-    async ({ questionId, response }, context, info) => {
-      const userId = context.currentUser.id;
-      const relations = ["answers"];
-      const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-
-      let user = await db.User.findByPk(parseInt(userId), attrIncs);
-      return await getNextQuestion(user);
     }
   ),
   candidateAnswerQuestion: authenticated(
