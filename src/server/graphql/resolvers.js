@@ -6,58 +6,117 @@ const {
   hasCurrentUser,
   authenticated,
   getNextQuestion,
-  getAttributesAndIncludesFromArgs
+  getQuestionIncludes,
+  getTopLevelAttributes,
+  getAnswerIncludes,
+  hasNextQuestionQuery
 } = require("./utils"); 
 
 const resolvers = {
   candidate: async ({ id }, context, info) => {
-    const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    return await db.Candidate.findByPk(parseInt(id), attrIncs);
+    const attributes = getTopLevelAttributes(info)
+    const include = getAnswerIncludes(info)
+    const where = {
+      id: parseInt(id)
+    }
+    const hasAnswerQuery = include.find(item => item.as === 'answers')
+    if(hasAnswerQuery) {
+      where['$answers->CandidateResponse.deleted$'] =  false
+    }
+    return await db.Candidate.findOne({
+      attributes,
+      include,
+      where
+    });
   },
 
   candidates: async ({ id }, context, info) => {
-    const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    return await db.Candidate.findAll(attrIncs);
+    const attributes = getTopLevelAttributes(info)
+    const include = getAnswerIncludes(info)
+    const where = {}
+    // Adding where clause, it doesn't return candidates without response
+    // const hasAnswerQuery = include.find(item => item.as === 'answers')
+    // if (hasAnswerQuery) {
+    //   where['$answers->CandidateResponse.deleted$'] = false
+    // }
+    return await db.Candidate.findAll({
+      attributes,
+      include,
+      where
+    });
   },
-  question: async ({ id }) => {
-    return await db.Question.findByPk(parseInt(id));
+  question: async ({ id }, context, info) => {
+    const attributes = getTopLevelAttributes(info)
+    const include = getQuestionIncludes(info);
+    return await db.Question.findByPk(parseInt(id, { include, attributes }));
   },
   questions: async (args, context, info) => {
-    const relations = ["children", "parent"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    const questions = await db.Question.findAll(attrIncs);
+    const attributes = getTopLevelAttributes(info)
+    const include = getQuestionIncludes(info);
+    const questions = await db.Question.findAll({ include, attributes });
     return questions;
   },
-  me: hasCurrentUser(async ({ id }, context, info) => {
+  me: hasCurrentUser(async (args, context, info) => {
     const userId = context.currentUser.id;
-    const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations, 'user.');
-    console.log('query user')
-    const user = await db.User.findByPk(userId, attrIncs);
-    console.log('user', user)
-    let nextQuestion
-    if (attrIncs.otherFields.includes('nextQuestion')) {
-      console.log('nextQuestion')
-      nextQuestion = await getNextQuestion(user)
-      console.log('nextQuestion', nextQuestion)
+    const attributes = getTopLevelAttributes(info)
+    const include = getAnswerIncludes(info)
+    const where = {
+      id: userId
     }
-    console.log('returning', user, nextQuestion)
+    const hasAnswerQuery = include.find(item => item.as === 'answers')
+    if (hasAnswerQuery) {
+      where['$answers->UserResponse.deleted$'] = false
+    }
+
+    const user = await db.User.findOne({
+      where,
+      include,
+      attributes
+    })
+    let nextQuestion
+    if(hasNextQuestionQuery(info)) {
+      nextQuestion = await getNextQuestion(user)
+    }
     return {
       user,
       nextQuestion
     }
   }),
   user: authenticated(async ({ id }, context, info) => {
-    const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    return await db.User.findByPk(parseInt(id), attrIncs);
+    const attributes = getTopLevelAttributes(info)
+    const include = getAnswerIncludes(info)
+    const where = {
+      id
+    }
+    // Adding where clause, it doesn't return candidates without response
+    // const hasAnswerQuery = include.find(item => item.as === 'answers')
+    // if (hasAnswerQuery) {
+    //   where['$answers->UserResponse.deleted$'] = false
+    // }
+
+    const user = await db.User.findOne({
+      where,
+      include,
+      attributes
+    })  
+    return user
   }),
   users: authenticated(async ({ id }, context, info) => {
-    const relations = ["answers"];
-    const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
-    return await db.User.findAll(attrIncs);
+    const attributes = getTopLevelAttributes(info)
+    const include = getAnswerIncludes(info)
+    const where = {}
+    // Adding where clause, it doesn't return users without response
+    // const hasAnswerQuery = include.find(item => item.as === 'answers')
+    // if (hasAnswerQuery) {
+    //   where['$answers->UserResponse.deleted$'] = false
+    // }
+
+    const users = await db.User.findAll({
+      where,
+      include,
+      attributes
+    })
+    return users
   }),
   addQuestion: authenticated(async ({ input }) => {
     const question = await db.Question.create(input);
@@ -70,9 +129,9 @@ const resolvers = {
   userAnswerQuestion: hasCurrentUser(
     async ({ questionId, response }, context, info) => {
       const userId = context.currentUser.id;
-      const relations = ["answers"];
-      const attrIncs = getAttributesAndIncludesFromArgs(info, relations, 'user.');
-      let user = await db.User.findByPk(parseInt(userId), attrIncs);
+      const attributes = getTopLevelAttributes(info)
+      const include = getAnswerIncludes(info)
+      let user = await db.User.findByPk(parseInt(userId), { include, attributes });
       const question = await db.Question.findByPk(parseInt(questionId));
       if (user == null) {
         throw new Error("user does not exist");
@@ -95,12 +154,12 @@ const resolvers = {
   ),
   candidateAnswerQuestion: authenticated(
     async ({ candidateId, questionId, response }, context, info) => {
-      const relations = ["answers"];
-      const attrIncs = getAttributesAndIncludesFromArgs(info, relations);
+      const attributes = getTopLevelAttributes(info)
+      const include = getAnswerIncludes(info)
 
       const candidate = await db.Candidate.findByPk(
         parseInt(candidateId),
-        attrIncs
+        {attributes, include}
       );
       const question = await db.Question.findByPk(parseInt(questionId));
       if (candidate == null) {

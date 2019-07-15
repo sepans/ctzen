@@ -69,34 +69,103 @@ const arrayIntersection = (array1, array2) =>
 
 const arraySubtract = (array1, array2) => array1.filter(n => !array2.includes(n))
 
-const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
-  const queryArgs = getFieldList(queryInfo).map(item => {
-    return item.replace(ignorePrefix, '')
-  });
-  const topLevelArgs = queryArgs.filter(name => name.indexOf('.') < 0)
-  // always load id
-  topLevelArgs.push('id')
-  const deepArgs = new Set( queryArgs.filter(name => name.indexOf('.') > 0).map(item => item.split('.')[0]))
-  const relationsInQueryArgs = arrayIntersection(relations, Array.from(deepArgs))
-  const otherFields = arraySubtract(Array.from(deepArgs), relations)
-  const include = Array.from(relationsInQueryArgs).map(relation => {
-    return {
-      model: db.Question,
-      as: relation
-    };
-  });
-  return {
-    include,
-    attributes: topLevelArgs,
-    otherFields
-  };
+const getTopLevelAttributes = (queryInfo) => {
+  const attrs = getFieldList(queryInfo).filter(name => name.indexOf('.') < 0)
+  if(!attrs.includes('id')) {
+    attrs.push('id')
+  }
+  return attrs
 }
+
+const getQuestionIncludes = (queryInfo) => {
+  const parentPrefix = 'parent.'
+  const childrenPrefix = 'children.'
+  const parentQuery = getFieldList(queryInfo).filter(name => name.indexOf(parentPrefix) > -1)
+  const childrenQuery = getFieldList(queryInfo).filter(name => name.indexOf(childrenPrefix) > -1)
+
+  // TODO: similar to getAnswerIncludes pass include attributes
+  // const parentAttrs = parentQuery.map(attr => attr.replace(parentPrefix, '')).filter(attr => attr.indexOf('.') < 0)
+  // const childrenAttrs = childrenQuery.map(attr => attr.replace(childrenPrefix, '')).filter(attr => attr.indexOf('.') < 0)
+
+  const include = []
+  if(parentQuery.length) {
+    include.push({
+      model: db.Question,
+      as: "parent"
+    })
+  }
+  if (childrenQuery.length) {
+    include.push({
+      model: db.Question,
+      as: "children"
+    })
+  }
+
+
+  return include
+
+}
+
+const getAnswerIncludes = (queryInfo) => {
+  const answerPrefix = 'answers.'
+  const answerQuery = getFieldList(queryInfo).filter(name => name.indexOf(answerPrefix) > -1)
+  console.log('ANS Q', answerQuery)
+  // filter answer's own attributes
+  const regex = /^([\w]*\.)?answers.([\w]*)$/g
+  const attributes = answerQuery.map(attr => {
+    const match = regex.exec(attr)
+    return match && match[2]
+  }).filter(attr => attr)
+  attributes.push('id')
+  const include = answerQuery.length ? [{
+    model: db.Question,
+    as: 'answers',
+    attributes
+  }]: []
+  return include
+
+
+}
+
+const hasNextQuestionQuery = (queryInfo) => {
+  return getFieldList(queryInfo).filter(name => name.indexOf('nextQuestion.') > -1).length
+}
+
+// const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
+//   const queryArgs = getFieldList(queryInfo).map(item => {
+//     return item.replace(ignorePrefix, '')
+//   });
+//   const topLevelArgs = queryArgs.filter(name => name.indexOf('.') < 0)
+//   // always load id
+//   topLevelArgs.push('id')
+//   const deepArgs = new Set( queryArgs.filter(name => name.indexOf('.') > 0).map(item => item.split('.')[0]))
+//   const relationsInQueryArgs = arrayIntersection(relations, Array.from(deepArgs))
+//   const otherFields = arraySubtract(Array.from(deepArgs), relations)
+//   const include = Array.from(relationsInQueryArgs).map(relation => {
+//     return {
+//       model: db.Question,
+//       as: relation,
+//     }
+//   });
+//   const where = {
+
+//   }
+//   return {
+//     include,
+//     attributes: topLevelArgs,
+//     where,
+//     otherFields
+//   };
+// }
 
 module.exports = {
   createGraphQLContext,
   hasCurrentUser,
   authenticated,
   getNextQuestion,
-  getAttributesAndIncludesFromArgs
+  getTopLevelAttributes,
+  getAnswerIncludes,
+  getQuestionIncludes,
+  hasNextQuestionQuery
 }
 
