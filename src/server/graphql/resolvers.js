@@ -2,6 +2,9 @@ const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 const { db } = require('../models')
 const GraphQLJSON = require('graphql-type-json');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op
+
 const {
   hasCurrentUser,
   authenticated,
@@ -19,10 +22,7 @@ const resolvers = {
     const where = {
       id: parseInt(id)
     }
-    const hasAnswerQuery = include.find(item => item.as === 'answers')
-    if(hasAnswerQuery) {
-      where['$answers->CandidateResponse.deleted$'] =  false
-    }
+
     return await db.Candidate.findOne({
       attributes,
       include,
@@ -63,10 +63,10 @@ const resolvers = {
     const where = {
       id: userId
     }
-    const hasAnswerQuery = include.find(item => item.as === 'answers')
-    if (hasAnswerQuery) {
-      where['$answers->UserResponse.deleted$'] = false
-    }
+    // const hasAnswerQuery = include.find(item => item.as === 'answers')
+    // if (hasAnswerQuery) {
+    //   where['$answers->UserResponse.deleted$'] = false
+    // }
 
     const user = await db.User.findOne({
       where,

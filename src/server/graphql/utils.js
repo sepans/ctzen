@@ -120,7 +120,10 @@ const getAnswerIncludes = (queryInfo) => {
   const include = answerQuery.length ? [{
     model: db.Question,
     as: 'answers',
-    attributes
+    attributes,
+    on: {
+      '$answers->UserResponse.deleted$': false
+    }
   }]: []
   return include
 
