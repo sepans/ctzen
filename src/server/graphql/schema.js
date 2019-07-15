@@ -67,6 +67,7 @@ const schema = buildASTSchema(gql`
     email: String
     password: String
     roles: JSON
+    token: String
     answers: [UserAnswer]
   }
 
