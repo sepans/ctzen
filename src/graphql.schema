@@ -1,5 +1,6 @@
 type AnswerPick {
   response: Int
+  deleted: Boolean
 }
 
 type Candidate {
@@ -95,6 +96,7 @@ type User {
   email: String
   password: String
   roles: JSON
+  token: String
   answers: [UserAnswer]
 }
 
