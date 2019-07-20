@@ -2,15 +2,11 @@
 
 import { ConcreteRequest } from "relay-runtime";
 type CandidateList_candidates$ref = any;
-type CandidateList_me$ref = any;
 export type App_Candidates_QueryVariables = {};
 export type App_Candidates_QueryResponse = {
     readonly candidates: ReadonlyArray<{
         readonly " $fragmentRefs": CandidateList_candidates$ref;
     } | null> | null;
-    readonly me: {
-        readonly " $fragmentRefs": CandidateList_me$ref;
-    } | null;
 };
 export type App_Candidates_Query = {
     readonly response: App_Candidates_QueryResponse;
@@ -25,9 +21,6 @@ query App_Candidates_Query {
     ...CandidateList_candidates
     id
   }
-  me {
-    ...CandidateList_me
-  }
 }
 
 fragment CandidateList_candidates on Candidate {
@@ -36,23 +29,9 @@ fragment CandidateList_candidates on Candidate {
   experience
   image
 }
-
-fragment CandidateList_me on UserNextQuestion {
-  nextQuestion {
-    id
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteRequest = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
@@ -76,22 +55,6 @@ return {
             "args": null
           }
         ]
-      },
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "me",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "UserNextQuestion",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "CandidateList_me",
-            "args": null
-          }
-        ]
       }
     ]
   },
@@ -109,7 +72,13 @@ return {
         "concreteType": "Candidate",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": "name",
@@ -132,29 +101,6 @@ return {
             "storageKey": null
           }
         ]
-      },
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "me",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "UserNextQuestion",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "nextQuestion",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Question",
-            "plural": false,
-            "selections": [
-              (v0/*: any*/)
-            ]
-          }
-        ]
       }
     ]
   },
@@ -162,10 +108,9 @@ return {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n  me {\n    ...CandidateList_me\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n\nfragment CandidateList_me on UserNextQuestion {\n  nextQuestion {\n    id\n  }\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n",
     "metadata": {}
   }
 };
-})();
-(node as any).hash = '5c7989355f61669f39ae674ea4a0425a';
+(node as any).hash = '15305f8f902b1ac0d0a8f4928c2b9a12';
 export default node;

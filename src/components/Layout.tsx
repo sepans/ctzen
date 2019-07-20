@@ -85,4 +85,4 @@ const comp = () => (
 )
 
 
-export const PageWrapper = ({ children }) => <Box p={50}>{children}</Box>
+export const PageWrapper = ({ children }) => <Box p={50} height={1}>{children}</Box>
