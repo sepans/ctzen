@@ -46,10 +46,19 @@
     "setuptest:server": "NODE_ENV=test yarn run sequelize db:create && NODE_ENV=test yarn run sequelize db:migrate",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx"
+    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx",
+    "prettier-check": "prettier --check 'src/**/*.{ts,tsx,js,jsx}'",
+    "prettier-fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
+    "prettier": "yarn run prettier-check"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "browserslist": {
     "production": [
