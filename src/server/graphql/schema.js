@@ -102,6 +102,7 @@ const schema = buildASTSchema(gql`
 
   type AnswerPick {
     response: Int
+    deleted: Boolean
   }
 
   type Candidate {
