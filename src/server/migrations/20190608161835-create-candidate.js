@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -7,55 +7,55 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       displayName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       image: {
-      type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       campaignLogo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       dob: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
       },
       pob: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       state: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       campaignStart: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
       },
       campaignEnd: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
       },
-        experience: {
-          type: Sequelize.TEXT
-        },
-        bio: {
-        type: Sequelize.TEXT
+      experience: {
+        type: Sequelize.TEXT,
+      },
+      bio: {
+        type: Sequelize.TEXT,
       },
       miscInfo: {
-        type: Sequelize.JSON
-      },     
+        type: Sequelize.JSON,
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+        type: Sequelize.DATE,
+      },
+    })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Candidates');
-  }
-};
+    return queryInterface.dropTable('Candidates')
+  },
+}

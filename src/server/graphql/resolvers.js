@@ -1,8 +1,8 @@
 const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 const { db } = require('../models')
-const GraphQLJSON = require('graphql-type-json');
-const Sequelize = require('sequelize');
+const GraphQLJSON = require('graphql-type-json')
+const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 const {
@@ -12,22 +12,22 @@ const {
   getQuestionIncludes,
   getTopLevelAttributes,
   getAnswerIncludes,
-  hasNextQuestionQuery
-} = require("./utils"); 
+  hasNextQuestionQuery,
+} = require('./utils')
 
 const resolvers = {
   candidate: async ({ id }, context, info) => {
     const attributes = getTopLevelAttributes(info)
     const include = getAnswerIncludes(info)
     const where = {
-      id: parseInt(id)
+      id: parseInt(id),
     }
 
     return await db.Candidate.findOne({
       attributes,
       include,
-      where
-    });
+      where,
+    })
   },
 
   candidates: async ({ id }, context, info) => {
@@ -42,26 +42,26 @@ const resolvers = {
     return await db.Candidate.findAll({
       attributes,
       include,
-      where
-    });
+      where,
+    })
   },
   question: async ({ id }, context, info) => {
     const attributes = getTopLevelAttributes(info)
-    const include = getQuestionIncludes(info);
-    return await db.Question.findByPk(parseInt(id, { include, attributes }));
+    const include = getQuestionIncludes(info)
+    return await db.Question.findByPk(parseInt(id, { include, attributes }))
   },
   questions: async (args, context, info) => {
     const attributes = getTopLevelAttributes(info)
-    const include = getQuestionIncludes(info);
-    const questions = await db.Question.findAll({ include, attributes });
-    return questions;
+    const include = getQuestionIncludes(info)
+    const questions = await db.Question.findAll({ include, attributes })
+    return questions
   },
   me: hasCurrentUser(async (args, context, info) => {
-    const userId = context.currentUser.id;
+    const userId = context.currentUser.id
     const attributes = getTopLevelAttributes(info)
     const include = getAnswerIncludes(info)
     const where = {
-      id: userId
+      id: userId,
     }
     // const hasAnswerQuery = include.find(item => item.as === 'answers')
     // if (hasAnswerQuery) {
@@ -71,22 +71,22 @@ const resolvers = {
     const user = await db.User.findOne({
       where,
       include,
-      attributes
+      attributes,
     })
     let nextQuestion
-    if(hasNextQuestionQuery(info)) {
+    if (hasNextQuestionQuery(info)) {
       nextQuestion = await getNextQuestion(user)
     }
     return {
       user,
-      nextQuestion
+      nextQuestion,
     }
   }),
   user: authenticated(async ({ id }, context, info) => {
     const attributes = getTopLevelAttributes(info)
     const include = getAnswerIncludes(info)
     const where = {
-      id
+      id,
     }
     // Adding where clause, it doesn't return candidates without response
     // const hasAnswerQuery = include.find(item => item.as === 'answers')
@@ -97,8 +97,8 @@ const resolvers = {
     const user = await db.User.findOne({
       where,
       include,
-      attributes
-    })  
+      attributes,
+    })
     return user
   }),
   users: authenticated(async ({ id }, context, info) => {
@@ -114,42 +114,45 @@ const resolvers = {
     const users = await db.User.findAll({
       where,
       include,
-      attributes
+      attributes,
     })
     return users
   }),
   addQuestion: authenticated(async ({ input }) => {
-    const question = await db.Question.create(input);
-    return question;
+    const question = await db.Question.create(input)
+    return question
   }),
   addUser: authenticated(async ({ input }) => {
-    const user = await db.User.create(input);
-    return user;
+    const user = await db.User.create(input)
+    return user
   }),
   userAnswerQuestion: hasCurrentUser(
     async ({ questionId, response }, context, info) => {
-      const userId = context.currentUser.id;
+      const userId = context.currentUser.id
       const attributes = getTopLevelAttributes(info)
       const include = getAnswerIncludes(info)
-      let user = await db.User.findByPk(parseInt(userId), { include, attributes });
-      const question = await db.Question.findByPk(parseInt(questionId));
+      let user = await db.User.findByPk(parseInt(userId), {
+        include,
+        attributes,
+      })
+      const question = await db.Question.findByPk(parseInt(questionId))
       if (user == null) {
-        throw new Error("user does not exist");
+        throw new Error('user does not exist')
       }
       if (question == null) {
-        throw new Error("question does not exist");
+        throw new Error('question does not exist')
       }
-      await user.addAnswer(question, { through: { response } });
+      await user.addAnswer(question, { through: { response } })
 
-      user = await user.reload();
+      user = await user.reload()
 
-      const nextQuestion = await getNextQuestion(user);
+      const nextQuestion = await getNextQuestion(user)
 
       const mutationResponse = {
         user,
-        nextQuestion
-      };
-      return mutationResponse;
+        nextQuestion,
+      }
+      return mutationResponse
     }
   ),
   candidateAnswerQuestion: authenticated(
@@ -157,41 +160,41 @@ const resolvers = {
       const attributes = getTopLevelAttributes(info)
       const include = getAnswerIncludes(info)
 
-      const candidate = await db.Candidate.findByPk(
-        parseInt(candidateId),
-        {attributes, include}
-      );
-      const question = await db.Question.findByPk(parseInt(questionId));
+      const candidate = await db.Candidate.findByPk(parseInt(candidateId), {
+        attributes,
+        include,
+      })
+      const question = await db.Question.findByPk(parseInt(questionId))
       if (candidate == null) {
-        throw new Error("candidate does not exist");
+        throw new Error('candidate does not exist')
       }
       if (question == null) {
-        throw new Error("question does not exist");
+        throw new Error('question does not exist')
       }
-      await candidate.addAnswer(question, { through: { response } });
-      return await candidate.reload();
+      await candidate.addAnswer(question, { through: { response } })
+      return await candidate.reload()
     }
   ),
   Date: new GraphQLScalarType({
-    name: "Date",
-    description: "Date custom scalar type",
+    name: 'Date',
+    description: 'Date custom scalar type',
     parseValue(value) {
-      return new Date(value);
+      return new Date(value)
     },
     serialize(value) {
-      return value.getTime();
+      return value.getTime()
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.INT) {
-        return parseInt(ast.value, 10);
+        return parseInt(ast.value, 10)
       }
-      return null;
-    }
+      return null
+    },
   }),
 
-  JSON: GraphQLJSON
-};
+  JSON: GraphQLJSON,
+}
 
 module.exports = {
-  resolvers
+  resolvers,
 }

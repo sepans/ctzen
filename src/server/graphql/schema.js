@@ -1,5 +1,5 @@
-const { buildASTSchema } = require('graphql');
-const gql = require('graphql-tag');
+const { buildASTSchema } = require('graphql')
+const gql = require('graphql-tag')
 
 const schema = buildASTSchema(gql`
   scalar Date
@@ -19,7 +19,11 @@ const schema = buildASTSchema(gql`
     addQuestion(input: QuestionInput): Question
     addUser(input: UserInput): User
     userAnswerQuestion(questionId: ID!, response: Int): UserQuestionAnswered
-    candidateAnswerQuestion(candidateId: ID!, questionId: ID!, response: Int): Candidate
+    candidateAnswerQuestion(
+      candidateId: ID!
+      questionId: ID!
+      response: Int
+    ): Candidate
   }
 
   input QuestionInput {
@@ -84,7 +88,7 @@ const schema = buildASTSchema(gql`
   }
 
   type UserNextQuestion {
-    user: User,
+    user: User
     nextQuestion: Question
   }
 
@@ -133,8 +137,8 @@ const schema = buildASTSchema(gql`
   type Error {
     message: String
   }
-`);
+`)
 
 module.exports = {
-  schema
+  schema,
 }

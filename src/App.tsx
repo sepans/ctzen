@@ -1,25 +1,19 @@
-import React from 'react';
+import React from 'react'
 import CandidatePosition from './pages/CandidatePosition'
 import CandidateList from './pages/CandidateList'
 
-import { graphql } from 'react-relay';
+import { graphql } from 'react-relay'
 import environment from './config/relayEnvironment'
 import { ThemeProvider } from '@smooth-ui/core-sc'
-import { theme } from "./theme"
+import { theme } from './theme'
 import { Normalize } from '@smooth-ui/core-sc'
 
-import { BrowserProtocol, queryMiddleware } from 'farce';
-import {
-  createFarceRouter,
-  createRender,
-  makeRouteConfig,
-  Route,
-} from 'found';
-import { Resolver } from 'found-relay';
-import Question from './pages/Question';
-import Responses from './pages/Responses';
-import Home from "./pages/Home"
-
+import { BrowserProtocol, queryMiddleware } from 'farce'
+import { createFarceRouter, createRender, makeRouteConfig, Route } from 'found'
+import { Resolver } from 'found-relay'
+import Question from './pages/Question'
+import Responses from './pages/Responses'
+import Home from './pages/Home'
 
 const Loading = () => <div>loading</div>
 
@@ -30,7 +24,9 @@ const Router = createFarceRouter({
     <>
       <Route
         path="/"
-        render={({ props }) => { return props ? <Home {...props} /> : <Loading /> }}
+        render={({ props }) => {
+          return props ? <Home {...props} /> : <Loading />
+        }}
         query={graphql`
           query App_Home_Query {
             me {
@@ -38,12 +34,12 @@ const Router = createFarceRouter({
             }
           }
         `}
-
-      >
-      </Route>      
-      <Route 
-        path="/candidates" 
-        render={({ props }) => { return props ? <CandidateList {...props} /> : <Loading />}} 
+      ></Route>
+      <Route
+        path="/candidates"
+        render={({ props }) => {
+          return props ? <CandidateList {...props} /> : <Loading />
+        }}
         query={graphql`
           query App_Candidates_Query {
             candidates {
@@ -51,9 +47,7 @@ const Router = createFarceRouter({
             }
           }
         `}
-        
-      >
-      </Route>
+      ></Route>
       <Route
         path="candidate/:id"
         query={graphql`
@@ -64,12 +58,8 @@ const Router = createFarceRouter({
           }
         `}
         render={({ props }) => {
-          return props ? (
-            <CandidatePosition {...props} />
-
-          ) : <Loading />
-        }}   
-    
+          return props ? <CandidatePosition {...props} /> : <Loading />
+        }}
       />
       <Route
         path="question/:id"
@@ -81,12 +71,8 @@ const Router = createFarceRouter({
           }
         `}
         render={({ props }) => {
-          return props ? (
-            <Question {...props} />
-
-          ) : <Loading />
+          return props ? <Question {...props} /> : <Loading />
         }}
-
       />
       <Route
         path="responses"
@@ -98,22 +84,14 @@ const Router = createFarceRouter({
           }
         `}
         render={({ props }) => {
-          return props ? (
-            <Responses {...props} />
-
-          ) : <Loading />
+          return props ? <Responses {...props} /> : <Loading />
         }}
-
       />
     </>
-
-
   ),
 
   render: createRender({}),
-});    
-
-
+})
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -124,4 +102,4 @@ const App = () => (
   </ThemeProvider>
 )
 
-export default App;
+export default App

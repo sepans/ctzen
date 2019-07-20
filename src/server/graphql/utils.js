@@ -1,14 +1,13 @@
 const crypto = require('crypto')
 const util = require('util')
 const { db } = require('../models')
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-const getFieldList  =  require("graphql-list-fields")
-
+const getFieldList = require('graphql-list-fields')
 
 const randomBytes = util.promisify(crypto.randomBytes)
 
-const findUserByToken = async (token) => {
+const findUserByToken = async token => {
   return await db.User.findOne({ where: { token: token } })
 }
 
@@ -16,10 +15,9 @@ const createUser = async () => {
   const rand = await randomBytes(16)
   const token = rand.toString('base64').replace(/\W/g, '')
   return await db.User.create({ token })
-
 }
 
-const createGraphQLContext = async (req) => {
+const createGraphQLContext = async req => {
   const token = req.session.token
   let currentUser
   if (token) {
@@ -32,106 +30,116 @@ const createGraphQLContext = async (req) => {
 
   return {
     req,
-    currentUser
+    currentUser,
   }
 }
 
-
 const hasCurrentUser = next => (args, context, info) => {
   if (!context.currentUser) {
-    throw new Error(`Unauthenticated!`);
+    throw new Error(`Unauthenticated!`)
   }
-  return next(args, context, info);
+  return next(args, context, info)
 }
 
 // TODO: implement
 const authenticated = next => (args, context, info) => {
   if (!context.currentUser) {
-    throw new Error(`Unauthenticated!`);
+    throw new Error(`Unauthenticated!`)
   }
-  return next(args, context, info);
+  return next(args, context, info)
 }
 
-const getNextQuestion = async (user) => {
+const getNextQuestion = async user => {
   const answers = await user.getAnswers()
   const answeredQuestionIds = answers.map(answer => answer.id)
   return await db.Question.findOne({
     where: {
       id: {
-        [Op.notIn]: answeredQuestionIds
-      }
-    }
+        [Op.notIn]: answeredQuestionIds,
+      },
+    },
   })
 }
 
 const arrayIntersection = (array1, array2) =>
   array1.filter(value => array2.includes(value))
 
-const arraySubtract = (array1, array2) => array1.filter(n => !array2.includes(n))
+const arraySubtract = (array1, array2) =>
+  array1.filter(n => !array2.includes(n))
 
-const getTopLevelAttributes = (queryInfo) => {
+const getTopLevelAttributes = queryInfo => {
   const attrs = getFieldList(queryInfo).filter(name => name.indexOf('.') < 0)
-  if(!attrs.includes('id')) {
+  if (!attrs.includes('id')) {
     attrs.push('id')
   }
   return attrs
 }
 
-const getQuestionIncludes = (queryInfo) => {
+const getQuestionIncludes = queryInfo => {
   const parentPrefix = 'parent.'
   const childrenPrefix = 'children.'
-  const parentQuery = getFieldList(queryInfo).filter(name => name.indexOf(parentPrefix) > -1)
-  const childrenQuery = getFieldList(queryInfo).filter(name => name.indexOf(childrenPrefix) > -1)
+  const parentQuery = getFieldList(queryInfo).filter(
+    name => name.indexOf(parentPrefix) > -1
+  )
+  const childrenQuery = getFieldList(queryInfo).filter(
+    name => name.indexOf(childrenPrefix) > -1
+  )
 
   // TODO: similar to getAnswerIncludes pass include attributes
   // const parentAttrs = parentQuery.map(attr => attr.replace(parentPrefix, '')).filter(attr => attr.indexOf('.') < 0)
   // const childrenAttrs = childrenQuery.map(attr => attr.replace(childrenPrefix, '')).filter(attr => attr.indexOf('.') < 0)
 
   const include = []
-  if(parentQuery.length) {
+  if (parentQuery.length) {
     include.push({
       model: db.Question,
-      as: "parent"
+      as: 'parent',
     })
   }
   if (childrenQuery.length) {
     include.push({
       model: db.Question,
-      as: "children"
+      as: 'children',
     })
   }
 
-
   return include
-
 }
 
-const getAnswerIncludes = (queryInfo) => {
+const getAnswerIncludes = queryInfo => {
   const answerPrefix = 'answers.'
-  const answerQuery = getFieldList(queryInfo).filter(name => name.indexOf(answerPrefix) > -1)
+  const answerQuery = getFieldList(queryInfo).filter(
+    name => name.indexOf(answerPrefix) > -1
+  )
   console.log('ANS Q', answerQuery)
   // filter answer's own attributes
   const regex = /^([\w]*\.)?answers.([\w]*)$/g
-  const attributes = answerQuery.map(attr => {
-    const match = regex.exec(attr)
-    return match && match[2]
-  }).filter(attr => attr)
+  const attributes = answerQuery
+    .map(attr => {
+      const match = regex.exec(attr)
+      return match && match[2]
+    })
+    .filter(attr => attr)
   attributes.push('id')
-  const include = answerQuery.length ? [{
-    model: db.Question,
-    as: 'answers',
-    attributes,
-    on: {
-      '$answers->UserResponse.deleted$': false
-    }
-  }]: []
+  const include = answerQuery.length
+    ? [
+        {
+          model: db.Question,
+          as: 'answers',
+          attributes,
+          on: {
+            '$answers->UserResponse.deleted$': false,
+          },
+        },
+      ]
+    : []
   return include
-
-
 }
 
-const hasNextQuestionQuery = (queryInfo) => {
-  return getFieldList(queryInfo).filter(name => name.indexOf('nextQuestion.') > -1).length
+const hasNextQuestionQuery = queryInfo => {
+  return getFieldList(queryInfo).filter(
+    name => name.indexOf('nextQuestion.') > -1
+  ).length
 }
 
 // const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
@@ -169,6 +177,5 @@ module.exports = {
   getTopLevelAttributes,
   getAnswerIncludes,
   getQuestionIncludes,
-  hasNextQuestionQuery
+  hasNextQuestionQuery,
 }
-
