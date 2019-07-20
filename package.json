@@ -49,7 +49,8 @@
     "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx",
     "prettier-check": "prettier --check 'src/**/*.{ts,tsx,js,jsx}'",
     "prettier-fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
-    "prettier": "yarn run prettier-check"
+    "prettier": "yarn run prettier-check",
+    "type-check": "yarn tsc --noEmit"
   },
   "eslintConfig": {
     "extends": "react-app"
