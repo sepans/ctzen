@@ -18,6 +18,7 @@ import {
 import { Resolver } from 'found-relay';
 import Question from './pages/Question';
 import Responses from './pages/Responses';
+import Home from "./pages/Home"
 
 
 const Loading = () => <div>loading</div>
@@ -27,16 +28,26 @@ const Router = createFarceRouter({
   historyMiddlewares: [queryMiddleware],
   routeConfig: makeRouteConfig(
     <>
+      <Route
+        path="/"
+        render={({ props }) => { return props ? <Home {...props} /> : <Loading /> }}
+        query={graphql`
+          query App_Home_Query {
+            me {
+              ...Home_me
+            }
+          }
+        `}
+
+      >
+      </Route>      
       <Route 
-        path="/" 
+        path="/candidates" 
         render={({ props }) => { return props ? <CandidateList {...props} /> : <Loading />}} 
         query={graphql`
           query App_Candidates_Query {
             candidates {
               ...CandidateList_candidates
-            }
-            me {
-              ...CandidateList_me
             }
           }
         `}
