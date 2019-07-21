@@ -41,7 +41,7 @@ const Home: React.FC<HomeProps> = ({ me: { nextQuestion, user } }) => {
           </Link>
         </ButtonBox>
       </Box>
-      <Box></Box>
+      <Box />
     </PageWrapper>
   )
 }

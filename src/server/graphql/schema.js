@@ -3,6 +3,7 @@ const gql = require('graphql-tag')
 
 const schema = buildASTSchema(gql`
   scalar Date
+
   scalar JSON
 
   type Query {

@@ -34,7 +34,7 @@ const Router = createFarceRouter({
             }
           }
         `}
-      ></Route>
+      />
       <Route
         path="/candidates"
         render={({ props }) => {
@@ -47,7 +47,7 @@ const Router = createFarceRouter({
             }
           }
         `}
-      ></Route>
+      />
       <Route
         path="candidate/:id"
         query={graphql`
