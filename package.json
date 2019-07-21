@@ -46,10 +46,32 @@
     "setuptest:server": "NODE_ENV=test yarn run sequelize db:create && NODE_ENV=test yarn run sequelize db:migrate",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx"
+    "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx",
+    "prettier-check": "prettier --check 'src/**/*.{ts,tsx,js,jsx}'",
+    "prettier-fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
+    "prettier": "yarn run prettier-check",
+    "type-check": "yarn tsc --noEmit"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },  
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "yarn run prettier-fix",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -67,8 +89,11 @@
     "babel-jest": "24.8.0",
     "babel-plugin-relay": "^5.0.0",
     "customize-cra": "^0.2.13",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
     "nodemon": "^1.19.1",
     "npm-run-all": "^4.1.5",
+    "prettier": "1.18.2",
     "relay-compiler": "^5.0.0"
   },
   "proxy": "http://localhost:4000"

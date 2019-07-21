@@ -6,12 +6,10 @@ const { db } = require('../server/models')
 
 const DELETE_ANSWERS = true
 
-const file = "../../data/biden_answers.json"
-const candidateName = "Joe Biden"
+const file = '../../data/biden_answers.json'
+const candidateName = 'Joe Biden'
 
-
-const loadJSON = (filePath) => {
-
+const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)
 
   let raw = fs.readFileSync(filename)
@@ -20,44 +18,38 @@ const loadJSON = (filePath) => {
 
 const emptyTable = async () => {
   const qi = db.getQueryInterface()
-  await qi.bulkDelete("CandidateResponses")
-
+  await qi.bulkDelete('CandidateResponses')
 }
 
-const saveAnswers = async (answers) => {
+const saveAnswers = async answers => {
   const candidate = await db.Candidate.findOne({
     where: {
-      displayName: candidateName
-    }
+      displayName: candidateName,
+    },
   })
-  if(!candidate) {
+  if (!candidate) {
     console.error(`candidate ${candidateName} not found`)
     return
   }
-  answers.forEach(async (answer) => {
+  answers.forEach(async answer => {
     const q = await db.Question.findOne({
       where: {
-        importId: answer.id
-      }
+        importId: answer.id,
+      },
     })
     if (!q) {
       console.error(`question ${q.id} not found`)
       return
     }
-    
-    await candidate.addAnswer(q, { through: { response: parseInt(answer.selected_option -1) } })
 
+    await candidate.addAnswer(q, {
+      through: { response: parseInt(answer.selected_option - 1) },
+    })
   })
-
-  
 }
-
-
 
 const qs = loadJSON(file)
 if (DELETE_ANSWERS) {
   emptyTable()
 }
 saveAnswers(qs)
-
-

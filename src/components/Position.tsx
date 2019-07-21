@@ -1,19 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { CandidateAvatar, Text } from './Layout'
-import { Box } from "@smooth-ui/core-sc"
-
+import { Box } from '@smooth-ui/core-sc'
 
 interface P {
   title: string
-  position: number,
+  position: number
   candidate: any
 }
 
 const Spectrum = styled.div`
   height: 15px;
   width: 100%;
-  background: linear-gradient(to right, #EEE 0%,#333 100%);
+  background: linear-gradient(to right, #eee 0%, #333 100%);
   border: 1px solid #000;
   display: inline-block;
   position: relative;
@@ -28,7 +27,7 @@ const Spectrum = styled.div`
 
 const SpectrumLabels = styled.span`
   /* position: absolute;
-  left: ${(p: {i: number}) => p.i* 33.3}%;
+  left: ${(p: { i: number }) => p.i * 33.3}%;
   top: 35px; */
   font-size: 12px;
   position: relative;
@@ -47,35 +46,43 @@ const SpectrumLabels = styled.span`
 `
 
 const Wrapper = styled.div`
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #eee;
   margin-bottom: 20px;
   padding-right: 38px;
   padding-bottom: 50px;
   overflow-x: hidden;
-
 `
 
 const AvatarPositon = styled.div`
   position: absolute;
   top: -10px;
-  left: calc(${(p: {left: number}) => p.left * 30}%);
+  left: calc(${(p: { left: number }) => p.left * 30}%);
   z-index: 2;
 `
 
 export const Position = (props: P) => {
-  const {title, position, candidate} = props
-   
+  const { title, position, candidate } = props
+
   const imageUrl: string = candidate.image
-  const labels = ['very liberal', 'liberal', 'conservative', 'very conservative'].map((d, i) => (
-    <SpectrumLabels key={i} i={i}>{d}</SpectrumLabels>
+  const labels = [
+    'very liberal',
+    'liberal',
+    'conservative',
+    'very conservative',
+  ].map((d, i) => (
+    <SpectrumLabels key={i} i={i}>
+      {d}
+    </SpectrumLabels>
   ))
 
   return (
     <Wrapper>
-      <Text block type="primary">{title}</Text>
+      <Text block type="primary">
+        {title}
+      </Text>
       <Box pl={1} mt={2} position="relative">
         <Spectrum />
-        
+
         <AvatarPositon left={position}>
           <CandidateAvatar img={imageUrl} />
         </AvatarPositon>
@@ -85,5 +92,4 @@ export const Position = (props: P) => {
       </Box>
     </Wrapper>
   )
-
 }

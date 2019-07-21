@@ -12,8 +12,8 @@ export const Section = styled.div`
 `
 
 enum TextTypes {
-  primary = "primary",
-  secondary = "secondary"
+  primary = 'primary',
+  secondary = 'secondary',
 }
 
 interface TextProps {
@@ -24,9 +24,9 @@ interface TextProps {
 }
 
 enum ButtonType {
-  cta = "cta",
-  answer = "answer",
-  selected = "selected"
+  cta = 'cta',
+  answer = 'answer',
+  selected = 'selected',
 }
 
 interface ButtonProps {
@@ -34,35 +34,65 @@ interface ButtonProps {
   [rest: string]: any
 }
 
-export const Title: React.FC = ({children}) => <Typography variant="h2" fontSize="4">{children}</Typography>
+export const Title: React.FC = ({ children }) => (
+  <Typography variant="h2" fontSize="4">
+    {children}
+  </Typography>
+)
 
-export const Text: React.FC<TextProps> = ({ children, type = TextTypes.secondary, style = {}, block = false, ...rest }) => {
-  return <Typography {...rest} style={style} display={block ? "block" : "auto"} fontSize={ type===TextTypes.primary ? "2" : "1"}>{children}</Typography>
+export const Text: React.FC<TextProps> = ({
+  children,
+  type = TextTypes.secondary,
+  style = {},
+  block = false,
+  ...rest
+}) => {
+  return (
+    <Typography
+      {...rest}
+      style={style}
+      display={block ? 'block' : 'auto'}
+      fontSize={type === TextTypes.primary ? '2' : '1'}
+    >
+      {children}
+    </Typography>
+  )
 }
 
-const typeToVariant = (type) => {
+const typeToVariant = type => {
   let c
   switch (type) {
     case ButtonType.cta:
-      c = "primary"
-      break;
+      c = 'primary'
+      break
     case ButtonType.answer:
-      c = "light"
-      break;
+      c = 'light'
+      break
     case ButtonType.selected:
-      c = "dark"
-      break;
+      c = 'dark'
+      break
   }
   return c
 }
 
-export const Button: React.FC<ButtonProps> = ({type = ButtonType.cta, children, ...rest}) => {
+export const Button: React.FC<ButtonProps> = ({
+  type = ButtonType.cta,
+  children,
+  ...rest
+}) => {
   const variant = typeToVariant(type)
-  const border = "1px solid #000"
-  return <SmoothButton border={border} borderRadius="0px" {...rest} variant={variant}>
-        {children}
+  const border = '1px solid #000'
+  return (
+    <SmoothButton
+      border={border}
+      borderRadius="0px"
+      {...rest}
+      variant={variant}
+    >
+      {children}
     </SmoothButton>
-} 
+  )
+}
 
 export const CandidateImage = styled.div`
   border-radius: 50%;
@@ -80,9 +110,10 @@ export const CandidateAvatar = styled(CandidateImage)`
   border-width: 2px;
 `
 
-const comp = () => (
-  <Text type="primary">aaa</Text>
+const comp = () => <Text type="primary">aaa</Text>
+
+export const PageWrapper = ({ children }) => (
+  <Box p={50} height={1}>
+    {children}
+  </Box>
 )
-
-
-export const PageWrapper = ({ children }) => <Box p={50} height={1}>{children}</Box>

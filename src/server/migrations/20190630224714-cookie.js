@@ -1,26 +1,22 @@
-'use strict';
+'use strict'
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const migrations = []
 
-    migrations.push(queryInterface.addColumn(
-      'Users',
-      'token',
-      {
+    migrations.push(
+      queryInterface.addColumn('Users', 'token', {
         type: Sequelize.TEXT,
-        allowNull: false
-      }
-    ))
+        allowNull: false,
+      })
+    )
 
-    migrations.push(queryInterface.changeColumn(
-      'Users',
-      'username',
-      {
+    migrations.push(
+      queryInterface.changeColumn('Users', 'username', {
         type: Sequelize.TEXT,
-        allowNull: true
-      }
-    ))
+        allowNull: true,
+      })
+    )
 
     return Promise.all(migrations)
   },
@@ -28,21 +24,15 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     const migrations = []
 
-    migrations.push(queryInterface.removeColumn(
-      'Users',
-      'token',
-    ))
+    migrations.push(queryInterface.removeColumn('Users', 'token'))
 
-    migrations.push(queryInterface.changeColumn(
-      'Users',
-      'username',
-      {
+    migrations.push(
+      queryInterface.changeColumn('Users', 'username', {
         type: Sequelize.TEXT,
-        allowNull: false
-      }
-    ))
+        allowNull: false,
+      })
+    )
 
     return Promise.all(migrations)
-
-  }
-};
+  },
+}
