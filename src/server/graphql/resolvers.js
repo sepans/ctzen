@@ -13,6 +13,8 @@ const {
   getTopLevelAttributes,
   getAnswerIncludes,
   hasNextQuestionQuery,
+  hasMatchingCandidatesQuery,
+  getMatchingCandidates,
 } = require('./utils')
 
 const resolvers = {
@@ -77,9 +79,15 @@ const resolvers = {
     if (hasNextQuestionQuery(info)) {
       nextQuestion = await getNextQuestion(user)
     }
+    let matchingCandidates = []
+    if (hasMatchingCandidatesQuery(info)) {
+      matchingCandidates = await getMatchingCandidates(user)
+    }
+
     return {
       user,
       nextQuestion,
+      matchingCandidates,
     }
   }),
   user: authenticated(async ({ id }, context, info) => {

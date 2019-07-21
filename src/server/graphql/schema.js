@@ -91,6 +91,12 @@ const schema = buildASTSchema(gql`
   type UserInfo {
     user: User
     nextQuestion: Question
+    matchingCandidates: [MatchingCandidate]
+  }
+
+  type MatchingCandidate {
+    score: Float
+    candidate: Candidate
   }
 
   type CandidateAnswer {

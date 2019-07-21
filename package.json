@@ -23,6 +23,7 @@
     "graphql-list-fields": "^2.0.2",
     "graphql-tag": "^2.10.1",
     "graphql-type-json": "^0.3.0",
+    "ml-distance": "^3.0.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.2",
     "react": "^16.8.6",
@@ -66,7 +67,7 @@
       "pre-commit": "lint-staged",
       "pre-push": "yarn run type-check"
     }
-  },  
+  },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "yarn run prettier-fix",

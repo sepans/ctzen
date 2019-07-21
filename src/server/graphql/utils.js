@@ -4,6 +4,7 @@ const { db } = require('../models')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const getFieldList = require('graphql-list-fields')
+const distance = require('ml-distance')
 
 const randomBytes = util.promisify(crypto.randomBytes)
 
@@ -111,7 +112,7 @@ const getAnswerIncludes = queryInfo => {
   const answerQuery = getFieldList(queryInfo).filter(
     name => name.indexOf(answerPrefix) > -1
   )
-  console.log('ANS Q', answerQuery)
+  //console.log('ANS Q', answerQuery)
   // filter answer's own attributes
   const regex = /^([\w]*\.)?answers.([\w]*)$/g
   const attributes = answerQuery
@@ -140,6 +141,66 @@ const hasNextQuestionQuery = queryInfo => {
   return getFieldList(queryInfo).filter(
     name => name.indexOf('nextQuestion.') > -1
   ).length
+}
+
+const hasMatchingCandidatesQuery = queryInfo => {
+  return getFieldList(queryInfo).filter(
+    name => name.indexOf('matchingCandidates.') > -1
+  ).length
+}
+
+const getMatchingCandidates = async user => {
+  // TODO: remove garabage questions?
+  const allQuestionIds = await db.Question.findAll().map(q => q.importId)
+
+  let answers = await user.getAnswers()
+  if (!answers || !answers.length) {
+    return []
+  }
+  const userVector = answersToVector(answers, allQuestionIds)
+  // the where statement insures only candidates with response are returned
+  const candidates = await db.Candidate.findAll({
+    include: [
+      {
+        model: db.Question,
+        as: 'answers',
+      },
+    ],
+    where: {
+      '$answers->CandidateResponse.deleted$': false,
+    },
+  })
+  console.log('len', candidates[0].answers.length)
+  const ret = candidates.map(candidate => {
+    const answers = candidate.answers
+    const candidateVector = answersToVector(answers, allQuestionIds)
+    console.log(distance)
+    const score = distance.similarity.cosine(userVector, candidateVector)
+    console.log('DISTANCE', score)
+    return {
+      score,
+      candidate,
+    }
+  })
+  return ret
+}
+
+const VECTOR_UNDEFINED_VALUE = 0
+
+const answersToVector = (answers, allQuestionIds) => {
+  const indexedAnswers = answers.reduce((acc, answer) => {
+    acc[answer.importId] = answer
+    return acc
+  }, {})
+  const ret = allQuestionIds.map(importId => {
+    const answer = indexedAnswers[importId]
+    if (!answer) {
+      return VECTOR_UNDEFINED_VALUE
+    }
+    const someonesResponse = answer.UserResponse || answer.CandidateResponse
+    return answer ? someonesResponse.response : 0
+  })
+  return ret
 }
 
 // const getAttributesAndIncludesFromArgs = (queryInfo, relations, ignorePrefix = '') => {
@@ -174,8 +235,11 @@ module.exports = {
   hasCurrentUser,
   authenticated,
   getNextQuestion,
+  getMatchingCandidates,
   getTopLevelAttributes,
   getAnswerIncludes,
   getQuestionIncludes,
   hasNextQuestionQuery,
+  hasMatchingCandidatesQuery,
+  answersToVector,
 }
