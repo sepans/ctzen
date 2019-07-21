@@ -22,7 +22,7 @@ query App_Responses_me_Query {
   }
 }
 
-fragment Responses_me on UserNextQuestion {
+fragment Responses_me on UserInfo {
   user {
     id
     answers {
@@ -64,7 +64,7 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "UserNextQuestion",
+        "concreteType": "UserInfo",
         "plural": false,
         "selections": [
           {
@@ -87,7 +87,7 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "UserNextQuestion",
+        "concreteType": "UserInfo",
         "plural": false,
         "selections": [
           {
@@ -182,7 +182,7 @@ return {
     "operationKind": "query",
     "name": "App_Responses_me_Query",
     "id": null,
-    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n  }\n}\n\nfragment Responses_me on UserNextQuestion {\n  user {\n    id\n    answers {\n      UserResponse {\n        response\n      }\n      id\n      title\n      option1\n      option2\n      option3\n      option4\n      option5\n    }\n  }\n}\n",
+    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n  }\n}\n\nfragment Responses_me on UserInfo {\n  user {\n    id\n    answers {\n      UserResponse {\n        response\n      }\n      id\n      title\n      option1\n      option2\n      option3\n      option4\n      option5\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -9,7 +9,7 @@ const schema = buildASTSchema(gql`
   type Query {
     candidates: [Candidate]
     candidate(id: ID!): Candidate
-    me: UserNextQuestion
+    me: UserInfo
     users: [User]
     user(id: ID!): User
     question(id: ID!): Question
@@ -88,9 +88,15 @@ const schema = buildASTSchema(gql`
     UserResponse: AnswerPick
   }
 
-  type UserNextQuestion {
+  type UserInfo {
     user: User
     nextQuestion: Question
+    matchingCandidates: [MatchingCandidate]
+  }
+
+  type MatchingCandidate {
+    score: Float
+    candidate: Candidate
   }
 
   type CandidateAnswer {

@@ -59,7 +59,7 @@ const ButtonBox = ({ children }) => (
 
 export default createFragmentContainer(Home, {
   me: graphql`
-    fragment Home_me on UserNextQuestion {
+    fragment Home_me on UserInfo {
       nextQuestion {
         id
       }

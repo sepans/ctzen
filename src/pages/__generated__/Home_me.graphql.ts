@@ -29,7 +29,7 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "Home_me",
-  "type": "UserNextQuestion",
+  "type": "UserInfo",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -67,5 +67,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'aaabd08d33138e14aa493bb94b28e8bc';
+(node as any).hash = '66240a496927cfef85bc31f1490751f8';
 export default node;
