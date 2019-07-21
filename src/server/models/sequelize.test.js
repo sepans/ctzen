@@ -17,7 +17,7 @@ describe('test sequelize', () => {
     db.close()
   })
 
-  it('creates question with parent/child associateion', async done => {
+  it('creates question with parent/child association', async done => {
     expect.assertions(3)
 
     const child1 = await db.Question.create({
