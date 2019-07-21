@@ -25,7 +25,12 @@ const Home: React.FC<HomeProps> = ({ me: { nextQuestion, user } }) => {
 
   return (
     <PageWrapper>
-      <Box height={0.5} display="flex" flexDirection="column">
+      <Box
+        height={0.5}
+        display="flex"
+        flexDirection="column"
+        borderBottom="1px solid black"
+      >
         <Box my={4}>
           <Title>Find out which candidate matches your your politype:</Title>
         </Box>
