@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import styled from 'styled-components'
 import { Position } from '../components/Position'
 import { Section, Title, PageWrapper } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'

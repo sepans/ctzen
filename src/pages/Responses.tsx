@@ -15,7 +15,7 @@ const Responses: React.FC<Props> = ({ me }) => {
     me.user &&
     me.user.answers &&
     me.user.answers.map(answer => {
-      if (!answer || !answer.UserResponse) return
+      if (!answer || !answer.UserResponse) return null
       const pick = answer.UserResponse.response || 0
       const pickText = optionArray(answer)[pick]
 

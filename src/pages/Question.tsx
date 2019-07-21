@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
-import { PageWrapper, Title, Button, Text } from '../components/Layout'
+import { PageWrapper, Title, Button } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Question_question } from './__generated__/Question_question.graphql'
 import environment from '../config/relayEnvironment'

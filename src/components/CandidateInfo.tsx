@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { CandidateInfo_candidate } from './__generated__/CandidateInfo_candidate.graphql'
-import { Typography, Box } from '@smooth-ui/core-sc'
+import { Box } from '@smooth-ui/core-sc'
 import { CandidateImage, Text } from './Layout'
 
 interface Props {

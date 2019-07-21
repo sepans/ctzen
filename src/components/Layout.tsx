@@ -109,8 +109,6 @@ export const CandidateAvatar = styled(CandidateImage)`
   border-width: 2px;
 `
 
-const comp = () => <Text type="primary">aaa</Text>
-
 export const PageWrapper = ({ children }) => (
   <Box p={50} height={1}>
     {children}
