@@ -48,9 +48,8 @@ const SpectrumLabels = styled.span`
 const Wrapper = styled.div`
   border-bottom: 1px solid #eee;
   margin-bottom: 20px;
-  padding-right: 38px;
+  padding-right: 10px;
   padding-bottom: 50px;
-  overflow-x: hidden;
 `
 
 const AvatarPositon = styled.div`
