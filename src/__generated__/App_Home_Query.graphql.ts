@@ -22,7 +22,7 @@ query App_Home_Query {
   }
 }
 
-fragment Home_me on UserNextQuestion {
+fragment Home_me on UserInfo {
   nextQuestion {
     id
   }
@@ -61,7 +61,7 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "UserNextQuestion",
+        "concreteType": "UserInfo",
         "plural": false,
         "selections": [
           {
@@ -84,7 +84,7 @@ return {
         "name": "me",
         "storageKey": null,
         "args": null,
-        "concreteType": "UserNextQuestion",
+        "concreteType": "UserInfo",
         "plural": false,
         "selections": [
           {
@@ -127,7 +127,7 @@ return {
     "operationKind": "query",
     "name": "App_Home_Query",
     "id": null,
-    "text": "query App_Home_Query {\n  me {\n    ...Home_me\n  }\n}\n\nfragment Home_me on UserNextQuestion {\n  nextQuestion {\n    id\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query App_Home_Query {\n  me {\n    ...Home_me\n  }\n}\n\nfragment Home_me on UserInfo {\n  nextQuestion {\n    id\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

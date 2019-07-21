@@ -45,7 +45,7 @@ const Responses: React.FC<Props> = ({ me }) => {
 
 export default createFragmentContainer(Responses, {
   me: graphql`
-    fragment Responses_me on UserNextQuestion {
+    fragment Responses_me on UserInfo {
       user {
         id
         answers {

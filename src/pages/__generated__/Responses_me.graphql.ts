@@ -34,7 +34,7 @@ var v0 = {
 return {
   "kind": "Fragment",
   "name": "Responses_me",
-  "type": "UserNextQuestion",
+  "type": "UserInfo",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -125,5 +125,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99b553e5edadb76047199d6fec01f53c';
+(node as any).hash = 'e3f968e557a99cb3940458742ca2e9a5';
 export default node;
