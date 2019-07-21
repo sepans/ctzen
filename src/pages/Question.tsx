@@ -4,11 +4,13 @@ import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
 import { PageWrapper, Title, Button } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Question_question } from './__generated__/Question_question.graphql'
+import { Question_me } from './__generated__/Question_me.graphql'
 import environment from '../config/relayEnvironment'
 import { optionArray } from '../components/helpers/question_helpers'
 
 interface Props {
   question: Question_question
+  me: Question_me
   router: any
 }
 
@@ -31,7 +33,7 @@ const mutation = graphql`
   }
 `
 
-const Question: React.FC<Props> = ({ question, router }) => {
+const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)
   const { title } = question
 
@@ -87,10 +89,24 @@ const Question: React.FC<Props> = ({ question, router }) => {
     </>
   )
 
+  const topMatch =
+    me &&
+    me.matchingCandidates &&
+    me.matchingCandidates.length &&
+    me.matchingCandidates[0]
+  const topMatchBox = topMatch && topMatch.score && (
+    <Box mb={1}>
+      {`You have ${Math.round(topMatch.score * 100)}% match with ${topMatch &&
+        topMatch.candidate &&
+        topMatch.candidate.name}`}
+    </Box>
+  )
+
   const showNext = selection !== -1
 
   return (
     <PageWrapper>
+      {topMatchBox}
       <Title>{title}</Title>
       <Box my={3}>
         <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
@@ -113,6 +129,16 @@ export default createFragmentContainer(Question, {
       option3
       option4
       option5
+    }
+  `,
+  me: graphql`
+    fragment Question_me on UserInfo {
+      matchingCandidates {
+        score
+        candidate {
+          name: displayName
+        }
+      }
     }
   `,
 })

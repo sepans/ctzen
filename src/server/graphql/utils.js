@@ -170,13 +170,12 @@ const getMatchingCandidates = async user => {
       '$answers->CandidateResponse.deleted$': false,
     },
   })
-  console.log('len', candidates[0].answers.length)
   const ret = candidates.map(candidate => {
     const answers = candidate.answers
     const candidateVector = answersToVector(answers, allQuestionIds)
-    console.log(distance)
     const score = distance.similarity.cosine(userVector, candidateVector)
-    console.log('DISTANCE', score)
+    // console.log(userVector, candidateVector)
+    // console.log('DISTANCE', score)
     return {
       score,
       candidate,

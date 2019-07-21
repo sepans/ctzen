@@ -42,6 +42,11 @@ type Error {
 
 scalar JSON
 
+type MatchingCandidate {
+  score: Float
+  candidate: Candidate
+}
+
 type Mutation {
   addQuestion(input: QuestionInput): Question
   addUser(input: UserInput): User
@@ -115,6 +120,7 @@ type UserAnswer {
 type UserInfo {
   user: User
   nextQuestion: Question
+  matchingCandidates: [MatchingCandidate]
 }
 
 input UserInput {

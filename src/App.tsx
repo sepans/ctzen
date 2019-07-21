@@ -68,6 +68,9 @@ const Router = createFarceRouter({
             question(id: $id) {
               ...Question_question
             }
+            me {
+              ...Question_me
+            }
           }
         `}
         render={({ props }) => {
