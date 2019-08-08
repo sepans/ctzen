@@ -9,12 +9,13 @@ import { graphql, QueryRenderer } from 'react-relay'
 import CandidateList from './CandidateList'
 // import { CandidateInfo_candidate } from './__generated__/CandidateInfo_candidate.graphql'
 
-describe('CandidateInfo', () => {
+describe('CandidateList', () => {
   const environment = createMockEnvironment()
   // const renderer = ReactTestRenderer.create(
   //   <CandidateInfo environment={environment} />,
   // );
   const TestRenderer = () => {
+    debugger
     return (
       <QueryRenderer
         environment={environment}
