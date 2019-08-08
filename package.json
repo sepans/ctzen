@@ -48,7 +48,8 @@
     "start:web": "react-app-rewired start",
     "build": "react-app-rewired build",
     "setuptest:server": "NODE_ENV=test yarn run sequelize db:create && NODE_ENV=test yarn run sequelize db:migrate",
-    "test": "react-app-rewired test --env=jsdom",
+    "test": "react-app-rewired test",
+    "test:debug": "react-app-rewired --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
     "relay": "get-graphql-schema http://localhost:4000/graphql > ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema --language typescript --extensions ts tsx",
     "prettier-check": "prettier --check 'src/**/*.{ts,tsx,js,jsx}'",
@@ -99,6 +100,15 @@
     "npm-run-all": "^4.1.5",
     "prettier": "1.18.2",
     "relay-compiler": "^5.0.0"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "relay"
+        ]
+      }
+    }
   },
   "proxy": "http://localhost:4000"
 }
