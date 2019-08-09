@@ -11,12 +11,9 @@ interface CandidateListProps {
 }
 
 const CandidateList: React.FC<CandidateListProps> = props => {
-  console.log(props)
   const { candidates } = props
   const candidateList = candidates.map((candidate, i) => (
     <Box key={i} my={2}>
-      {' '}
-      {/* TODO: why || 'aa */}
       <Link to={`/candidate/${candidate.id}`}>
         <Box display="flex">
           <CandidateImage img={candidate.image as string} />
