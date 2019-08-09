@@ -6,6 +6,10 @@ import { graphql, QueryRenderer } from 'react-relay'
 
 import CandidateList from './CandidateList'
 
+jest.mock('found', () => ({
+  Link: component => <a href={`${component.to}`}>{component.children}</a>,
+}))
+
 describe('CandidateList', () => {
   const environment = createMockEnvironment()
   const TestRenderer = () => {
@@ -39,6 +43,46 @@ describe('CandidateList', () => {
         },
       })
     )
-    expect(renderer).toMatchInlineSnapshot(`null`)
+    expect(renderer).toMatchInlineSnapshot(`
+      <div
+        className="sui-box sc-bwzfXH icQAQh"
+      >
+        <div
+          className="sui-box sc-bwzfXH cYfXqZ"
+        >
+          <div
+            className="sui-box sc-bwzfXH bgUypY"
+          >
+            <a
+              href="/candidate/candidate-id-1"
+            >
+              <div
+                className="sui-box sc-bwzfXH kwleVE"
+              >
+                <div
+                  className="sc-iAyFgw brrEtL"
+                />
+                <div
+                  className="sui-box sc-bwzfXH ftgQHD"
+                >
+                  <span
+                    className="sui-typo sc-kEYyzF cmIyuR"
+                    style={Object {}}
+                  >
+                    &lt;mock-value-for-field-"name"&gt;
+                  </span>
+                  <span
+                    className="sui-typo sc-kEYyzF iDKUZE"
+                    style={Object {}}
+                  >
+                    &lt;mock-value-for-field-"experience"&gt;
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    `)
   })
 })
