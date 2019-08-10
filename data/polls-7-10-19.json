@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Joe Biden",
+    "all": 29,
+    "regular": 30
+  },
+  {
+    "name": "Bernie Sanders",
+    "all": 23,
+    "regular": 19
+  },
+  {
+    "name": "Kamala Harris", 
+    "all": 11,
+    "regular": 13
+  },
+  {
+    "name": "Elizabeth Warren",
+    "all": 11,
+    "regular": 12
+  },
+  {
+    "name": "Pete Buttigieg",
+    "all": 4,
+    "regular": 4
+  },
+  {
+    "name": "Julian Castro",
+    "all": 4,
+    "regular": 3
+  },
+  {
+    "name": "Amy Klobuchar",
+    "all": 2,
+    "regular": 2
+  },
+  {
+    "name": "Beto O'Rourke",
+    "all": 2,
+    "regular": 2
+  },
+  {
+    "name": "Michael Bennet",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Cory Booker",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "John Hickenlooper",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Jay Inslee",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Marianne Williamson",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Tulsi Gabbard",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Andrew Yang",
+    "all": 1,
+    "regular": "*"
+  },
+  {
+    "name": "Steve Bullock",
+    "all": "*",
+    "regular": "*"
+  },
+  {
+    "name": "Kirsten Gillibrand",
+    "all": "*",
+    "regular": "*"
+  },
+  {
+    "name": "Tim Ryan",
+    "all": "*",
+    "regular": "*"
+  },
+  {
+    "name": "Bill de Blasio",
+    "all": 0,
+    "regular": 0
+  },
+  {
+    "name": "John Delaney",
+    "all": 0,
+    "regular": 0
+  },
+  {
+    "name": "Seth Moulton",
+    "all": 0,
+    "regular": 0
+  },
+  {
+    "name": "Eric Swalwell",
+    "all": 0,
+    "regular": 0
+  },
+  {
+    "name": "Other",
+    "all": "*",
+    "regular": "*"
+  },
+  {
+    "name": "None of these",
+    "all": 1,
+    "regular": 1
+  },
+  {
+    "name": "Would not vote",
+    "all": "*",
+    "regular": 1
+  },
+  {
+    "name": "No opinion",
+    "all": 6,
+    "regular": 6
+  }
+]
