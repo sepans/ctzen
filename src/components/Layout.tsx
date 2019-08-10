@@ -110,7 +110,7 @@ export const CandidateAvatar = styled(CandidateImage)`
 `
 
 export const PageWrapper = ({ children }) => (
-  <Box p={50} height={1}>
+  <Box p={50} height={1} overflow="scroll">
     {children}
   </Box>
 )
