@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       experience: DataTypes.TEXT,
       bio: DataTypes.TEXT,
       miscInfo: DataTypes.JSON,
+      latestPoll: DataTypes.INTEGER,
     },
     {}
   )
