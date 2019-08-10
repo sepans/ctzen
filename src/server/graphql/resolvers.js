@@ -36,6 +36,7 @@ const resolvers = {
     const attributes = getTopLevelAttributes(info)
     const include = getAnswerIncludes(info)
     const where = {}
+
     // Adding where clause, it doesn't return candidates without response
     // const hasAnswerQuery = include.find(item => item.as === 'answers')
     // if (hasAnswerQuery) {
@@ -45,6 +46,9 @@ const resolvers = {
       attributes,
       include,
       where,
+      order: [
+        [Sequelize.fn('COALESCE', Sequelize.col('latestPoll'), -1), 'DESC'],
+      ],
     })
   },
   question: async ({ id }, context, info) => {

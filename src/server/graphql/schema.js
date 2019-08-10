@@ -130,6 +130,7 @@ const schema = buildASTSchema(gql`
     experience: String
     bio: String
     miscInfo: JSON
+    latestPoll: Int
     createdAt: Date
     updatedAt: Date
     answers: [CandidateAnswer]
