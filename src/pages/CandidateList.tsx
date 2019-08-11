@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { CandidateList_candidates } from './__generated__/CandidateList_candidates.graphql'
-import { PageWrapper, Button } from '../components/Layout'
+import { PageWrapper, Button, Header, Title } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { CandidateImage, Text } from '../components/Layout'
 
@@ -16,7 +16,7 @@ const CandidateList: React.FC<CandidateListProps> = props => {
   const candidateList = candidates
     .slice(0, candidateCount)
     .map((candidate, i) => (
-      <Box key={i} my={2}>
+      <Box key={i} my={2} px={20} pb={10} borderBottom="1px solid #BBB">
         <Link to={`/candidate/${candidate.id}`}>
           <Box display="flex">
             <CandidateImage img={candidate.image as string} />
@@ -24,7 +24,10 @@ const CandidateList: React.FC<CandidateListProps> = props => {
               <Text block type="primary">
                 {candidate.name}
               </Text>
-              <Text>{candidate.experience}</Text>
+              <Text block>{candidate.state}</Text>
+              <Text color="gray" block maxWidth={0.85}>
+                {candidate.experience}
+              </Text>
             </Box>
           </Box>
         </Link>
@@ -32,15 +35,20 @@ const CandidateList: React.FC<CandidateListProps> = props => {
     ))
 
   const showMoreBtn = candidateCount < candidates.length && (
-    <Box textAlign="center">
-      <Button onClick={() => setCandidateCount(candidateCount + 5)}>
+    <Box textAlign="center" mx={20} mb={30}>
+      <Button width={1} onClick={() => setCandidateCount(candidateCount + 5)}>
         Show more
       </Button>
     </Box>
   )
 
   return (
-    <PageWrapper>
+    <PageWrapper noPadding>
+      <Header noPadding={false}>
+        <Title color="white" textAlign="center">
+          {candidates.length} Democrat candidates 2020
+        </Title>
+      </Header>
       <Box mt={2}>{candidateList}</Box>
       {showMoreBtn}
     </PageWrapper>
@@ -54,6 +62,7 @@ export default createFragmentContainer(CandidateList, {
       name: displayName
       experience
       image
+      state
     }
   `,
 })

@@ -7,6 +7,7 @@ export type CandidateList_candidates = ReadonlyArray<{
     readonly name: string | null;
     readonly experience: string | null;
     readonly image: string | null;
+    readonly state: string | null;
     readonly " $refType": CandidateList_candidates$ref;
 }>;
 
@@ -48,8 +49,15 @@ const node: ReaderFragment = {
       "name": "image",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'e20d9c66de2b5e2cf1915cb3fdf0a1e6';
+(node as any).hash = 'b99da946ab93399db71043649ae24f44';
 export default node;
