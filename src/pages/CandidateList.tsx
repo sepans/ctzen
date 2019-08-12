@@ -11,7 +11,7 @@ interface CandidateListProps {
 }
 
 const CandidateList: React.FC<CandidateListProps> = props => {
-  const [candidateCount, setCandidateCount] = useState(6)
+  const [candidateCount, setCandidateCount] = useState(10)
   const { candidates } = props
   const candidateList = candidates
     .slice(0, candidateCount)
