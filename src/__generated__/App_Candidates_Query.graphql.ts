@@ -28,6 +28,7 @@ fragment CandidateList_candidates on Candidate {
   name: displayName
   experience
   image
+  state
 }
 */
 
@@ -99,6 +100,13 @@ const node: ConcreteRequest = {
             "name": "image",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "state",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -108,7 +116,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "App_Candidates_Query",
     "id": null,
-    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n}\n",
+    "text": "query App_Candidates_Query {\n  candidates {\n    ...CandidateList_candidates\n    id\n  }\n}\n\nfragment CandidateList_candidates on Candidate {\n  id\n  name: displayName\n  experience\n  image\n  state\n}\n",
     "metadata": {}
   }
 };

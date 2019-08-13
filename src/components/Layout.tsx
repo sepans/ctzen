@@ -15,10 +15,13 @@ enum TextTypes {
   secondary = 'secondary',
 }
 
-interface TextProps {
+interface TextProps extends HasRest {
   type?: keyof typeof TextTypes
   block?: boolean
   style?: any
+}
+
+interface HasRest {
   [rest: string]: any
 }
 
@@ -28,13 +31,12 @@ enum ButtonType {
   selected = 'selected',
 }
 
-interface ButtonProps {
+interface ButtonProps extends HasRest {
   type?: keyof typeof ButtonType
-  [rest: string]: any
 }
 
-export const Title: React.FC = ({ children }) => (
-  <Typography variant="h2" fontSize="4">
+export const Title: React.FC<HasRest> = ({ children, ...rest }) => (
+  <Typography variant="h2" fontSize="3" {...rest}>
     {children}
   </Typography>
 )
@@ -95,9 +97,9 @@ export const Button: React.FC<ButtonProps> = ({
 
 export const CandidateImage = styled.div`
   border-radius: 50%;
-  min-width: 100px;
-  height: 100px;
-  border: 5px solid #333;
+  min-width: 42px;
+  height: 42px;
+  border: 2px solid #333;
   background-image: url(${(p: { img: string }) => p.img});
   background-size: cover;
   display: inline-block;
@@ -108,9 +110,24 @@ export const CandidateAvatar = styled(CandidateImage)`
   height: 50px;
   border-width: 2px;
 `
+interface WrapperProps {
+  noPadding?: boolean
+}
 
-export const PageWrapper = ({ children }) => (
-  <Box p={50} height={1} overflow="scroll">
+export const PageWrapper: React.FC<WrapperProps> = ({
+  children,
+  noPadding = false,
+}) => (
+  <Box p={noPadding ? 0 : 20} height={1} overflow="scroll">
+    {children}
+  </Box>
+)
+
+export const Header: React.FC<WrapperProps> = ({
+  children,
+  noPadding = true,
+}) => (
+  <Box px={noPadding ? 0 : 20} py={20} backgroundColor="black">
     {children}
   </Box>
 )

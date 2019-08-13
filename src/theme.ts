@@ -5,4 +5,7 @@ export const theme = Object.assign({}, smoothTheme, {
   primary: '#FFF',
   light: '#FFF',
   dark: '#0057FF',
+  gray: '#A4A4A4',
+  black: '#000',
+  fontSizes: [8, 12, 20, 24, 32, 48, 64, 72],
 })
