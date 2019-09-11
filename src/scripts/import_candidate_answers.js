@@ -6,8 +6,24 @@ const { db } = require('../server/models')
 
 // !!!!!!! important
 const DELETE_ANSWERS = false
-const file = '../../data/09_09_19/warren.json'
-const candidateName = 'Elizabeth Warren'
+let file = '../../data/09_09_19/warren.json'
+let candidateName = 'Elizabeth Warren'
+/*
+ names in db:
+ Joe Biden
+ Bernie Sanders
+ Elizabeth Warren
+ Pete Buttigieg
+ Julian Castro
+ Amy Klobuchar
+ Beto O'Rourke
+ Michael Bennet
+ Cory Booker
+ Tulsi Gabbard
+ Andrew Yang
+ Bill de Blasio
+ Kamala Harris
+*/
 
 const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)
@@ -48,6 +64,18 @@ const saveAnswers = async answers => {
     })
   })
 }
+
+if (process.argv.length !== 4) {
+  console.log(
+    "Usage:  node import_candidate_answers.js ../../data/09_09_19/warren.json 'Elizabeth Warren'"
+  )
+  process.exit(-1)
+}
+
+file = process.argv[2]
+candidateName = process.argv[3]
+
+console.log(`Imporing file ${file} for ${candidateName}`)
 
 const qs = loadJSON(file)
 if (DELETE_ANSWERS) {
