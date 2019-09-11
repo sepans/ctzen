@@ -4,10 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const { db } = require('../server/models')
 
-const DELETE_ANSWERS = true
-
-const file = '../../data/biden_answers.json'
-const candidateName = 'Joe Biden'
+// !!!!!!! important
+const DELETE_ANSWERS = false
+const file = '../../data/09_09_19/warren.json'
+const candidateName = 'Elizabeth Warren'
 
 const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)
@@ -32,9 +32,10 @@ const saveAnswers = async answers => {
     return
   }
   answers.forEach(async answer => {
+    console.log('ANSWER ====> ', answer)
     const q = await db.Question.findOne({
       where: {
-        importId: answer.id,
+        importId: answer.importId,
       },
     })
     if (!q) {
@@ -43,7 +44,7 @@ const saveAnswers = async answers => {
     }
 
     await candidate.addAnswer(q, {
-      through: { response: parseInt(answer.selected_option - 1) },
+      through: { response: parseInt(answer.Answer - 1) },
     })
   })
 }

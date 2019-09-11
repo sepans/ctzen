@@ -4,9 +4,9 @@ const fs = require('fs')
 const path = require('path')
 const { db } = require('../server/models')
 
+// !!!!!!! IMPORTANT !!!!!!!
 const DELETE_QUESTIONS = true
-
-const file = '../../data/questions_econ.json'
+const file = '../../data/09_09_19/questions.json'
 
 const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)

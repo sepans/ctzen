@@ -1,6 +1,6 @@
 [
   {
-    "id": "E1_T.1",
+    "importId": "E1_T.1",
     "question": "Current international trade arrangements (e.g., WTO, NAFTA) are to the detriment of the US economy and should be renegotiated",
     "selected_option": "1",
     "Coments": "http://nymag.com/intelligencer/2019/05/bernie-sanders-biden-trade-nafta-china-tpp-democratic-primary-2020.html",
@@ -10,7 +10,7 @@
     "Foreign claims": "President should be required to come to Congress for an authorization of the use of military force (AUMF)"
   },
   {
-    "id": "E1_T.2",
+    "importId": "E1_T.2",
     "question": "The government should increase tariffs on products imported into the country",
     "selected_option": "1",
     "Coments": "",
@@ -20,7 +20,7 @@
     "Foreign claims": "US should pursue good relations and strong credibility with most of the key allies around the world  "
   },
   {
-    "id": "E2_F.1",
+    "importId": "E2_F.1",
     "question": "Current taxes on the rich (e.g., ppl with >$10M in wealth) are too low and should be increased",
     "selected_option": "4",
     "Coments": "",
@@ -30,7 +30,7 @@
     "Foreign claims": "A strong United Nations is in the best interests of the United States"
   },
   {
-    "id": "E2_F.1.1",
+    "importId": "E2_F.1.1",
     "question": "I support a marginal individual tax rate of 70 percent on the very highest earners, those making more than $10 million a year",
     "selected_option": "2",
     "Coments": "",
@@ -40,7 +40,7 @@
     "Foreign claims": "Pulling out of the NATO may advance US strategic interests around the world"
   },
   {
-    "id": "E2_F.1.2",
+    "importId": "E2_F.1.2",
     "question": "Should we tax capital gains at the same rates that we tax ordinary income?",
     "selected_option": "2",
     "Coments": "",
@@ -50,7 +50,7 @@
     "Foreign claims": "US should consider greater use of drone strikes and special operations"
   },
   {
-    "id": "E2_F.2",
+    "importId": "E2_F.2",
     "question": "The government should provide guarenteed income to every citizen",
     "selected_option": "1",
     "Coments": "https://www.newsweek.com/joe-biden-universal-basic-income-bernie-sanders-elon-musk-864801",
@@ -60,7 +60,7 @@
     "Foreign claims": "We have sufficient legal / economic / safety checks in place for our drone programs"
   },
   {
-    "id": "E2_F.2.1",
+    "importId": "E2_F.2.1",
     "question": "The government should provide universal basic income of $1,000 per month to every citizen",
     "selected_option": "1",
     "Coments": "",
@@ -70,7 +70,7 @@
     "Foreign claims": "Israel meets international standards of human rights"
   },
   {
-    "id": "E2_F.2.2",
+    "importId": "E2_F.2.2",
     "question": "The government should expand the earned income tax credit",
     "selected_option": "5",
     "Coments": "",
@@ -80,7 +80,7 @@
     "Foreign claims": "Pulling out of the Iran nuclear deal was necessary to improve America's interests"
   },
   {
-    "id": "E2_F.3",
+    "importId": "E2_F.3",
     "question": "The government should raise the tax rate for corporations",
     "selected_option": "5",
     "Coments": "https://nypost.com/2019/07/05/biden-wants-to-raise-the-corporate-tax-rate-back-to-obama-era/",
@@ -90,7 +90,7 @@
     "Foreign claims": "US should pursue tariff and trade wars to push back on China's trade and IP piracy policies"
   },
   {
-    "id": "E2_F.3.1",
+    "importId": "E2_F.3.1",
     "question": "The government should increase the corporate tax rate above 21 percent",
     "selected_option": "5",
     "Coments": "",
@@ -100,7 +100,7 @@
     "Foreign claims": "US was correct to get out of the Paris Climate Accord"
   },
   {
-    "id": "E2_F.3.2",
+    "importId": "E2_F.3.2",
     "question": "The government should reduce 'tax loopholes' that cause corporations pay a much lower effective tax rate than 21 percent",
     "selected_option": "5",
     "Coments": "",
@@ -110,7 +110,7 @@
     "Foreign claims": "It is not the US's responsibility to protect other country's citizens in the case of genocide or crimes against humanity"
   },
   {
-    "id": "E2_F.4",
+    "importId": "E2_F.4",
     "question": "The government should make cuts to public spending in order to reduce the national debt",
     "selected_option": "4",
     "Coments": "",
@@ -120,7 +120,7 @@
     "Foreign claims": "American troops should be present in Afghanistan in 2024"
   },
   {
-    "id": "E2_F.5",
+    "importId": "E2_F.5",
     "question": "Economic welfare programs should be expanded",
     "selected_option": "3",
     "Coments": "",
@@ -130,7 +130,7 @@
     "Foreign claims": "US should preemptively attack Iran to protect its national interests"
   },
   {
-    "id": "E2_F.6",
+    "importId": "E2_F.6",
     "question": "The government should increase property taxes",
     "selected_option": "3",
     "Coments": "",
@@ -140,7 +140,7 @@
     "Foreign claims": "US has responded adequately to Russian interference in 2016"
   },
   {
-    "id": "E2_F.7",
+    "importId": "E2_F.7",
     "question": "The government should reallocate the budget from military spending / wars towards domestic programs (e.g., healthcare)",
     "selected_option": "4",
     "Coments": "",
@@ -150,7 +150,7 @@
     "Foreign claims": "Saudi Crown Prince Mohammad Bin Salman should be held accountable for the assassination of Saudi dissident and journalist Jamal Khashoggi"
   },
   {
-    "id": "E2_F.8",
+    "importId": "E2_F.8",
     "question": "The government should have an active industrial policy",
     "selected_option": "4",
     "Coments": "",
@@ -160,7 +160,7 @@
     "Foreign claims": "US should actively prevent China's rise as a military super-power"
   },
   {
-    "id": "E2_F.8.1",
+    "importId": "E2_F.8.1",
     "question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
     "selected_option": "4",
     "Coments": "https://joebiden.com/climate/",
@@ -170,7 +170,7 @@
     "Foreign claims": "US should actively balance against Russian show of force"
   },
   {
-    "id": "E2_L.1",
+    "importId": "E2_L.1",
     "question": "The government should provide government job guarantees",
     "selected_option": "3",
     "Coments": "",
@@ -180,7 +180,7 @@
     "Foreign claims": "US should pursue tariff and trade wars to push back on China's trade and IP piracy policies"
   },
   {
-    "id": "E2_L.2",
+    "importId": "E2_L.2",
     "question": "The government should introduce $15/hr federally mandate minimum wage",
     "selected_option": "5",
     "Coments": "",
@@ -190,7 +190,7 @@
     "Foreign claims": "US should not have pulled out of the Saudi-led intervention in Yemen"
   },
   {
-    "id": "E2_L.3",
+    "importId": "E2_L.3",
     "question": "The government should require employers to pay men and women the same salary for the same job",
     "selected_option": "5",
     "Coments": "",
@@ -200,7 +200,7 @@
     "Foreign claims": "Looking back, regardless of whether going to war in Iraq was a good or bad decision, the US military surge in Iraq in 2007 was necessary for success"
   },
   {
-    "id": "E2_L.4",
+    "importId": "E2_L.4",
     "question": "All businesses should be required by the federal government to provide at least 2 months of paid maternity leave to women",
     "selected_option": "5",
     "Coments": "",
@@ -210,7 +210,7 @@
     "Foreign claims": "Given growing threats to the US, growing defense / pentagon spending should be a priority"
   },
   {
-    "id": "E2_L.5",
+    "importId": "E2_L.5",
     "question": "All businesses should be required by the federal government to provide at least 3 days of paid sick leave to full-time employees",
     "selected_option": "5",
     "Coments": "",
@@ -220,7 +220,7 @@
     "Foreign claims": "It is not ideal but in some cases necessary to use extreme interrogration techniques, especially for terrorist suspects"
   },
   {
-    "id": "E2_L.6",
+    "importId": "E2_L.6",
     "question": "All businesses should be required by the federal government to provide at least 2 weeks of paid paternity leave to full-time male employees",
     "selected_option": "5",
     "Coments": "",
@@ -230,7 +230,7 @@
     "Foreign claims": "US should maximize flexibility in our nuclear strategy (for e.g., using a nuclear weapon as a show of strength even when a conventional weapon could do just the same)"
   },
   {
-    "id": "E2_L.7",
+    "importId": "E2_L.7",
     "question": "The government should institute policies that sreangthen and encourage labor unions",
     "selected_option": "5",
     "Coments": "https://en.wikipedia.org/wiki/Political_positions_of_Joe_Biden#Labor_unions",
@@ -240,7 +240,7 @@
     "Foreign claims": "US should actively prevent China's rise as a military super-power"
   },
   {
-    "id": "E2_L.8",
+    "importId": "E2_L.8",
     "question": "The government shouldincrease the amount of work permits it provides to non-US nationals",
     "selected_option": "4",
     "Coments": "",
@@ -250,7 +250,7 @@
     "Foreign claims": "US should actively balance against Russian show of force"
   },
   {
-    "id": "E2_L.9",
+    "importId": "E2_L.9",
     "question": "The government should employ a \"merit-based\" system to allocate work-permits to non-US nationals",
     "selected_option": "2",
     "Coments": "",
@@ -260,7 +260,7 @@
     "Foreign claims": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development"
   },
   {
-    "id": "E3_I.1",
+    "importId": "E3_I.1",
     "question": "The government should break up large financial intituttions to solve concerns around \"too big to fail\"",
     "selected_option": "2",
     "Coments": "",
@@ -270,7 +270,7 @@
     "Foreign claims": "Illegal immigration is a major national security problem in the US"
   },
   {
-    "id": "E3_I.2",
+    "importId": "E3_I.2",
     "question": "The government should prevent \"mega mergers\" of corporations that could potentially control a large percentage of market share within its industry",
     "selected_option": "4",
     "Coments": "",
@@ -280,7 +280,7 @@
     "Foreign claims": "US should maintain current administration's zero tolerance policy, remain in Mexico policy, and the metering policy"
   },
   {
-    "id": "E3_I.3",
+    "importId": "E3_I.3",
     "question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
     "selected_option": "4",
     "Coments": "",
@@ -290,7 +290,7 @@
     "Foreign claims": "US should support more investments in the Northern triangle (region including El Salvador, Guatemala, and Honduras)"
   },
   {
-    "id": "E3_I.4",
+    "importId": "E3_I.4",
     "question": "The government should increase its regulation of large tech firms (e.g., Alphabet, Facebook, Amazon), especially as it relates to protecting consumers' data privacy",
     "selected_option": "4",
     "Coments": "",
@@ -300,7 +300,7 @@
     "Foreign claims": "US should not always welcome those fleeing violence in their home countries"
   },
   {
-    "id": "E3_I.5",
+    "importId": "E3_I.5",
     "question": "The government should regulate prices in the market (e.g., controlling the rent landlords can charge tenants)",
     "selected_option": "4",
     "Coments": "",
@@ -310,7 +310,7 @@
     "Foreign claims": "US should grant Dreamers US citizenship"
   },
   {
-    "id": "E3_I.6",
+    "importId": "E3_I.6",
     "question": "I support a public single-payer healthcare system",
     "selected_option": "2",
     "Coments": "",
@@ -320,7 +320,7 @@
     "Foreign claims": "US should provide government health insurance to illegal immigrants"
   },
   {
-    "id": "E3_I.7",
+    "importId": "E3_I.7",
     "question": "Health insurers should not be able to deny coverage to individuals with pre-existing conditions",
     "selected_option": "5",
     "Coments": "",
@@ -330,7 +330,7 @@
     "Foreign claims": "US should repeal Helms amendment - 1973 law that has banned U.S. foreign aid for abortion access"
   },
   {
-    "id": "E3_I.8",
+    "importId": "E3_I.8",
     "question": "The government should regulate prices of life-saving drugs",
     "selected_option": "5",
     "Coments": "",
@@ -340,7 +340,7 @@
     "Foreign claims": ""
   },
   {
-    "id": "E3_I.9",
+    "importId": "E3_I.9",
     "question": "The government should regulate prices of all pharmaceuticals",
     "selected_option": "2",
     "Coments": "",
@@ -350,7 +350,7 @@
     "Foreign claims": ""
   },
   {
-    "id": "E3_I.10",
+    "importId": "E3_I.10",
     "question": "I support the Patient Protection and Affordable Care Act (Obamacare)",
     "selected_option": "5",
     "Coments": "",
@@ -360,7 +360,7 @@
     "Foreign claims": ""
   },
   {
-    "id": "E3_I.11",
+    "importId": "E3_I.11",
     "question": "Veteran's healthcare should be privatized",
     "selected_option": "2",
     "Coments": "",
@@ -370,7 +370,7 @@
     "Foreign claims": ""
   },
   {
-    "id": "E3_I.12",
+    "importId": "E3_I.12",
     "question": "Pivate health insurance should be abolished in favor of a government-run plan",
     "selected_option": "2",
     "Coments": "",
