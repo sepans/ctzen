@@ -89,24 +89,30 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     </>
   )
 
-  const topMatch =
-    me &&
-    me.matchingCandidates &&
-    me.matchingCandidates.length &&
-    me.matchingCandidates[0]
-  const topMatchBox = topMatch && topMatch.score && (
-    <Box mb={1}>
-      {`You have ${Math.round(topMatch.score * 100)}% match with ${topMatch &&
-        topMatch.candidate &&
-        topMatch.candidate.name}`}
-    </Box>
-  )
+  const topMatches = me && me.matchingCandidates
+  const topMatchItems =
+    topMatches &&
+    topMatches.map(
+      (topMatch, i) =>
+        topMatch &&
+        topMatch.score && (
+          <Box mx={1}>
+            <strong>{Math.round(topMatch.score * 100)}%</strong> with{' '}
+            <strong>
+              {topMatch && topMatch.candidate && topMatch.candidate.name}
+            </strong>
+          </Box>
+        )
+    )
 
   const showNext = selection !== -1
 
   return (
     <PageWrapper>
-      {topMatchBox}
+      <Box mb={1} display="flex" flexWrap="wrap">
+        <Box mr={1}>Your candidate matches: </Box>
+        {topMatchItems}
+      </Box>
       <Title>{title}</Title>
       <Box my={3}>
         <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">

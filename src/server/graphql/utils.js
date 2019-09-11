@@ -181,7 +181,7 @@ const getMatchingCandidates = async user => {
       candidate,
     }
   })
-  return ret
+  return ret.sort((a, b) => b.score - a.score)
 }
 
 const VECTOR_UNDEFINED_VALUE = 0
