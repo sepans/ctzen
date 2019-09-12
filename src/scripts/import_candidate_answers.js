@@ -10,10 +10,12 @@ let file = '../../data/09_09_19/warren.json'
 let candidateName = 'Elizabeth Warren'
 /*
  names in db:
- Joe Biden
- Bernie Sanders
- Elizabeth Warren
- Pete Buttigieg
+Joe Biden
+Pete Buttigieg
+Kamala Harris
+Bernie Sanders
+Elizabeth Warren
+
  Julian Castro
  Amy Klobuchar
  Beto O'Rourke
@@ -22,7 +24,6 @@ let candidateName = 'Elizabeth Warren'
  Tulsi Gabbard
  Andrew Yang
  Bill de Blasio
- Kamala Harris
 */
 
 const loadJSON = filePath => {

@@ -19,4 +19,5 @@ Steps:
 
 ### Import candidate answers
 1. Steps 1-3 are the same.
-2. **IMPORTANT** similarly check for `DELETE_ANSWERS` (most likely needs to be false. it deletes all candidate answers) and update **candidate name** and **file name** accordingly
+2. **IMPORTANT** similarly check for `DELETE_ANSWERS` (most likely needs to be false. it deletes all candidate answers)
+3. Run: `node import_candidate_answers.js ../../data/09_09_19/warren.json 'Elizabeth Warren'`
