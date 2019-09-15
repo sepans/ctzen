@@ -33,6 +33,8 @@ const mutation = graphql`
   }
 `
 
+const NUMBER_OF_OPTIONS = 5
+
 const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)
   const { title } = question
@@ -56,12 +58,13 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
   }
   const buttonClick = i => {
     if (selection !== i) {
-      setSelection(i)
+      // TODO hacky. number of options can change. get i from a reliable source not index
+      setSelection(NUMBER_OF_OPTIONS - i)
     }
   }
 
   const options = optionArray(question).map((option, i) => {
-    const selected = i === selection
+    const selected = i === NUMBER_OF_OPTIONS - selection
     return (
       <Box key={i} width={{ xs: 1, md: 0.5, lg: 0.33, xl: 0.2 }} pr={1} py={1}>
         <Button
@@ -96,7 +99,7 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
       (topMatch, i) =>
         topMatch &&
         topMatch.score && (
-          <Box mx={1}>
+          <Box mx={1} key={i}>
             <strong>{Math.round(topMatch.score * 100)}%</strong> with{' '}
             <strong>
               {topMatch && topMatch.candidate && topMatch.candidate.name}
