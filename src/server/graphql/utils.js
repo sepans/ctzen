@@ -5,6 +5,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const getFieldList = require('graphql-list-fields')
 const distance = require('ml-distance')
+// const simi = require('ml-distance')
 
 const randomBytes = util.promisify(crypto.randomBytes)
 
@@ -172,8 +173,9 @@ const getMatchingCandidates = async user => {
   })
   const ret = candidates.map(candidate => {
     const answers = candidate.answers
+    console.log(candidate.displayName)
     const candidateVector = answersToVector(answers, allQuestionIds)
-    const score = distance.similarity.cosine(userVector, candidateVector)
+    const score = calculateSimilarity(userVector, candidateVector)
     // console.log(userVector, candidateVector)
     // console.log('DISTANCE', score)
     return {
@@ -184,7 +186,39 @@ const getMatchingCandidates = async user => {
   return ret.sort((a, b) => b.score - a.score)
 }
 
-const VECTOR_UNDEFINED_VALUE = 0
+const matchCandidateVectorWithUser = (userVector, candidateVector) => {
+  const matchedVectors = { user: [], candidate: [] }
+  userVector.forEach((answer, i) => {
+    if (answer !== VECTOR_UNDEFINED_VALUE) {
+      matchedVectors.user.push(answer)
+      matchedVectors.candidate.push(candidateVector[i])
+    }
+  })
+  console.log(matchedVectors)
+  return matchedVectors
+}
+
+const calculateSimilarity = (userVector, candidateVector) => {
+  const matchedVectors = matchCandidateVectorWithUser(
+    userVector,
+    candidateVector
+  )
+  const cosine = distance.similarity.cosine(
+    matchedVectors.user,
+    matchedVectors.candidate
+  )
+  console.log('cosine', cosine)
+
+  const jaccard = distance.similarity.jaccard(
+    matchedVectors.user,
+    matchedVectors.candidate
+  )
+  console.log('jaccard', jaccard)
+
+  return jaccard
+}
+
+const VECTOR_UNDEFINED_VALUE = -1
 
 const answersToVector = (answers, allQuestionIds) => {
   const indexedAnswers = answers.reduce((acc, answer) => {
@@ -234,6 +268,7 @@ module.exports = {
   hasCurrentUser,
   authenticated,
   getNextQuestion,
+  calculateSimilarity,
   getMatchingCandidates,
   getTopLevelAttributes,
   getAnswerIncludes,
@@ -241,4 +276,6 @@ module.exports = {
   hasNextQuestionQuery,
   hasMatchingCandidatesQuery,
   answersToVector,
+  matchCandidateVectorWithUser,
+  VECTOR_UNDEFINED_VALUE,
 }
