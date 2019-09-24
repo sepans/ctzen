@@ -5,9 +5,9 @@ export const optionArray = ({
   option4,
   option5,
 }): Array<String> => [
-  option1 || 'strongly agree',
-  option2 || 'somehow agree',
+  option1 || 'strongly disagree',
+  option2 || 'somewhat disagree',
   option3 || 'neither agree nor disagree',
-  option4 || 'somehow disagree',
-  option5 || 'strongly disagree',
+  option4 || 'somewhat agree',
+  option5 || 'strongly agree',
 ]
