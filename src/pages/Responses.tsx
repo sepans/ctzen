@@ -15,6 +15,7 @@ const Responses: React.FC<Props> = ({ me }) => {
     me.user &&
     me.user.answers &&
     me.user.answers.map(answer => {
+      console.log(answer)
       if (!answer || !answer.UserResponse) return null
       const pick = answer.UserResponse.response || 0
       const pickText = optionArray(answer)[pick]
@@ -52,8 +53,8 @@ export default createFragmentContainer(Responses, {
           UserResponse {
             response
           }
-          id
           title
+          id
           option1
           option2
           option3

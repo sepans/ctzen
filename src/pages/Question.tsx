@@ -78,14 +78,16 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     )
   })
 
-  const afterAnswerSection = (
+  const showNext = selection !== -1
+
+  const buttonSection = (
     <>
       <Box mt={2} display="flex" justifyContent="space-between">
         <>
           <Link to="/responses">
             <Button>View answers</Button>
           </Link>
-          <Button onClick={submitSelection}>Next ></Button>
+          {showNext && <Button onClick={submitSelection}>Next ></Button>}
         </>
       </Box>
     </>
@@ -107,8 +109,6 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
         )
     )
 
-  const showNext = selection !== -1
-
   return (
     <PageWrapper>
       <Box mb={1} display="flex" flexWrap="wrap">
@@ -120,7 +120,7 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
         <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
           {options}
         </Box>
-        {showNext && afterAnswerSection}
+        {buttonSection}
       </Box>
     </PageWrapper>
   )

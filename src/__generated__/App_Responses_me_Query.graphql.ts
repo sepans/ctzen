@@ -29,8 +29,8 @@ fragment Responses_me on UserInfo {
       UserResponse {
         response
       }
-      id
       title
+      id
       option1
       option2
       option3
@@ -127,7 +127,6 @@ return {
                       }
                     ]
                   },
-                  (v0/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -135,6 +134,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v0/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -182,7 +182,7 @@ return {
     "operationKind": "query",
     "name": "App_Responses_me_Query",
     "id": null,
-    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n  }\n}\n\nfragment Responses_me on UserInfo {\n  user {\n    id\n    answers {\n      UserResponse {\n        response\n      }\n      id\n      title\n      option1\n      option2\n      option3\n      option4\n      option5\n    }\n  }\n}\n",
+    "text": "query App_Responses_me_Query {\n  me {\n    ...Responses_me\n  }\n}\n\nfragment Responses_me on UserInfo {\n  user {\n    id\n    answers {\n      UserResponse {\n        response\n      }\n      title\n      id\n      option1\n      option2\n      option3\n      option4\n      option5\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
