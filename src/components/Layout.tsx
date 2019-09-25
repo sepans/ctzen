@@ -36,7 +36,7 @@ interface ButtonProps extends HasRest {
 }
 
 export const Title: React.FC<HasRest> = ({ children, ...rest }) => (
-  <Typography variant="h2" fontSize="3" {...rest}>
+  <Typography variant="h2" fontSize="2" {...rest}>
     {children}
   </Typography>
 )
@@ -131,3 +131,8 @@ export const Header: React.FC<WrapperProps> = ({
     {children}
   </Box>
 )
+
+export const ReverseElementColors = {
+  backgroundColor: 'black',
+  color: 'white',
+}

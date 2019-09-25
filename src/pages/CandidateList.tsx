@@ -5,6 +5,7 @@ import { CandidateList_candidates } from './__generated__/CandidateList_candidat
 import { PageWrapper, Button, Header, Title } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { CandidateImage, Text } from '../components/Layout'
+import { FooterNav } from '../components/FooterNav'
 
 interface CandidateListProps {
   candidates: CandidateList_candidates
@@ -51,6 +52,7 @@ const CandidateList: React.FC<CandidateListProps> = props => {
       </Header>
       <Box mt={2}>{candidateList}</Box>
       {showMoreBtn}
+      <FooterNav selectedNav="candidate" />
     </PageWrapper>
   )
 }

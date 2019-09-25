@@ -1,38 +1,43 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { Position } from '../components/Position'
-import { Section, Title, PageWrapper } from '../components/Layout'
+import { Section, Text, PageWrapper } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidatePosition_candidate } from './__generated__/CandidatePosition_candidate.graphql'
 import { Box } from '@smooth-ui/core-sc'
+import { Categories } from '../components/Categories'
+import { FooterNav } from '../components/FooterNav'
+import { optionArray } from '../components/helpers/question_helpers'
 
 interface Props {
   candidate: CandidatePosition_candidate
 }
 
-const CandidatePosition = props => {
+const categories = ['Economy', 'Social', 'Foreign']
+
+const CandidatePosition: React.FC<Props> = ({ candidate }) => {
+  const answers =
+    candidate.answers &&
+    candidate.answers.map(answer => {
+      if (!answer) return
+      const pick =
+        (answer.CandidateResponse && answer.CandidateResponse.response) || 0
+      const pickText = optionArray(answer)[pick]
+      return (
+        <Box py={2} px={3} borderBottom="1px solid #AAA">
+          <Text block>{answer.title}</Text>
+          <Text color="green">{pickText}</Text>
+        </Box>
+      )
+    })
   return (
-    <PageWrapper>
-      <Title>Candidate positions:</Title>
-      <CandidateInfo candidate={props.candidate} />
-      <Box display="flex" flexWrap="wrap">
-        <Section>
-          <Position
-            title="Foreign Policy"
-            position={1}
-            candidate={props.candidate}
-          />
-          <Position title="Economy" position={2} candidate={props.candidate} />
-        </Section>
-        <Section>
-          <Position
-            title="Social Policy"
-            position={3}
-            candidate={props.candidate}
-          />
-          <Position title="Economy" position={0} candidate={props.candidate} />
-        </Section>
+    <PageWrapper noPadding>
+      <CandidateInfo candidate={candidate} />
+      <Categories categories={categories} selected="Economy" />
+      <Box>
+        <Section>{answers}</Section>
       </Box>
+      <FooterNav selectedNav="candidate" />
     </PageWrapper>
   )
 }
@@ -42,6 +47,17 @@ export default createFragmentContainer(CandidatePosition, {
     fragment CandidatePosition_candidate on Candidate {
       image
       ...CandidateInfo_candidate
+      answers {
+        title
+        option1
+        option2
+        option3
+        option4
+        option5
+        CandidateResponse {
+          response
+        }
+      }
     }
   `,
 })

@@ -80,13 +80,17 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
 
   const showNext = selection !== -1
 
+  const hasAnswers = me.user && me.user.answers && me.user.answers.length
+
   const buttonSection = (
     <>
       <Box mt={2} display="flex" justifyContent="space-between">
         <>
-          <Link to="/responses">
-            <Button>View answers</Button>
-          </Link>
+          {hasAnswers && (
+            <Link to="/responses">
+              <Button>View answers</Button>
+            </Link>
+          )}
           {showNext && <Button onClick={submitSelection}>Next ></Button>}
         </>
       </Box>
@@ -145,6 +149,11 @@ export default createFragmentContainer(Question, {
         score
         candidate {
           name: displayName
+        }
+      }
+      user {
+        answers {
+          id
         }
       }
     }

@@ -9,6 +9,11 @@ export type Question_me = {
             readonly name: string | null;
         } | null;
     } | null> | null;
+    readonly user: {
+        readonly answers: ReadonlyArray<{
+            readonly id: string | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": Question_me$ref;
 };
 
@@ -56,8 +61,37 @@ const node: ReaderFragment = {
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "user",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "User",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "answers",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "UserAnswer",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
+      ]
     }
   ]
 };
-(node as any).hash = '82b1be1ee1a1929e6bb248be97f8cf9a';
+(node as any).hash = 'aaaa9a571adc834f6b90343bed10e502';
 export default node;

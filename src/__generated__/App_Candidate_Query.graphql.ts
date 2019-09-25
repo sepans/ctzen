@@ -30,6 +30,18 @@ query App_Candidate_Query(
 fragment CandidatePosition_candidate on Candidate {
   image
   ...CandidateInfo_candidate
+  answers {
+    title
+    option1
+    option2
+    option3
+    option4
+    option5
+    CandidateResponse {
+      response
+    }
+    id
+  }
 }
 
 fragment CandidateInfo_candidate on Candidate {
@@ -57,7 +69,14 @@ v1 = [
     "name": "id",
     "variableName": "id"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -142,12 +161,78 @@ return {
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "id",
+            "name": "answers",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
-          }
+            "concreteType": "CandidateAnswer",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "title",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "option1",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "option2",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "option3",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "option4",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "option5",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "CandidateResponse",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "AnswerPick",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "response",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
+              (v2/*: any*/)
+            ]
+          },
+          (v2/*: any*/)
         ]
       }
     ]
@@ -156,7 +241,7 @@ return {
     "operationKind": "query",
     "name": "App_Candidate_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  image\n  ...CandidateInfo_candidate\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
+    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  image\n  ...CandidateInfo_candidate\n  answers {\n    title\n    option1\n    option2\n    option3\n    option4\n    option5\n    CandidateResponse {\n      response\n    }\n    id\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
     "metadata": {}
   }
 };

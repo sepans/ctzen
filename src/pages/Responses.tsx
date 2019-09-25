@@ -5,16 +5,18 @@ import { PageWrapper, Text, Button } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Responses_me } from './__generated__/Responses_me.graphql'
 import { optionArray } from '../components/helpers/question_helpers'
+import { FooterNav } from '../components/FooterNav'
 
 interface Props {
   me: Responses_me
 }
 
 const Responses: React.FC<Props> = ({ me }) => {
+  const answers = me.user && me.user.answers
   const responses =
-    me.user &&
-    me.user.answers &&
-    me.user.answers.map(answer => {
+    answers &&
+    answers.length &&
+    answers.map(answer => {
       console.log(answer)
       if (!answer || !answer.UserResponse) return null
       const pick = answer.UserResponse.response || 0
@@ -37,9 +39,18 @@ const Responses: React.FC<Props> = ({ me }) => {
       )
     })
 
+  const nextQuestion = me.nextQuestion && me.nextQuestion.id
+
+  const content = responses || (
+    <Link to={`/question/${nextQuestion}`}>
+      <Button>Start responding to questions</Button>
+    </Link>
+  )
+
   return (
-    <PageWrapper>
-      <Box>{responses}</Box>
+    <PageWrapper noPadding>
+      <Box p={2}>{content}</Box>
+      <FooterNav selectedNav="me" />
     </PageWrapper>
   )
 }
@@ -61,6 +72,9 @@ export default createFragmentContainer(Responses, {
           option4
           option5
         }
+      }
+      nextQuestion {
+        id
       }
     }
   `,
