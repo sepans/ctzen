@@ -25,12 +25,12 @@ const CandidateInfo: React.FC<Props> = ({ candidate }) => {
           <Text block type="secondary">
             {candidate.experience}
           </Text>
+          <Text pt={1} block>
+            state: {candidate.state}
+          </Text>
+          <Text block>age: {age}</Text>
+          <Text block>Place of birth: {candidate.pob}</Text>
         </Box>
-      </Box>
-      <Box display={'none'}>
-        <Text block>state: {candidate.state}</Text>
-        <Text block>age: {age}</Text>
-        <Text block>Place of birth: {candidate.pob}</Text>
       </Box>
     </>
   )
