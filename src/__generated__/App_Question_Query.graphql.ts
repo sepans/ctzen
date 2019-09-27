@@ -53,6 +53,12 @@ fragment Question_me on UserInfo {
       id
     }
   }
+  user {
+    answers {
+      id
+    }
+    id
+  }
 }
 */
 
@@ -233,6 +239,30 @@ return {
                 ]
               }
             ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "user",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "User",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "answers",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "UserAnswer",
+                "plural": true,
+                "selections": [
+                  (v2/*: any*/)
+                ]
+              },
+              (v2/*: any*/)
+            ]
           }
         ]
       }
@@ -242,7 +272,7 @@ return {
     "operationKind": "query",
     "name": "App_Question_Query",
     "id": null,
-    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      id\n    }\n  }\n}\n",
+    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      id\n    }\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -1,27 +1,26 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type Question_me$ref = any;
-export type Question_me = {
+export type CandidateList_me$ref = any;
+export type CandidateList_me = {
     readonly matchingCandidates: ReadonlyArray<{
         readonly score: number | null;
         readonly candidate: {
+            readonly id: string | null;
             readonly name: string | null;
+            readonly experience: string | null;
+            readonly image: string | null;
+            readonly state: string | null;
         } | null;
     } | null> | null;
-    readonly user: {
-        readonly answers: ReadonlyArray<{
-            readonly id: string | null;
-        } | null> | null;
-    } | null;
-    readonly " $refType": Question_me$ref;
+    readonly " $refType": CandidateList_me$ref;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Question_me",
+  "name": "CandidateList_me",
   "type": "UserInfo",
   "metadata": null,
   "argumentDefinitions": [],
@@ -53,37 +52,36 @@ const node: ReaderFragment = {
           "selections": [
             {
               "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
               "alias": "name",
               "name": "displayName",
               "args": null,
               "storageKey": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "user",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "User",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "answers",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "UserAnswer",
-          "plural": true,
-          "selections": [
+            },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "experience",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "image",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "state",
               "args": null,
               "storageKey": null
             }
@@ -93,5 +91,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'aaaa9a571adc834f6b90343bed10e502';
+(node as any).hash = '02aaaba11d460b4eccc3a31810c80b25';
 export default node;

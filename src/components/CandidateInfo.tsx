@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { CandidateInfo_candidate } from './__generated__/CandidateInfo_candidate.graphql'
 import { Box } from '@smooth-ui/core-sc'
-import { CandidateImage, Text } from './Layout'
+import { CandidateImage, Text, ReverseElementColors } from './Layout'
+import { Categories } from './Categories'
 
 interface Props {
   candidate: CandidateInfo_candidate
@@ -11,21 +12,26 @@ interface Props {
 const CandidateInfo: React.FC<Props> = ({ candidate }) => {
   // TODO: fix: subtract dates
   const year = new Date(candidate.dob).getFullYear()
+
   const age: number = new Date().getFullYear() - year
   return (
     <>
-      <Box my={1}>
+      <Box display="flex" flexDirection="row" p={2} {...ReverseElementColors}>
         <CandidateImage img={candidate.image as string} />
+        <Box pl={1}>
+          <Text block type="primary">
+            {candidate.name}
+          </Text>
+          <Text block type="secondary">
+            {candidate.experience}
+          </Text>
+          <Text pt={1} block>
+            state: {candidate.state}
+          </Text>
+          <Text block>age: {age}</Text>
+          <Text block>Place of birth: {candidate.pob}</Text>
+        </Box>
       </Box>
-      <Text block type="primary">
-        {candidate.name}
-      </Text>
-      <Text block type="primary">
-        {candidate.experience}
-      </Text>
-      <Text block>state: {candidate.state}</Text>
-      <Text block>age: {age}</Text>
-      <Text block>Place of birth: {candidate.pob}</Text>
     </>
   )
 }

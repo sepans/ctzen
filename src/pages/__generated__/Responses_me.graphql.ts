@@ -18,6 +18,9 @@ export type Responses_me = {
             readonly option5: string | null;
         } | null> | null;
     } | null;
+    readonly nextQuestion: {
+        readonly id: string | null;
+    } | null;
     readonly " $refType": Responses_me$ref;
 };
 
@@ -121,9 +124,21 @@ return {
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "nextQuestion",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Question",
+      "plural": false,
+      "selections": [
+        (v0/*: any*/)
+      ]
     }
   ]
 };
 })();
-(node as any).hash = 'c40fd6c86c187385ff8fe94252877eed';
+(node as any).hash = 'e609b0d08f82b8de3ed0d3ca68f7b7a0';
 export default node;
