@@ -81,18 +81,18 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
 
   const showNext = selection !== -1
 
-  const hasAnswers = me.user && me.user.answers && me.user.answers.length
+  const hasAnswers = me.user && me.user.answers && me.user.answers.length > 0
 
   const topScores: (number)[] =
     (me &&
       me.matchingCandidates &&
-      me.matchingCandidates.length &&
+      me.matchingCandidates.length > 0 &&
       me.matchingCandidates[0] &&
       me.matchingCandidates.map(match => (match && match.score) || 0)) ||
     []
 
   const hasMatches =
-    topScores && topScores.length && topScores[0] > MATCH_SCORE_THRESHOLD
+    topScores && topScores[0] && topScores[0] > MATCH_SCORE_THRESHOLD
 
   const buttonSection = (
     <>
@@ -120,28 +120,8 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     </>
   )
 
-  // const topMatches = me && me.matchingCandidates
-  // const topMatchItems =
-  //   topMatches &&
-  //   topMatches.map(
-  //     (topMatch, i) =>
-  //       topMatch &&
-  //       topMatch.score && (
-  //         <Box mx={1} key={i}>
-  //           <strong>{Math.round(topMatch.score * 100)}%</strong> with{' '}
-  //           <strong>
-  //             {topMatch && topMatch.candidate && topMatch.candidate.name}
-  //           </strong>
-  //         </Box>
-  //       )
-  //   )
-
   return (
     <PageWrapper>
-      <Box mb={1} display="flex" flexWrap="wrap">
-        <Box mr={1}>Your candidate matches: </Box>
-        {/*topMatchItems*/}
-      </Box>
       <Title>{title}</Title>
       <Box my={3}>
         <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
