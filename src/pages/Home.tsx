@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { PageWrapper, Button, Title } from '../components/Layout'
+import {
+  PageWrapper,
+  Button,
+  Title,
+  ReverseElementColors,
+} from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Home_me } from './__generated__/Home_me.graphql'
 
@@ -24,8 +29,9 @@ const Home: React.FC<HomeProps> = ({ me: { nextQuestion, user } }) => {
   )
 
   return (
-    <PageWrapper>
+    <PageWrapper noPadding>
       <Box
+        p={3}
         height={0.5}
         display="flex"
         flexDirection="column"
@@ -36,7 +42,13 @@ const Home: React.FC<HomeProps> = ({ me: { nextQuestion, user } }) => {
         </Box>
         <ButtonBox>{questionButton}</ButtonBox>
       </Box>
-      <Box height={0.5} display="flex" flexDirection="column">
+      <Box
+        height={0.5}
+        display="flex"
+        flexDirection="column"
+        p={3}
+        {...ReverseElementColors}
+      >
         <Box my={4}>
           <Title>Or, see candidate positions:</Title>
         </Box>

@@ -10,4 +10,5 @@ export const theme = Object.assign({}, smoothTheme, {
   red: '#FF0000',
   green: '#00FF00',
   fontSizes: [10, 12, 20, 24, 32, 48, 64, 72],
+  btnDisabledOpacity: 0.4,
 })

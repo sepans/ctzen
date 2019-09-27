@@ -96,19 +96,25 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
 
   const buttonSection = (
     <>
-      <Box mt={2} display="flex" justifyContent="space-between">
+      <Box mt={2} display="flex" flexDirection="column">
         <>
-          {hasAnswers && (
-            <Link to="/responses">
-              <Button>View answers</Button>
-            </Link>
-          )}
-          {hasMatches && (
-            <Link to="/candidates">
-              <Button>Show candidate matches</Button>
-            </Link>
-          )}
-          {showNext && <Button onClick={submitSelection}>Next ></Button>}
+          <Box pb={3} justifyContent="right">
+            <Button width="100%" onClick={submitSelection} disabled={!showNext}>
+              Next >
+            </Button>
+          </Box>
+          <Box display="flex" justifyContent="space-between">
+            {hasAnswers && (
+              <Link to="/responses">
+                <Button>View answers</Button>
+              </Link>
+            )}
+            {hasMatches && (
+              <Link to="/candidates">
+                <Button>Show candidate matches</Button>
+              </Link>
+            )}
+          </Box>
         </>
       </Box>
     </>

@@ -15,7 +15,7 @@ const Responses: React.FC<Props> = ({ me }) => {
   const answers = me.user && me.user.answers
   const responses =
     answers &&
-    answers.length &&
+    answers.length > 0 &&
     answers.map(answer => {
       console.log(answer)
       if (!answer || !answer.UserResponse) return null
@@ -41,15 +41,22 @@ const Responses: React.FC<Props> = ({ me }) => {
 
   const nextQuestion = me.nextQuestion && me.nextQuestion.id
 
-  const content = responses || (
+  const respondQuestions = nextQuestion && (
     <Link to={`/question/${nextQuestion}`}>
-      <Button>Start responding to questions</Button>
+      <Button>
+        {responses ? 'continue ' : 'Start'} responding to questions
+      </Button>
     </Link>
   )
 
   return (
     <PageWrapper noPadding>
-      <Box p={2}>{content}</Box>
+      <Box p={2}>
+        <Box py={1} justifyContent="center" display="flex">
+          {respondQuestions}
+        </Box>
+        <Box>{responses}</Box>
+      </Box>
       <FooterNav selectedNav="me" />
     </PageWrapper>
   )
