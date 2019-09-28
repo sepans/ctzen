@@ -26,13 +26,11 @@ export const FooterNav: React.FC<FooterNavProps> = ({ selectedNav }) => {
   return (
     <Box
       width="100%"
-      bottom="0px"
       p={2}
       backgroundColor="black"
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      position="fixed"
     >
       <Link to={`/responses`}>
         <Button {...meStyles}>

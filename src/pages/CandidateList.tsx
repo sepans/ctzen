@@ -3,7 +3,7 @@ import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { CandidateList_candidates } from './__generated__/CandidateList_candidates.graphql'
 import { CandidateList_me } from './__generated__/CandidateList_me.graphql'
-import { PageWrapper, Button, Header, Title } from '../components/Layout'
+import { Button, Header, Title, WrapperWithFooter } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { CandidateImage, Text } from '../components/Layout'
 import { FooterNav } from '../components/FooterNav'
@@ -87,16 +87,21 @@ const CandidateList: React.FC<CandidateListProps> = ({ candidates, me }) => {
   )
 
   return (
-    <PageWrapper noPadding>
-      <Header noPadding={false}>
-        <Title color="white" textAlign="center">
-          {candidates.length} Democrat candidates 2020
-        </Title>
-      </Header>
-      <Box mt={2}>{candidateList}</Box>
-      {showMoreBtn}
-      <FooterNav selectedNav="candidate" />
-    </PageWrapper>
+    <WrapperWithFooter
+      header={
+        <Header noPadding={false}>
+          <Title color="white" textAlign="center">
+            {candidates.length} Democrat candidates 2020
+          </Title>
+        </Header>
+      }
+      footer={<FooterNav selectedNav="me" />}
+    >
+      <>
+        <Box mt={2}>{candidateList}</Box>
+        {showMoreBtn}
+      </>
+    </WrapperWithFooter>
   )
 }
 

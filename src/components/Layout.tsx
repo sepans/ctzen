@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import { Typography, Box, Button as SmoothButton } from '@smooth-ui/core-sc'
 
 export const Section = styled.div`
@@ -120,6 +120,26 @@ export const PageWrapper: React.FC<WrapperProps> = ({
 }) => (
   <Box p={noPadding ? 0 : 20} height={1} overflow="scroll">
     {children}
+  </Box>
+)
+
+interface WrapperWithFooterProps {
+  header?: ReactNode
+  footer?: ReactNode
+  children?: ReactNode
+}
+
+export const WrapperWithFooter: React.FC<WrapperWithFooterProps> = ({
+  header,
+  footer,
+  children,
+}) => (
+  <Box display="flex" flexDirection="column" height="100%">
+    <Box>{header}</Box>
+    <Box overflow="scroll" flex={1}>
+      {children}
+    </Box>
+    <Box>{footer}</Box>
   </Box>
 )
 

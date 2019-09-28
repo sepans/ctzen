@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { Position } from '../components/Position'
-import { Section, Text, PageWrapper } from '../components/Layout'
+import { WrapperWithFooter, Text } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidatePosition_candidate } from './__generated__/CandidatePosition_candidate.graphql'
 import { Box } from '@smooth-ui/core-sc'
@@ -30,15 +30,19 @@ const CandidatePosition: React.FC<Props> = ({ candidate }) => {
         </Box>
       )
     })
+
   return (
-    <PageWrapper noPadding>
-      <CandidateInfo candidate={candidate} />
-      <Categories categories={categories} selected="Economy" />
-      <Box>
-        <Section>{answers}</Section>
-      </Box>
-      <FooterNav selectedNav="candidate" />
-    </PageWrapper>
+    <WrapperWithFooter
+      header={
+        <>
+          <CandidateInfo candidate={candidate} />
+          <Categories categories={categories} selected="Economy" />
+        </>
+      }
+      footer={<FooterNav selectedNav="candidate" />}
+    >
+      <Box>{answers}</Box>
+    </WrapperWithFooter>
   )
 }
 

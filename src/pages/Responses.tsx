@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { PageWrapper, Text, Button } from '../components/Layout'
+import { WrapperWithFooter, Text, Button } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Responses_me } from './__generated__/Responses_me.graphql'
 import { optionArray } from '../components/helpers/question_helpers'
@@ -49,16 +49,30 @@ const Responses: React.FC<Props> = ({ me }) => {
     </Link>
   )
 
+  /*
+  return <WrapperWithFooter
+    header={(
+      <>
+        <CandidateInfo candidate={candidate} />
+        <Categories categories={categories} selected="Economy" />
+      </>
+    )}
+    footer={<FooterNav selectedNav="candidate" />}>
+      <Box>
+        {answers}
+      </Box>
+    </WrapperWithFooter>
+}
+  */
   return (
-    <PageWrapper noPadding>
+    <WrapperWithFooter footer={<FooterNav selectedNav="me" />}>
       <Box p={2}>
         <Box py={1} justifyContent="center" display="flex">
           {respondQuestions}
         </Box>
         <Box>{responses}</Box>
       </Box>
-      <FooterNav selectedNav="me" />
-    </PageWrapper>
+    </WrapperWithFooter>
   )
 }
 
