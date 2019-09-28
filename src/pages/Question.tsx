@@ -33,8 +33,7 @@ const mutation = graphql`
   }
 `
 
-const NUMBER_OF_OPTIONS = 5
-const MATCH_SCORE_THRESHOLD = 0.5
+const MATCH_SCORE_THRESHOLD = 0.7
 
 const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)

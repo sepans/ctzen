@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { Position } from '../components/Position'
 import { WrapperWithFooter, Text } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidatePosition_candidate } from './__generated__/CandidatePosition_candidate.graphql'
@@ -19,7 +18,9 @@ const CandidatePosition: React.FC<Props> = ({ candidate }) => {
   const answers =
     candidate.answers &&
     candidate.answers.map(answer => {
-      if (!answer) return
+      if (!answer) {
+        return null
+      }
       const pick =
         (answer.CandidateResponse && answer.CandidateResponse.response) || 0
       const pickText = optionArray(answer)[pick]

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { ReactElement, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { Typography, Box, Button as SmoothButton } from '@smooth-ui/core-sc'
 
 export const Section = styled.div`
