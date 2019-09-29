@@ -11,9 +11,13 @@ let candidateName = 'Elizabeth Warren'
 /*
  names in db:
 Joe Biden
+node import_candidate_answers.js ../../data/09_09_19/biden.json 'Joe Biden'
 Pete Buttigieg
+node import_candidate_answers.js ../../data/09_09_19/buttigieg.json 'Pete Buttigieg'
 Kamala Harris
+ node import_candidate_answers.js ../../data/09_09_19/harris.json 'Kamala Harris'
 Bernie Sanders
+node import_candidate_answers.js ../../data/09_09_19/sanders.json 'Bernie Sanders'
 Elizabeth Warren
 
  Julian Castro
