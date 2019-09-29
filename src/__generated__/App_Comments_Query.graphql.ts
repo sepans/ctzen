@@ -1,35 +1,35 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-type CandidatePosition_candidate$ref = any;
-export type App_Candidate_QueryVariables = {
-    readonly id: string;
+type CandidateComments_candidate$ref = any;
+export type App_Comments_QueryVariables = {
+    readonly candidate_id: string;
 };
-export type App_Candidate_QueryResponse = {
+export type App_Comments_QueryResponse = {
     readonly candidate: {
-        readonly " $fragmentRefs": CandidatePosition_candidate$ref;
+        readonly " $fragmentRefs": CandidateComments_candidate$ref;
     } | null;
 };
-export type App_Candidate_Query = {
-    readonly response: App_Candidate_QueryResponse;
-    readonly variables: App_Candidate_QueryVariables;
+export type App_Comments_Query = {
+    readonly response: App_Comments_QueryResponse;
+    readonly variables: App_Comments_QueryVariables;
 };
 
 
 
 /*
-query App_Candidate_Query(
-  $id: ID!
+query App_Comments_Query(
+  $candidate_id: ID!
 ) {
-  candidate(id: $id) {
-    ...CandidatePosition_candidate
+  candidate(id: $candidate_id) {
+    ...CandidateComments_candidate
     id
   }
 }
 
-fragment CandidatePosition_candidate on Candidate {
-  id
+fragment CandidateComments_candidate on Candidate {
   image
+  displayName
   ...CandidateInfo_candidate
   answers {
     title
@@ -41,6 +41,8 @@ fragment CandidatePosition_candidate on Candidate {
     option5
     CandidateResponse {
       response
+      comment
+      source
     }
   }
 }
@@ -59,7 +61,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "id",
+    "name": "candidate_id",
     "type": "ID!",
     "defaultValue": null
   }
@@ -68,7 +70,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "id"
+    "variableName": "candidate_id"
   }
 ],
 v2 = {
@@ -82,7 +84,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "App_Candidate_Query",
+    "name": "App_Comments_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -98,7 +100,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CandidatePosition_candidate",
+            "name": "CandidateComments_candidate",
             "args": null
           }
         ]
@@ -107,7 +109,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "App_Candidate_Query",
+    "name": "App_Comments_Query",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -119,11 +121,17 @@ return {
         "concreteType": "Candidate",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "image",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "displayName",
             "args": null,
             "storageKey": null
           },
@@ -229,23 +237,38 @@ return {
                     "name": "response",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "comment",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "source",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }
             ]
-          }
+          },
+          (v2/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "App_Candidate_Query",
+    "name": "App_Comments_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  id\n  image\n  ...CandidateInfo_candidate\n  answers {\n    title\n    id\n    option1\n    option2\n    option3\n    option4\n    option5\n    CandidateResponse {\n      response\n    }\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
+    "text": "query App_Comments_Query(\n  $candidate_id: ID!\n) {\n  candidate(id: $candidate_id) {\n    ...CandidateComments_candidate\n    id\n  }\n}\n\nfragment CandidateComments_candidate on Candidate {\n  image\n  displayName\n  ...CandidateInfo_candidate\n  answers {\n    title\n    id\n    option1\n    option2\n    option3\n    option4\n    option5\n    CandidateResponse {\n      response\n      comment\n      source\n    }\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'b7825deed11a3b0d5a415b366bee2fb8';
+(node as any).hash = 'bf02e8c17c887606648beff3bfe725d2';
 export default node;

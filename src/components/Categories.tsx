@@ -3,17 +3,16 @@ import { Box } from '@smooth-ui/core-sc'
 import { Text, ReverseElementColors } from './Layout'
 
 interface CategoriesProps {
-  categories: Array<string>
   selected: string
 }
+
+// TODO load from graphql?
+const categories = ['Economy', 'Social', 'Foreign']
 
 const selectedCategory = (category: string, selected: string) =>
   category === selected
 
-export const Categories: React.FC<CategoriesProps> = ({
-  categories,
-  selected,
-}) => (
+export const Categories: React.FC<CategoriesProps> = ({ selected }) => (
   <Box
     display="flex"
     p={2}
@@ -21,11 +20,10 @@ export const Categories: React.FC<CategoriesProps> = ({
     justifyContent="space-evenly"
     {...ReverseElementColors}
   >
-    {categories.map(category => {
+    {categories.map((category, i) => {
       const color = selectedCategory(category, selected) ? 'red' : 'white'
-      console.log(selectedCategory(category, selected), color)
       return (
-        <Box>
+        <Box key={i}>
           <Text color={color} block type="secondary">
             {category}
           </Text>

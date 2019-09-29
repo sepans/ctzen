@@ -48,6 +48,7 @@ const saveAnswers = async answers => {
     console.error(`candidate ${candidateName} not found`)
     return
   }
+  console.error(`adding answer to candidate ${candidate.displayName}`)
   answers.forEach(async answer => {
     console.log('ANSWER ====> ', answer)
     const q = await db.Question.findOne({
@@ -61,7 +62,11 @@ const saveAnswers = async answers => {
     }
 
     await candidate.addAnswer(q, {
-      through: { response: parseInt(answer.Answer - 1) },
+      through: {
+        response: parseInt(answer.Answer - 1),
+        comment: answer.Comment,
+        source: answer.Source,
+      },
     })
   })
 }

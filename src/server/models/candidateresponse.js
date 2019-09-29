@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     'CandidateResponse',
     {
       response: DataTypes.INTEGER,
+      comment: DataTypes.STRING,
+      source: DataTypes.STRING,
       deleted: DataTypes.BOOLEAN,
     },
     {}

@@ -2,10 +2,10 @@
 
 import { ReaderFragment } from "relay-runtime";
 type CandidateInfo_candidate$ref = any;
-export type CandidatePosition_candidate$ref = any;
-export type CandidatePosition_candidate = {
-    readonly id: string | null;
+export type CandidateComments_candidate$ref = any;
+export type CandidateComments_candidate = {
     readonly image: string | null;
+    readonly displayName: string | null;
     readonly answers: ReadonlyArray<{
         readonly title: string | null;
         readonly id: string | null;
@@ -16,34 +16,34 @@ export type CandidatePosition_candidate = {
         readonly option5: string | null;
         readonly CandidateResponse: {
             readonly response: number | null;
+            readonly comment: string | null;
+            readonly source: string | null;
         } | null;
     } | null> | null;
     readonly " $fragmentRefs": CandidateInfo_candidate$ref;
-    readonly " $refType": CandidatePosition_candidate$ref;
+    readonly " $refType": CandidateComments_candidate$ref;
 };
 
 
 
-const node: ReaderFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "CandidatePosition_candidate",
+  "name": "CandidateComments_candidate",
   "type": "Candidate",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "image",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "displayName",
       "args": null,
       "storageKey": null
     },
@@ -63,7 +63,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        (v0/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -114,6 +120,20 @@ return {
               "name": "response",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "comment",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "source",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -126,6 +146,5 @@ return {
     }
   ]
 };
-})();
-(node as any).hash = '49cbd789f9f542ab6cfc03724982ad36';
+(node as any).hash = 'bc2aec85a8404b99e88591396d55942a';
 export default node;

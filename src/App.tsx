@@ -1,6 +1,4 @@
 import React from 'react'
-import CandidatePosition from './pages/CandidatePosition'
-import CandidateList from './pages/CandidateList'
 
 import { graphql } from 'react-relay'
 import environment from './config/relayEnvironment'
@@ -14,6 +12,9 @@ import { Resolver } from 'found-relay'
 import Question from './pages/Question'
 import Responses from './pages/Responses'
 import Home from './pages/Home'
+import CandidateComments from './pages/CandidateComments'
+import CandidatePosition from './pages/CandidatePosition'
+import CandidateList from './pages/CandidateList'
 
 const Loading = () => <div>loading</div>
 
@@ -62,6 +63,19 @@ const Router = createFarceRouter({
         `}
         render={({ props }) => {
           return props ? <CandidatePosition {...props} /> : <Loading />
+        }}
+      />
+      <Route
+        path="comments/:candidate_id/:question_id"
+        query={graphql`
+          query App_Comments_Query($candidate_id: ID!) {
+            candidate(id: $candidate_id) {
+              ...CandidateComments_candidate
+            }
+          }
+        `}
+        render={({ props }) => {
+          return props ? <CandidateComments {...props} /> : <Loading />
         }}
       />
       <Route

@@ -3,7 +3,6 @@ import { graphql, createFragmentContainer } from 'react-relay'
 import { CandidateInfo_candidate } from './__generated__/CandidateInfo_candidate.graphql'
 import { Box } from '@smooth-ui/core-sc'
 import { CandidateImage, Text, ReverseElementColors } from './Layout'
-import { Categories } from './Categories'
 
 interface Props {
   candidate: CandidateInfo_candidate
