@@ -85,7 +85,7 @@ const schema = buildASTSchema(gql`
     option4: String
     option5: String
     level: Int
-    UserResponse: AnswerPick
+    UserResponse: UserAnswerPick
   }
 
   type UserInfo {
@@ -108,12 +108,19 @@ const schema = buildASTSchema(gql`
     option4: String
     option5: String
     level: Int
-    CandidateResponse: AnswerPick
+    CandidateResponse: CandidateAnswerPick
   }
 
-  type AnswerPick {
+  type UserAnswerPick {
     response: Int
     deleted: Boolean
+  }
+
+  type CandidateAnswerPick {
+    response: Int
+    deleted: Boolean
+    comment: String
+    source: String
   }
 
   type Candidate {

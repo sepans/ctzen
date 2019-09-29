@@ -66,7 +66,7 @@ return {
               "name": "UserResponse",
               "storageKey": null,
               "args": null,
-              "concreteType": "AnswerPick",
+              "concreteType": "UserAnswerPick",
               "plural": false,
               "selections": [
                 {
