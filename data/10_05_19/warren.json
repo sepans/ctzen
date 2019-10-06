@@ -1,0 +1,170 @@
+[
+  {
+    "importId": "Econ_1",
+    "Subcategory": "Trade",
+    "Question": "The government should increase tariffs on products imported into the country",
+    "Answer": 3,
+    "Comment": "Trade is good when it helps American workers and families — when it doesn’t, we need to change our approach. And unlike Trump, while I think tariffs are an important tool, they are not by themselves a long-term solution to our failed trade agenda and must be part of a broader strategy that this Administration clearly lacks.",
+    "Source": "https://medium.com/@teamwarren/trade-on-our-terms-ad861879feca"
+  },
+  {
+    "importId": "Econ_2",
+    "Subcategory": "Fiscal",
+    "Question": "Current taxes on the rich are too low and should be increased",
+    "Answer": 5,
+    "Comment": "Warren's plan is to the proposal is to tax a family’s wealth above $50 million at 2 percent a year, with an additional surcharge of 1 percent on wealth over $1 billion.",
+    "Source": "https://www.nytimes.com/2019/02/18/upshot/warren-wealth-tax.html"
+  },
+  {
+    "importId": "Econ_3",
+    "Subcategory": "Fiscal",
+    "Question": "We should reduce taxes on the middle class",
+    "Answer": 3,
+    "Comment": "\"Costs will go up for billionaires and go up for corporations,\" Warren said. \"For middle-class families, costs — total costs — will go down.\" Under the current Medicare for All proposals, middle-class people would have no premiums, deductibles or copays, and save a lot of money on health care,\" he said. \"Whether they would pay more or less on net would depend on which taxes go up to pay for the plan.\"",
+    "Source": "https://www.npr.org/2019/07/30/746805856/the-democratic-debate-over-medicare-for-all-and-middle-class-taxes-explained"
+  },
+  {
+    "importId": "Econ_4",
+    "Subcategory": "Fiscal",
+    "Question": "The government should address reducing the national debt through higher taxes or reduced spending",
+    "Answer": 2,
+    "Comment": "It depends on the circumstances, in 2008 Obama did right to increase deficit spending, in 2017 the Trump tax cut increased the deficit without helping working people",
+    "Source": "https://www.washingtonpost.com/blogs/right-turn/wp/2018/07/27/sen-elizabeth-warren-responds-to-our-invitation-to-discuss-policy-part-1/"
+  },
+  {
+    "importId": "Econ_5",
+    "Subcategory": "Industry",
+    "Question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
+    "Answer": 5,
+    "Comment": "I’m proud to be an original supporter of the Green New Deal. That’s why I’ve proposed a historic $2 trillion investment in researching, developing, and manufacturing clean energy technology here in America",
+    "Source": "https://medium.com/@teamwarren/accelerating-the-transition-to-clean-energy-46af492d8c57"
+  },
+  {
+    "importId": "Econ_6",
+    "Subcategory": "Industry",
+    "Question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
+    "Answer": 5,
+    "Comment": "My administration will make big, structural changes to the tech sector to promote more competition — including breaking up Amazon, Facebook, and Google.",
+    "Source": "https://medium.com/@teamwarren/heres-how-we-can-break-up-big-tech-9ad9e0da324c"
+  },
+  {
+    "importId": "Econ_7",
+    "Subcategory": "Industry",
+    "Question": "I support a public single-payer healthcare system",
+    "Answer": 5,
+    "Comment": "Warren raised her hand when asked whether she would get rid of private coverage in favor of a government-run plan during the first Democratic debate.",
+    "Source": "https://www.washingtonpost.com/graphics/politics/policy-2020/medicare-for-all/"
+  },
+  {
+    "importId": "Social_1",
+    "Subcategory": "Education",
+    "Question": "Higher education should be tuition free (publically funded)",
+    "Answer": 5,
+    "Comment": "Give every American the opportunity to attend a two-year or four-year public college without paying a dime in tuition or fees",
+    "Source": "https://medium.com/@teamwarren/im-calling-for-something-truly-transformational-universal-free-public-college-and-cancellation-of-a246cd0f910f"
+  },
+  {
+    "importId": "Social_2",
+    "Subcategory": "Education",
+    "Question": "The government should forgive outstanding student debt",
+    "Answer": 3,
+    "Comment": "I’m calling for something truly transformational — the cancellation of up to $50,000 in student loan debt for 42 million Americans.",
+    "Source": "https://medium.com/@teamwarren/im-calling-for-something-truly-transformational-universal-free-public-college-and-cancellation-of-a246cd0f910f"
+  },
+  {
+    "importId": "Social_4",
+    "Subcategory": "Gun Control",
+    "Question": "The government should introduce a gun buy-back program",
+    "Answer": 3,
+    "Comment": "We should establish a buyback program to allow those who wish to do so to return their weapon for safe disposal",
+    "Source": "https://elizabethwarren.com/plans/gun-violence"
+  },
+  {
+    "importId": "Social_5",
+    "Subcategory": "Criminal Justice",
+    "Question": "Death penalty should be ended at state and federal levels",
+    "Answer": 5,
+    "Comment": "Our criminal justice system has a long history of mistakes when it comes to capital punishment—especially when it comes to Black and Brown people. We cannot let a broken system decide the fate of incarcerated Americans. I oppose the death penalty.",
+    "Source": "https://twitter.com/ewarren/status/1154436814146609154"
+  },
+  {
+    "importId": "Social_6",
+    "Subcategory": "Criminal Justice",
+    "Question": "Government should allow clemency plans for non-violent drug offenders currently incarcerated",
+    "Answer": 1,
+    "Comment": "I’ll remove the clemency process from DOJ, instead empowering a clemency board to make recommendations directly to the White House. I’ll direct the board to identify broad classes of potentially-deserving individuals for review, including those who would have benefited from retroactivity under the First Step Act, individuals who are jailed under outdated or discriminatory drug laws, or those serving mandatory minimums that should be abolished.",
+    "Source": "https://medium.com/@teamwarren/rethinking-public-safety-to-reduce-mass-incarceration-and-strengthen-communities-90e8591c6255"
+  },
+  {
+    "importId": "Social_8",
+    "Subcategory": "Criminal Justice",
+    "Question": "Marijuana should be legalized at the state and federal levels",
+    "Answer": 5,
+    "Comment": "It starts with legalizing marijuana and erasing past convictions, and then eliminating the remaining disparity between crack and powder cocaine sentencing.",
+    "Source": "https://medium.com/@teamwarren/rethinking-public-safety-to-reduce-mass-incarceration-and-strengthen-communities-90e8591c6255"
+  },
+  {
+    "importId": "Social_10",
+    "Subcategory": "Church-State",
+    "Question": "The government should provide all women free access to abortion facilities and cover costs of care",
+    "Answer": 5,
+    "Comment": "All women — no matter where they live, where they’re from, how much money they make, or the color of their skin — are entitled to access the high-quality, evidence-based reproductive health care that is envisioned by Roe.",
+    "Source": "https://medium.com/@teamwarren/congressional-action-to-protect-choice-aaf94ed25fb5"
+  },
+  {
+    "importId": "Social_11",
+    "Subcategory": "Democracy",
+    "Question": "Citizens united should be overturned",
+    "Answer": 5,
+    "Comment": "Democracy for all amendment bill is co-sponsored by few 2020 presidential candidates including Senator Warren",
+    "Source": "https://www.newsweek.com/big-money-citizens-united-campaign-funding-1451687"
+  },
+  {
+    "importId": "Foreign_1",
+    "Subcategory": "Unilateralism",
+    "Question": "President should be required to come to Congress for an authorization of the use of military force (AUMF)",
+    "Answer": 5,
+    "Comment": "Those who sign the letter pledge to “fight to reclaim Congress’s constitutional authority to conduct oversight of U.S. foreign policy and independently debate whether to authorize each new use of military force” and “act to bring the Forever War to a responsible and expedient conclusion.”",
+    "Source": "https://thehill.com/policy/defense/432670-sanders-ocasio-cortez-sponsoring-end-the-forever-war-pledge"
+  },
+  {
+    "importId": "Foreign_2",
+    "Subcategory": "Unilateralism",
+    "Question": "Israel meets international standards of human rights",
+    "Answer": 3,
+    "Comment": "The current situation is not tenable.",
+    "Source": "https://www.nytimes.com/interactive/2019/us/politics/israel-human-rights-democratic-candidates.html"
+  },
+  {
+    "importId": "Foreign_3",
+    "Subcategory": "Interventionism",
+    "Question": "We should bring U.S. troops home from America's post-9/11 wars without delay",
+    "Answer": 5,
+    "Comment": "Yes, because the problems in Afghanistan are not problems that can be solved by a military",
+    "Source": "https://www.washingtonpost.com/politics/2019/09/13/transcript-third-democratic-debate/"
+  },
+  {
+    "importId": "Foreign_4",
+    "Subcategory": "Interventionism",
+    "Question": "Illegal immigration is a major national security problem in the US",
+    "Answer": 5,
+    "Comment": "Elizabeth Warren called for a repeal of the statute that criminalizes illegal entry into the U.S.",
+    "Source": "https://www.washingtonexaminer.com/news/elizabeth-warren-calls-for-decriminalizing-illegal-immigration"
+  },
+  {
+    "importId": "Foreign_5",
+    "Subcategory": "Hegemony",
+    "Question": "Growing defense / pentagon spending should be a priority",
+    "Answer": 1,
+    "Comment": "It’s past time to cut our bloated defense budget",
+    "Source": "https://medium.com/@teamwarren/its-time-to-reduce-corporate-influence-at-the-pentagon-98f52ee0fcf1"
+  },
+  {
+    "importId": "Foreign_6",
+    "Subcategory": "Hegemony",
+    "Question": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development",
+    "Answer": 1,
+    "Comment": "the Warren campaign released its most comprehensive climate plan yet, a $2 trillion package that commits the federal government to spend $150 billion a year over the next decade on low-carbon technology, increases energy research funding tenfold and funds a $100 billion Green Marshall Plan to aid the poorer countries projected to suffer the worst as global temperatures rise. This is irrespective of what other countries do",
+    "Source": "https://www.yahoo.com/news/elizabeth-warren-climate-plan-133000864.html"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "importId": "Econ_1",
+    "Subcategory": "Trade",
+    "Question": "The government should increase tariffs on products imported into the country",
+    "Answer": 1,
+    "Comment": "“We do need to get tough with China,” Biden said in a July speech, after blasting the president’s tariffs as causing severe pain and “pointless.”",
+    "Source": "https://www.washingtonpost.com/business/2019/08/07/democrats-struggle-present-united-front-trumps-trade-war/"
+  },
+  {
+    "importId": "Econ_2",
+    "Subcategory": "Fiscal",
+    "Question": "Current taxes on the rich are too low and should be increased",
+    "Answer": 3,
+    "Comment": "Biden is proposing to raise the top individual income tax rate to 39.6 percent. He is proposing to increase taxes on wealthy people's capital gains. Biden's campaign also said that his capital gains reform will close the loopholes that allow the super wealthy to avoid taxes on capital gains altogether.",
+    "Source": "https://thehill.com/policy/finance/453110-biden-proposes-tax-increases-for-wealthy-as-part-of-health-care-plan"
+  },
+  {
+    "importId": "Econ_3",
+    "Subcategory": "Fiscal",
+    "Question": "We should reduce taxes on the middle class",
+    "Answer": 3,
+    "Comment": "We should be raising the capital gains tax and cutting taxes for middle class people. Biden did express support for another policy change the White House is considering -- lowering payroll taxes, which he said worked during the Obama administration. However, he supports repealing entirety of the Tax cuts and Jobs act of 2017 which increase middle class tax brackets.",
+    "Source": "https://www.bloomberg.com/news/articles/2019-08-20/biden-dismisses-trump-s-idea-of-cutting-capital-gains-taxes"
+  },
+  {
+    "importId": "Econ_4",
+    "Subcategory": "Fiscal",
+    "Question": "The government should address reducing the national debt through higher taxes or reduced spending",
+    "Answer": 3,
+    "Comment": "No info",
+    "Source": ""
+  },
+  {
+    "importId": "Econ_5",
+    "Subcategory": "Industry",
+    "Question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
+    "Answer": 5,
+    "Comment": "Biden foresees $1.7 trillion in spending over the next 10 years, and $3.3 trillion in investments by the private sector and state and local governments. The proposal aims to achieve 100% clean energy and net-zero emission by 2050",
+    "Source": "https://joebiden.com/climate/"
+  },
+  {
+    "importId": "Econ_6",
+    "Subcategory": "Industry",
+    "Question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
+    "Answer": 3,
+    "Comment": "\"I don't think we spend nearly enough time focusing on antitrust measures,\" Biden told the AP. \"And the truth of the matter is, I think it's something we should take a really hard look at.\"",
+    "Source": "https://www.newsweek.com/joe-biden-open-breaking-facebook-other-tech-giants-1424573"
+  },
+  {
+    "importId": "Econ_7",
+    "Subcategory": "Industry",
+    "Question": "I support a public single-payer healthcare system",
+    "Answer": 3,
+    "Comment": "The Biden Plan will give you the choice to purchase a public health insurance option like Medicare",
+    "Source": "https://joebiden.com/healthcare/"
+  },
+  {
+    "importId": "Social_1",
+    "Subcategory": "Education",
+    "Question": "Higher education should be tuition free (publically funded)",
+    "Answer": 1,
+    "Comment": "Joseph Biden, in his first campaign appearance in New Hampshire as a declared 2020 Democratic presidential candidate, says he would make two years of community college free to students.",
+    "Source": "https://www.educationnext.org/biden-backs-two-years-free-community-college/"
+  },
+  {
+    "importId": "Social_2",
+    "Subcategory": "Education",
+    "Question": "The government should forgive outstanding student debt",
+    "Answer": 1,
+    "Comment": "Biden released a proposal to simplify and streamline the Public Service Loan Forgiveness program, with a focus on teachers",
+    "Source": "https://www.cnbc.com/2019/07/30/democratic-presidential-candidates-plans-for-addressing-student-debt.html"
+  },
+  {
+    "importId": "Social_4",
+    "Subcategory": "Gun Control",
+    "Question": "The government should introduce a gun buy-back program",
+    "Answer": 3,
+    "Comment": "I would insititute a (voluntary) national buyback program",
+    "Source": "https://www.cnn.com/videos/politics/2019/08/06/biden-assault-weapons-national-buyback-program-sot-ac360-vpx.cnn/video/playlists/this-week-in-politics/"
+  },
+  {
+    "importId": "Social_5",
+    "Subcategory": "Criminal Justice",
+    "Question": "Death penalty should be ended at state and federal levels",
+    "Answer": 5,
+    "Comment": "Biden will work to pass legislation to eliminate the death penalty at the federal level, and incentivize states to follow the federal government’s example. These individuals should instead serve life sentences without probation or parole.",
+    "Source": "https://joebiden.com/justice/"
+  },
+  {
+    "importId": "Social_6",
+    "Subcategory": "Criminal Justice",
+    "Question": "Government should allow clemency plans for non-violent drug offenders currently incarcerated",
+    "Answer": 1,
+    "Comment": "Biden believes that no one should be imprisoned for the use of illegal drugs alone. He also proposes to use the president’s clemency power to secure the release of individuals facing unduly long sentences for certain non-violent and drug crimes",
+    "Source": "https://joebiden.com/justice/"
+  },
+  {
+    "importId": "Social_8",
+    "Subcategory": "Criminal Justice",
+    "Question": "Marijuana should be legalized at the state and federal levels",
+    "Answer": 1,
+    "Comment": "As president, he will decriminalize cannabis use and automatically expunge prior convictions. And, he will support the legalization of cannabis for medical purposes, leave decisions regarding legalization for recreational use up to the states, and reschedule cannabis as a schedule II drug so researchers can study its positive and negative impacts.",
+    "Source": "https://joebiden.com/justice/"
+  },
+  {
+    "importId": "Social_10",
+    "Subcategory": "Church-State",
+    "Question": "The government should provide all women free access to abortion facilities and cover costs of care",
+    "Answer": 5,
+    "Comment": "Vice President Biden supports repealing the Hyde Amendment because health care is a right that should not be dependent on one’s zip code or income. And, the public option will cover contraception and a woman’s constitutional right to choose.",
+    "Source": "https://joebiden.com/AmericanLeadership/"
+  },
+  {
+    "importId": "Social_11",
+    "Subcategory": "Democracy",
+    "Question": "Citizens united should be overturned",
+    "Answer": 5,
+    "Comment": "Biden has long been on record publicly opposing the Citizens United decision",
+    "Source": "https://www.huffpost.com/entry/joe-biden-rejects-help-from-new-super-pac_n_5cc47617e4b08e4e3482b2b1?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAALt0_opNFKXl-LzpILlIfFDNvFY-ggn85GHwu--hXfeLn3_g1H5n9OrPcKyqBfzgmF-ZtY7fk5QuMfpUNV9cqB9xOna7Iei4-yUpnbxoieFeBE9fsCNiyvgNbhNmqqLtlbU7RiYvkBgQzRiP3q3nHj4TjCuPtw8ujKOHomAKTGJ_ "
+  },
+  {
+    "importId": "Foreign_1",
+    "Subcategory": "Unilateralism",
+    "Question": "President should be required to come to Congress for an authorization of the use of military force (AUMF)",
+    "Answer": 2,
+    "Comment": "The campaign said that Biden believes war against Iran without specific congressional authorization “would be unconstitutional.\"",
+    "Source": "https://www.nbcnews.com/politics/2020-election/biden-once-warned-president-war-iran-without-congressional-approval-impeachable-n1019041"
+  },
+  {
+    "importId": "Foreign_2",
+    "Subcategory": "Unilateralism",
+    "Question": "Israel meets international standards of human rights",
+    "Answer": 3,
+    "Comment": "Joe Biden said that Israel’s occupation a “real” and “significant” problem, but would not go as far to say it is a “human rights crisis.”",
+    "Source": "https://www.jta.org/2019/07/14/politics/biden-buttigieg-booker-respond-to-ifnotnow-question-about-occupation"
+  },
+  {
+    "importId": "Foreign_3",
+    "Subcategory": "Interventionism",
+    "Question": "We should bring U.S. troops home from America's post-9/11 wars without delay",
+    "Answer": 3,
+    "Comment": "I would bring American combat troops in Afghanistan home during my first term. Any residual U.S. military presence in Afghanistan would be focused only on counterterrorism operations",
+    "Source": "https://www.cfr.org/article/democratic-candidates-war-afghanistan"
+  },
+  {
+    "importId": "Foreign_4",
+    "Subcategory": "Interventionism",
+    "Question": "Illegal immigration is a major national security problem in the US",
+    "Answer": 1,
+    "Comment": "Joe Biden blasts decriminalizing illegal immigration: 'It's a crime'",
+    "Source": "https://www.washingtontimes.com/news/2019/jul/31/joe-biden-blasts-decriminalizing-illegal-immigrati/"
+  },
+  {
+    "importId": "Foreign_5",
+    "Subcategory": "Hegemony",
+    "Question": "Growing defense / pentagon spending should be a priority",
+    "Answer": 5,
+    "Comment": "Boost the defense budget",
+    "Source": "https://www.ontheissues.org/Joe_Biden.htm"
+  },
+  {
+    "importId": "Foreign_6",
+    "Subcategory": "Hegemony",
+    "Question": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development",
+    "Answer": 1,
+    "Comment": "Biden calls for $1.7 trillion in direct federal investments in renewables, energy-efficient infrastructure, and research and development on a wide range of “moon shot” green technologies, among other projects - irrespective of what other countries do.",
+    "Source": "http://nymag.com/intelligencer/2019/06/joe-biden-climate-change-plan-green-new-deal.html"
+  }
+]

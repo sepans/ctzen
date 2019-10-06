@@ -1,0 +1,170 @@
+[
+  {
+    "importId": "Econ_1",
+    "Subcategory": "Trade",
+    "Question": "The government should increase tariffs on products imported into the country",
+    "Answer": 1,
+    "Comment": "Belives tarrifs are taxes on americans and the wrong tool to use for addressing trade issues",
+    "Source": "https://www.washingtonexaminer.com/opinion/pete-buttigieg-is-right-tariffs-are-taxes-on-americans"
+  },
+  {
+    "importId": "Econ_2",
+    "Subcategory": "Fiscal",
+    "Question": "Current taxes on the rich are too low and should be increased",
+    "Answer": 5,
+    "Comment": "Belives in wealth tax at the same levels that Warren proposed",
+    "Source": "https://www.washingtonexaminer.com/opinion/pete-buttigieg-is-right-tariffs-are-taxes-on-americans"
+  },
+  {
+    "importId": "Econ_3",
+    "Subcategory": "Fiscal",
+    "Question": "We should reduce taxes on the middle class",
+    "Answer": 3,
+    "Comment": "No data",
+    "Source": ""
+  },
+  {
+    "importId": "Econ_4",
+    "Subcategory": "Fiscal",
+    "Question": "The government should address reducing the national debt through higher taxes or reduced spending",
+    "Answer": 3,
+    "Comment": "He calls for investments in infrastructure and education to boost productivity. He adds that a lot of debt reduction “can happen on the revenue side where people are not paying their fair share.” He also mentions a financial transactions tax.",
+    "Source": "https://www.realclearpolitics.com/articles/2019/02/20/buttigieg_generational_pain_awaits_if_debt_is_ignored_139517.html"
+  },
+  {
+    "importId": "Econ_5",
+    "Subcategory": "Industry",
+    "Question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
+    "Answer": 5,
+    "Comment": "Implement a Green New Deal with all available tools including a carbon tax-and-dividend for Americans, and major direct investment to build a 100% clean energy society",
+    "Source": "https://peteforamerica.com/issues/"
+  },
+  {
+    "importId": "Econ_6",
+    "Subcategory": "Industry",
+    "Question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
+    "Answer": 3,
+    "Comment": "We’re going to need to empower the FTC to be able to intervene, including blocking or reversing mergers in cases where there’s anti-competitive behavior among tech companies even if it can’t directly be applied to pricing because you’re not seeing it in the form of changes to prices since the product’s free",
+    "Source": "https://www.theverge.com/2019/4/23/18512428/pete-buttigieg-facebook-google-amazon-apple-antitrust-ftc-break-up"
+  },
+  {
+    "importId": "Econ_7",
+    "Subcategory": "Industry",
+    "Question": "I support a public single-payer healthcare system",
+    "Answer": 3,
+    "Comment": "Pete can imagine an end-state where the private sector 'withers away' due to an inability to compete with 'medicare for all that want it;' however, most likely, he sees the end state where Medicare is the 'center of gravity' and suplemental insurance is provided by the private sector",
+    "Source": "https://peteforamerica.com/issues/#Freedom"
+  },
+  {
+    "importId": "Social_1",
+    "Subcategory": "Education",
+    "Question": "Higher education should be tuition free (publically funded)",
+    "Answer": 3,
+    "Comment": "We will invest in college students’ futures by making public college tuition free for low-income students and ensuring the lowest-income students can cover living costs without taking on student debt through increased investments in the Pell Grant program",
+    "Source": "https://assets.documentcloud.org/documents/6188695/PFA-Douglass-Plan.pdf"
+  },
+  {
+    "importId": "Social_2",
+    "Subcategory": "Education",
+    "Question": "The government should forgive outstanding student debt",
+    "Answer": 2,
+    "Comment": "We will cancel the debts of borrowers in low-quality, overwhelmingly for-profit programs beginning with those that failed federal “gainful employment” rules designed to ensure students receive an adequate return on their investments where the federal government should never have allowed students to enroll.",
+    "Source": "https://assets.documentcloud.org/documents/6188695/PFA-Douglass-Plan.pdf"
+  },
+  {
+    "importId": "Social_4",
+    "Subcategory": "Gun Control",
+    "Question": "The government should introduce a gun buy-back program",
+    "Answer": 3,
+    "Comment": "Supports a voluntary buyback program",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/pete-buttigieg/"
+  },
+  {
+    "importId": "Social_5",
+    "Subcategory": "Criminal Justice",
+    "Question": "Death penalty should be ended at state and federal levels",
+    "Answer": 5,
+    "Comment": "Abolish the death penalty",
+    "Source": "https://peteforamerica.com/issues/"
+  },
+  {
+    "importId": "Social_6",
+    "Subcategory": "Criminal Justice",
+    "Question": "Government should allow clemency plans for non-violent drug offenders currently incarcerated",
+    "Answer": 5,
+    "Comment": "We will commute the sentences of people who are incarcerated in the federal system beyond what justice warrants by establishing an independent clemency commission that sits outside the Department of Justice",
+    "Source": "https://assets.documentcloud.org/documents/6188695/PFA-Douglass-Plan.pdf"
+  },
+  {
+    "importId": "Social_8",
+    "Subcategory": "Criminal Justice",
+    "Question": "Marijuana should be legalized at the state and federal levels",
+    "Answer": 5,
+    "Comment": "Legalize marijuana and address the harmful effects of its criminalization",
+    "Source": "https://peteforamerica.com/issues/"
+  },
+  {
+    "importId": "Social_10",
+    "Subcategory": "Church-State",
+    "Question": "The government should provide all women free access to abortion facilities and cover costs of care",
+    "Answer": 5,
+    "Comment": "Repeal the Hyde Amendment so that those in need can access care equitably",
+    "Source": "https://peteforamerica.com/issues/"
+  },
+  {
+    "importId": "Social_11",
+    "Subcategory": "Democracy",
+    "Question": "Citizens united should be overturned",
+    "Answer": 5,
+    "Comment": "Overturn Citizens United and Buckley v. Valeo, if necessary by constitutional amendment",
+    "Source": "https://peteforamerica.com/issues/"
+  },
+  {
+    "importId": "Foreign_1",
+    "Subcategory": "Unilateralism",
+    "Question": "President should be required to come to Congress for an authorization of the use of military force (AUMF)",
+    "Answer": 5,
+    "Comment": "The time has come for Congress to repeal and replace that blank check on the use of force and ensure a robust debate on future operations",
+    "Source": "https://peteforamerica.com/national-security-for-a-new-era/"
+  },
+  {
+    "importId": "Foreign_2",
+    "Subcategory": "Unilateralism",
+    "Question": "Israel meets international standards of human rights",
+    "Answer": 1,
+    "Comment": "The suffering of the Palestinian people–especially the humanitarian disaster in Gaza–has many authors, from the extremism of Hamas and inefficacy of the Palestinian Authority to the indifference of the international community and, yes, the policies of the current Israeli government.",
+    "Source": "https://peteforamerica.com/national-security-for-a-new-era/"
+  },
+  {
+    "importId": "Foreign_3",
+    "Subcategory": "Interventionism",
+    "Question": "We should bring U.S. troops home from America's post-9/11 wars without delay",
+    "Answer": 5,
+    "Comment": "“The world needs an America free from entrapment in endless war and prepared to focus on future threats,” Buttigieg said. U.S. involvement in Afghanistan, for example, must come to an end, he said.",
+    "Source": "https://www.reuters.com/article/us-usa-election-buttigieg/buttigieg-urges-end-to-endless-u-s-war-return-to-iran-climate-deals-idUSKCN1TC20K"
+  },
+  {
+    "importId": "Foreign_4",
+    "Subcategory": "Interventionism",
+    "Question": "Illegal immigration is a major national security problem in the US",
+    "Answer": 1,
+    "Comment": "What we need is to manage immigration and our border humanely, securely, and effectively",
+    "Source": "https://peteforamerica.com/national-security-for-a-new-era/"
+  },
+  {
+    "importId": "Foreign_5",
+    "Subcategory": "Hegemony",
+    "Question": "Growing defense / pentagon spending should be a priority",
+    "Answer": 5,
+    "Comment": "Boost the defense budget, prioritizing artificial intelligence and machine learning",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/military/defense-spending/"
+  },
+  {
+    "importId": "Foreign_6",
+    "Subcategory": "Hegemony",
+    "Question": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development",
+    "Answer": 1,
+    "Comment": "The world needs America to lead on climate",
+    "Source": "https://peteforamerica.com/national-security-for-a-new-era/"
+  }
+]
