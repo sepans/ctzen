@@ -39,6 +39,7 @@ fragment CandidatePosition_candidate on Candidate {
     option3
     option4
     option5
+    category
     CandidateResponse {
       response
     }
@@ -215,6 +216,13 @@ return {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "category",
+                "args": null,
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "CandidateResponse",
@@ -242,7 +250,7 @@ return {
     "operationKind": "query",
     "name": "App_Candidate_Query",
     "id": null,
-    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  id\n  image\n  ...CandidateInfo_candidate\n  answers {\n    title\n    id\n    option1\n    option2\n    option3\n    option4\n    option5\n    CandidateResponse {\n      response\n    }\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
+    "text": "query App_Candidate_Query(\n  $id: ID!\n) {\n  candidate(id: $id) {\n    ...CandidatePosition_candidate\n    id\n  }\n}\n\nfragment CandidatePosition_candidate on Candidate {\n  id\n  image\n  ...CandidateInfo_candidate\n  answers {\n    title\n    id\n    option1\n    option2\n    option3\n    option4\n    option5\n    category\n    CandidateResponse {\n      response\n    }\n  }\n}\n\nfragment CandidateInfo_candidate on Candidate {\n  name: displayName\n  image\n  dob\n  state\n  pob\n  experience\n}\n",
     "metadata": {}
   }
 };

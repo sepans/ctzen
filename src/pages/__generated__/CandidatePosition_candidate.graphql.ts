@@ -14,6 +14,7 @@ export type CandidatePosition_candidate = {
         readonly option3: string | null;
         readonly option4: string | null;
         readonly option5: string | null;
+        readonly category: string | null;
         readonly CandidateResponse: {
             readonly response: number | null;
         } | null;
@@ -100,6 +101,13 @@ return {
           "storageKey": null
         },
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "category",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "CandidateResponse",
@@ -127,5 +135,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '49cbd789f9f542ab6cfc03724982ad36';
+(node as any).hash = '9750640a08186f5ece636763f22c652c';
 export default node;

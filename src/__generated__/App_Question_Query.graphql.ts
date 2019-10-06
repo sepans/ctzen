@@ -43,6 +43,8 @@ fragment Question_question on Question {
   option3
   option4
   option5
+  category
+  subcategory
 }
 
 fragment Question_me on UserInfo {
@@ -191,6 +193,20 @@ return {
             "name": "option5",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "category",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "subcategory",
+            "args": null,
+            "storageKey": null
           }
         ]
       },
@@ -272,7 +288,7 @@ return {
     "operationKind": "query",
     "name": "App_Question_Query",
     "id": null,
-    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      id\n    }\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n  category\n  subcategory\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      id\n    }\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -86,6 +86,8 @@ const schema = buildASTSchema(gql`
     option3: String
     option4: String
     option5: String
+    category: String
+    subcategory: String
     level: Int
     UserResponse: UserAnswerPick
   }
@@ -109,6 +111,8 @@ const schema = buildASTSchema(gql`
     option3: String
     option4: String
     option5: String
+    category: String
+    subcategory: String
     level: Int
     CandidateResponse: CandidateAnswerPick
   }

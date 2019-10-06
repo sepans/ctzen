@@ -4,6 +4,7 @@ import { Text, ReverseElementColors } from './Layout'
 
 interface CategoriesProps {
   selected: string
+  onSelect?: (string) => void
 }
 
 // TODO load from graphql?
@@ -12,7 +13,10 @@ const categories = ['Economy', 'Social', 'Foreign']
 const selectedCategory = (category: string, selected: string) =>
   category === selected
 
-export const Categories: React.FC<CategoriesProps> = ({ selected }) => (
+export const Categories: React.FC<CategoriesProps> = ({
+  selected,
+  onSelect,
+}) => (
   <Box
     display="flex"
     p={2}
@@ -23,11 +27,17 @@ export const Categories: React.FC<CategoriesProps> = ({ selected }) => (
     {categories.map((category, i) => {
       const color = selectedCategory(category, selected) ? 'red' : 'white'
       return (
-        <Box key={i}>
-          <Text color={color} block type="secondary">
-            {category}
-          </Text>
-        </Box>
+        <a
+          onClick={() => {
+            onSelect && onSelect(category)
+          }}
+        >
+          <Box key={i}>
+            <Text color={color} block type="secondary">
+              {category}
+            </Text>
+          </Box>
+        </a>
       )
     })}
   </Box>

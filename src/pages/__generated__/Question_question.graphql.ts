@@ -11,6 +11,8 @@ export type Question_question = {
     readonly option3: string | null;
     readonly option4: string | null;
     readonly option5: string | null;
+    readonly category: string | null;
+    readonly subcategory: string | null;
     readonly " $refType": Question_question$ref;
 };
 
@@ -78,8 +80,22 @@ const node: ReaderFragment = {
       "name": "option5",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "category",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "subcategory",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'ea3da87537a1f4f43842b1c743b7a0bd';
+(node as any).hash = 'c6fb0dc50fd8e3d1ca98fb81449c77ab';
 export default node;

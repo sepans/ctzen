@@ -37,3 +37,12 @@ export const hasAnyOption = (options: Options): boolean => {
     return acc || (option !== null && option.length > 0)
   }, false)
 }
+
+const CATEGORY_CODE_MAP = {
+  Econ: 'Economy',
+  Social: 'Social',
+  Foreign: 'Foreign',
+}
+export const mapCategoryName = code => {
+  return CATEGORY_CODE_MAP[code]
+}

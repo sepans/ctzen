@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
-import { PageWrapper, Title, Button } from '../components/Layout'
+import {
+  PageWrapper,
+  Title,
+  Button,
+  WrapperWithFooter,
+} from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Question_question } from './__generated__/Question_question.graphql'
 import { Question_me } from './__generated__/Question_me.graphql'
 import environment from '../config/relayEnvironment'
-import { optionArray } from '../components/helpers/question_helpers'
+import {
+  optionArray,
+  mapCategoryName,
+} from '../components/helpers/question_helpers'
+import { Categories } from '../components/Categories'
 
 interface Props {
   question: Question_question
@@ -37,7 +46,7 @@ const MATCH_SCORE_THRESHOLD = 0.7
 
 const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)
-  const { title } = question
+  const { title, category } = question
 
   const nextQuestionLink = questionId => `/question/${questionId}`
 
@@ -125,15 +134,23 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
   )
 
   return (
-    <PageWrapper>
-      <Title>{title}</Title>
-      <Box my={3}>
-        <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
-          {options}
+    <WrapperWithFooter
+      header={
+        <>
+          <Categories selected={mapCategoryName(category)} />
+        </>
+      }
+    >
+      <Box p={3}>
+        <Title>{title}</Title>
+        <Box my={3}>
+          <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
+            {options}
+          </Box>
+          {buttonSection}
         </Box>
-        {buttonSection}
       </Box>
-    </PageWrapper>
+    </WrapperWithFooter>
   )
 }
 
@@ -148,6 +165,8 @@ export default createFragmentContainer(Question, {
       option3
       option4
       option5
+      category
+      subcategory
     }
   `,
   me: graphql`

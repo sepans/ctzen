@@ -26,6 +26,8 @@ type CandidateAnswer {
   option3: String
   option4: String
   option5: String
+  category: String
+  subcategory: String
   level: Int
   CandidateResponse: CandidateAnswerPick
 }
@@ -118,6 +120,8 @@ type UserAnswer {
   option3: String
   option4: String
   option5: String
+  category: String
+  subcategory: String
   level: Int
   UserResponse: UserAnswerPick
 }
