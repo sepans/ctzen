@@ -62,17 +62,22 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     }
   }
 
-  const options = optionArray(question).map((option, i) => {
-    const selected = i === selection
+  const options = optionArray(question).map(option => {
+    const selected = option.index === selection
     return (
-      <Box key={i} width={{ xs: 1, md: 0.5, lg: 0.33, xl: 0.2 }} pr={1} py={1}>
+      <Box
+        key={option.index}
+        width={{ xs: 1, md: 0.5, lg: 0.33, xl: 0.2 }}
+        pr={1}
+        py={1}
+      >
         <Button
           width="100%"
           py={1}
-          onClick={() => buttonClick(i)}
+          onClick={() => buttonClick(option.index)}
           type={selected ? 'selected' : 'answer'}
         >
-          {option}
+          {option.text}
         </Button>
       </Box>
     )
