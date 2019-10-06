@@ -67,7 +67,7 @@ const saveAnswers = async answers => {
 
     await candidate.addAnswer(q, {
       through: {
-        response: parseInt(answer.Answer - 1),
+        response: parseInt(answer.Answer),
         comment: answer.Comment,
         source: answer.Source,
       },
