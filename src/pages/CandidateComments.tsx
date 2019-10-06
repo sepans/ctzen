@@ -24,7 +24,8 @@ export const CandidateComments: React.FC<CandidateCommentsProps> = ({
   let comments
   if (answer) {
     const pick = answer!.CandidateResponse!.response || 0
-    const pickText = optionArray(answer)[pick]
+    const pickOption = optionArray(answer).find(option => option.index === pick)
+    const pickText = pickOption!.text
 
     comments = (
       <Box p={3}>

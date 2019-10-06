@@ -22,7 +22,10 @@ const CandidatePosition: React.FC<Props> = ({ candidate }) => {
       }
       const pick =
         (answer.CandidateResponse && answer.CandidateResponse.response) || 0
-      const pickText = optionArray(answer)[pick]
+      const pickOption = optionArray(answer).find(
+        option => option.index === pick
+      )
+      const pickText = pickOption ? pickOption!.text : 'No data'
       return (
         <Link key={i} to={`/comments/${candidate.id}/${answer.id}`}>
           <Box py={2} px={3} borderBottom="1px solid #AAA">
