@@ -6,7 +6,7 @@ const { db } = require('../server/models')
 
 // !!!!!!! IMPORTANT !!!!!!!
 const DELETE_QUESTIONS = true
-const file = '../../data/09_09_19/questions.json'
+const file = '../../data/10_05_19/questions.json'
 
 const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)
@@ -31,8 +31,10 @@ const saveQuestions = async questions => {
       option3,
       option4,
       option5,
+      Subcategory,
       level,
     } = q
+    const category = importId.split('_')[0]
     return {
       importId,
       title: question,
@@ -41,6 +43,8 @@ const saveQuestions = async questions => {
       option3,
       option4,
       option5,
+      category,
+      subcategory: Subcategory,
       createdAt: new Date(),
       updatedAt: new Date(),
       level,

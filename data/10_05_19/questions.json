@@ -1,0 +1,147 @@
+[
+  {
+    "importId": "Econ_1",
+    "Subcategory": "Trade",
+    "question": "The government should increase tariffs on products imported into the country",
+    "option1": "No, Tarriffs are taxes on americans and pointless",    "option3": "Tarriffs may be a useful tool if its part of a broader strategy",
+    "option5": "Yes, tarriffs are always useful, they benefit Americans and hurt our adversaries"
+  },
+  {
+    "importId": "Econ_2",
+    "Subcategory": "Fiscal",
+    "question": "Current taxes on the rich are too low and should be increased",
+    "option1": "No, increasing taxes on the rich will hurt the economy",    "option3": "A moderate increase in taxes on the rich will benefit the economy",
+    "option5": "Yes, a steep increase in taxes on the rich will benefit the economy"
+  },
+  {
+    "importId": "Econ_3",
+    "Subcategory": "Fiscal",
+    "question": "We should reduce taxes on the middle class",
+    "option1": "No, an increase in taxes on the middle class may even be necessary to pay for social programs",    "option3": "Taxes on the middle-class should remain as-is, but spent more wisely",
+    "option5": "Yes, a slight decrease in taxes on the middle-class will help stiumlate the economy"
+  },
+  {
+    "importId": "Econ_4",
+    "Subcategory": "Fiscal",
+    "question": "The government should address reducing the national debt through higher taxes or reduced spending",
+    "option1": "No, the national debt is not a priority at the moment and its ok if it even increases",
+    "option2": "It depends on the circumstances in 2020",
+    "option3": "Yes, but only if it reduces it through higher taxes on the rich",
+    "option5": "Yes, the national debt is an important issues, and we need to tackle it through both taxes and spending"
+  },
+  {
+    "importId": "Econ_5",
+    "Subcategory": "Industry",
+    "question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
+    "option1": "No, the market will provide the sufficient response",    "option3": "Yes, a mild stimulus from the government would be helpful",
+    "option5": "Yes, a significant stimulus from the government is necessary"
+  },
+  {
+    "importId": "Econ_6",
+    "Subcategory": "Industry",
+    "question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
+    "option1": "No, these companies are not posing sufficient harm to consumers to warrant a breakup",    "option3": "We should kick off a thorough process to examine if that is necessary",
+    "option5": "Yes, this is a clear anti-trust issue and must be dealt with immediately"
+  },
+  {
+    "importId": "Econ_7",
+    "Subcategory": "Industry",
+    "question": "I support a public single-payer healthcare system",
+    "option1": "No, private market competition will provide better outcomes than government-run health insurance",    "option3": "Yes, but only if it competes aside private insurance (public option)",
+    "option5": "Yes, private insurance should be abolished in favor of a government-run single-payer plan"
+  },
+  {
+    "importId": "Social_1",
+    "Subcategory": "Education",
+    "question": "Higher education should be tuition free (publically funded)",
+    "option1": "2-years of community college should be completely free and support for 4-year college should be increased for low-income students",    "option3": "Make public 4-year colleges tuition free for low-income students",
+    "option5": "Make public 4-year colleges tuition free for all"
+  },
+  {
+    "importId": "Social_2",
+    "Subcategory": "Education",
+    "question": "The government should forgive outstanding student debt",
+    "option1": "Reduce debt-burden through income-driven and public-service driven loan reduction programs",
+    "option2": "Cancel the debts of borrowers in low-quality, overwhelmingly for-profit programs",
+    "option3": "Cancel debt for more than 95% of people with student loan debt",
+    "option5": "Cancel the entire $1.6 trillion in outstanding student debt for the 45 million borrowers"
+  },
+  {
+    "importId": "Social_4",
+    "Subcategory": "Gun Control",
+    "question": "The government should introduce a gun buy-back program",
+    "option1": "No, buy-back programs don't work",    "option3": "Yes, but only if it is a voluntary buyback program",
+    "option5": "Yes, we should institute a mandatory buy-back program for assault weapons"
+  },
+  {
+    "importId": "Social_5",
+    "Subcategory": "Criminal Justice",
+    "question": "Death penalty should be ended at state and federal levels",
+    "option1": "There may be some unique circumstances for which the dealth penalty is warrented",    "option5": "Yes, abolish the death penalty"
+  },
+  {
+    "importId": "Social_6",
+    "Subcategory": "Criminal Justice",
+    "question": "The President should drive clemency plans for non-violent drug offenders currently incarcerated",
+    "option1": "No, the clemancy process should be driven by the Department of Justice",    "option5": "Yes, use the president’s clemency power to secure the release of individuals facing unduly long sentences for certain non-violent and drug crimes"
+  },
+  {
+    "importId": "Social_8",
+    "Subcategory": "Criminal Justice",
+    "question": "Marijuana should be legalized at the state and federal levels",
+    "option1": "Federally, legalize medical marijuana & decriminalize recreational use; further legalization to be determined by states",    "option5": "Federally legalize all uses of marijuana"
+  },
+  {
+    "importId": "Social_10",
+    "Subcategory": "Church-State",
+    "question": "The government should provide all women free access to abortion facilities and cover costs of care",
+    "option1": "No, I support the Hyde Amendment, barring the use of federal funds to pay for abortion except to save the life of the woman, or in cases of incest or rape",    "option5": "Yes, abotion is healthcare and should be publically funded"
+  },
+  {
+    "importId": "Social_11",
+    "Subcategory": "Democracy",
+    "question": "Citizens united should be overturned",
+    "option1": "No, campaign spending is speach and should be protected",    "option5": "Yes, we need to limit the amount of money spent in politics"
+  },
+  {
+    "importId": "Foreign_1",
+    "Subcategory": "Unilateralism",
+    "question": "President should be required to come to Congress for an authorization of the use of military force (AUMF)",
+    "option1": "No, the 2001 Authorization for Use of Military Force Against Terrorists is sufficient for authorizing military force against adversaries such as Iran",
+    "option2": "There is no need to repeal the 2001 AUMF, however, the current authorization is limited to existing wars, and does not allow for new ones (e.g., war with Iran)",    "option5": "Yes, the time has come for Congress to repeal and replace the AUMF and ensure a robust debate on future operations"
+  },
+  {
+    "importId": "Foreign_2",
+    "Subcategory": "Unilateralism",
+    "question": "Israel meets international standards of human rights",
+    "option1": "No, Israel's record on human rights should be condemned",    "option3": "Israel’s occupation a “real” and “significant” problem, but would not go as far to say it is a “human rights crisis.”",
+    "option5": "Yes, Israel's occupation of Palestenian territories is legitimate and its behavior meets international standards of human rights"
+  },
+  {
+    "importId": "Foreign_3",
+    "Subcategory": "Interventionism",
+    "question": "We should bring U.S. troops home from America's post-9/11 wars without delay",
+    "option1": "No, we need our troops to remain in Iraq, Afghanistan, and Syria to keep peace and security",
+    "option2": "Start the process of bringing the troops home, but do not offer a specific timeline",
+    "option3": "Bring the troops home over the first presidential term (over the next 4 years)",
+    "option5": "Yes, bring the troops home without delay"
+  },
+  {
+    "importId": "Foreign_4",
+    "Subcategory": "Interventionism",
+    "question": "Illegal border crossing should be decriminalized",
+    "option1": "No, illegal border crossing is a crime",    "option5": "Yes, make being in the United States without proper paperwork a civil offense, not a criminal offense"
+  },
+  {
+    "importId": "Foreign_5",
+    "Subcategory": "Hegemony",
+    "question": "Growing defense / pentagon spending should be a priority",
+    "option1": "No, reduce defense budget in favor of domestic programs or diplomatic initiatives",    "option5": "Yes, increase defense budget to address emerging threats (cybersecurity, artificial intelligence)"
+  },
+  {
+    "importId": "Foreign_6",
+    "Subcategory": "Hegemony",
+    "question": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development",
+    "option1": "No, the United States should lead on climate",    "option5": "Yes, we should only cooperate with climate deals that ask the same from all countries"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "importId": "Econ_1",
+    "Subcategory": "Trade",
+    "Question": "The government should increase tariffs on products imported into the country",
+    "Answer": 1,
+    "Comment": "Yet again we are going to have a situation where American consumers are going to have to pay a price for this administration’s trade policy",
+    "Source": "https://www.mcclatchydc.com/news/policy/trade/article231269848.html"
+  },
+  {
+    "importId": "Econ_2",
+    "Subcategory": "Fiscal",
+    "Question": "Current taxes on the rich are too low and should be increased",
+    "Answer": 3,
+    "Comment": "Harris proposes to reverse President Trump’s tax reform legislation, of which the top 1% receive an estimated 83% of its benefits",
+    "Source": "https://kamalaharris.org/issue/economic-justice/"
+  },
+  {
+    "importId": "Econ_3",
+    "Subcategory": "Fiscal",
+    "Question": "We should reduce taxes on the middle class",
+    "Answer": 5,
+    "Comment": "Harris proposes a tax credit of up to $6,000 to working families each year; and also introduced legislation to create a new tax credit for renters who spend more than 30 percent of their income on rent, capped at the fair-market rent for the area and scaled to the renter’s income",
+    "Source": "https://kamalaharris.org/issue/economic-justice/"
+  },
+  {
+    "importId": "Econ_4",
+    "Subcategory": "Fiscal",
+    "Question": "The government should address reducing the national debt through higher taxes or reduced spending",
+    "Answer": 3,
+    "Comment": "No data",
+    "Source": ""
+  },
+  {
+    "importId": "Econ_5",
+    "Subcategory": "Industry",
+    "Question": "The government should support (through grants, tax breaks, subsidies) the clean energy sector",
+    "Answer": 5,
+    "Comment": "Support developing new nuclear technologies as part of an effort to fight climate change",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/kamala-harris/"
+  },
+  {
+    "importId": "Econ_6",
+    "Subcategory": "Industry",
+    "Question": "The government should break up the mega-tech firms (Alphabet, Facebook, Amazon) into smaller competing firms",
+    "Answer": 5,
+    "Comment": "We need to seriously take a look at breaking up Facebook, \"it is essentially a utility that has gone unregulated.\"",
+    "Source": "https://twitter.com/cnnsotu/status/1127568807600500737?lang=en"
+  },
+  {
+    "importId": "Econ_7",
+    "Subcategory": "Industry",
+    "Question": "I support a public single-payer healthcare system",
+    "Answer": 3,
+    "Comment": "I am supportive of a Medicare for All policy, and under a Medicare for All policy, private insurance would certainly exist for supplemental coverage",
+    "Source": "https://www.cnn.com/2019/06/28/politics/kamala-harris-democratic-debate-abolishing-private-insurance/index.html"
+  },
+  {
+    "importId": "Social_1",
+    "Subcategory": "Education",
+    "Question": "Higher education should be tuition free (publically funded)",
+    "Answer": 3,
+    "Comment": "She’ll fight to make community college free, make four-year public college debt-free, and provide an income boost to nearly 1 in 7 Pell Grant recipients through her LIFT Act",
+    "Source": "https://kamalaharris.org/issue/debt-free-college-and-student-debt/"
+  },
+  {
+    "importId": "Social_2",
+    "Subcategory": "Education",
+    "Question": "The government should forgive outstanding student debt",
+    "Answer": 1,
+    "Comment": "She will allow current debt holders to refinance high-interest loans to lower rates, expanding Income Based Repayment (IBR) to ensure no student pays more than they can afford",
+    "Source": "https://kamalaharris.org/issue/debt-free-college-and-student-debt/"
+  },
+  {
+    "importId": "Social_4",
+    "Subcategory": "Gun Control",
+    "Question": "The government should introduce a gun buy-back program",
+    "Answer": 5,
+    "Comment": "Harris: Swalwell’s Mandatory Gun Buyback a ‘Great Idea’",
+    "Source": "https://freebeacon.com/politics/harris-swalwells-gun-buyback-a-great-idea/"
+  },
+  {
+    "importId": "Social_5",
+    "Subcategory": "Criminal Justice",
+    "Question": "Death penalty should be ended at state and federal levels",
+    "Answer": 3,
+    "Comment": "Kamala Harris Touts Her Opposition to the Death Penalty. Her Track Record’s More Complicated.",
+    "Source": "https://www.motherjones.com/politics/2019/01/kamala-harris-touts-her-opposition-to-the-death-penalty-her-track-records-more-complicated/"
+  },
+  {
+    "importId": "Social_6",
+    "Subcategory": "Criminal Justice",
+    "Question": "Government should allow clemency plans for non-violent drug offenders currently incarcerated",
+    "Answer": 1,
+    "Comment": "She would go further than former President Barack Obama in using her powers to pardon non-violent drug offenders",
+    "Source": "https://www.cnn.com/2019/04/24/politics/kamala-harris-pardons/index.html"
+  },
+  {
+    "importId": "Social_8",
+    "Subcategory": "Criminal Justice",
+    "Question": "Marijuana should be legalized at the state and federal levels",
+    "Answer": 5,
+    "Comment": "To help end the era of mass incarceration, Kamala will take action to legalize marijuana",
+    "Source": "https://kamalaharris.org/issue/criminal-justice-reform/"
+  },
+  {
+    "importId": "Social_10",
+    "Subcategory": "Church-State",
+    "Question": "The government should provide all women free access to abortion facilities and cover costs of care",
+    "Answer": 5,
+    "Comment": "No woman's access to reproductive health care should be based on how much money she has. We must repeal the Hyde Amendment.",
+    "Source": "https://twitter.com/kamalaharris/status/1136320875102429184?lang=en"
+  },
+  {
+    "importId": "Social_11",
+    "Subcategory": "Democracy",
+    "Question": "Citizens united should be overturned",
+    "Answer": 5,
+    "Comment": "The Supreme Court's 2010 Citizens United decision, which opened the door for unlimited spending in elections, should be overturned",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/kamala-harris/"
+  },
+  {
+    "importId": "Foreign_1",
+    "Subcategory": "Unilateralism",
+    "Question": "President should be required to come to Congress for an authorization of the use of military force (AUMF)",
+    "Answer": 5,
+    "Comment": "In May 2019, Harris voted for the repeal of the 2001 AUMF",
+    "Source": "https://www.senate.gov/legislative/LIS/roll_call_lists/roll_call_vote_cfm.cfm?congress=116&session=1&vote=00094"
+  },
+  {
+    "importId": "Foreign_2",
+    "Subcategory": "Unilateralism",
+    "Question": "Israel meets international standards of human rights",
+    "Answer": 5,
+    "Comment": "In the Senate and on the campaign trail, Harris is opposing the boycott, divestment and sanctions movement targeting Israel, foreign aid cuts to the state, condemnatory votes on Israel at the United Nations and public criticism of its leadership",
+    "Source": "https://www.mcclatchydc.com/news/politics-government/white-house/article229180844.html"
+  },
+  {
+    "importId": "Foreign_3",
+    "Subcategory": "Interventionism",
+    "Question": "We should bring U.S. troops home from America's post-9/11 wars without delay",
+    "Answer": 5,
+    "Comment": "Has called for bringing U.S. troops home from America's post-9/11 wars without delay",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/kamala-harris/"
+  },
+  {
+    "importId": "Foreign_4",
+    "Subcategory": "Interventionism",
+    "Question": "Illegal immigration is a major national security problem in the US",
+    "Answer": 1,
+    "Comment": "Kamala will focus our border enforcement resources on true public safety threats through investments in technology and ports of entry to address the flow of illegal drugs, illegal weapons and human trafficking.",
+    "Source": "https://kamalaharris.org/issue/immigration/"
+  },
+  {
+    "importId": "Foreign_5",
+    "Subcategory": "Hegemony",
+    "Question": "Growing defense / pentagon spending should be a priority",
+    "Answer": 1,
+    "Comment": "Track records of advocating deep cuts in the Pentagon budget in order to pay for what they consider more important domestic programs or diplomatic initiatives",
+    "Source": "https://www.politico.com/2020-election/candidates-views-on-the-issues/kamala-harris/"
+  },
+  {
+    "importId": "Foreign_6",
+    "Subcategory": "Hegemony",
+    "Question": "US and developing countries (China, India) should have same climate change standards despite the underlying different stages of development",
+    "Answer": 1,
+    "Comment": "Has supported the Green New Deal, which sets ambitious targets for the US in combating climate change, regardless of what other countries do",
+    "Source": "https://kamalaharris.org/issue/climate/"
+  }
+]

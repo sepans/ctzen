@@ -17,10 +17,12 @@ const Responses: React.FC<Props> = ({ me }) => {
     answers &&
     answers.length > 0 &&
     answers.map(answer => {
-      console.log(answer)
       if (!answer || !answer.UserResponse) return null
       const pick = answer.UserResponse.response || 0
-      const pickText = optionArray(answer)[pick]
+      const pickOption = optionArray(answer).find(
+        option => option.index === pick
+      )
+      const pickText = pickOption!.text
 
       return (
         answer && (

@@ -11,13 +11,13 @@ let candidateName = 'Elizabeth Warren'
 /*
  names in db:
 Joe Biden
-node import_candidate_answers.js ../../data/09_09_19/biden.json 'Joe Biden'
+node import_candidate_answers.js ../../data/10_05_19/biden.json 'Joe Biden'
 Pete Buttigieg
-node import_candidate_answers.js ../../data/09_09_19/buttigieg.json 'Pete Buttigieg'
+node import_candidate_answers.js ../../data/10_05_19/buttigieg.json 'Pete Buttigieg'
 Kamala Harris
- node import_candidate_answers.js ../../data/09_09_19/harris.json 'Kamala Harris'
+ node import_candidate_answers.js ../../data/10_05_19/harris.json 'Kamala Harris'
 Bernie Sanders
-node import_candidate_answers.js ../../data/09_09_19/sanders.json 'Bernie Sanders'
+node import_candidate_answers.js ../../data/10_05_19/sanders.json 'Bernie Sanders'
 Elizabeth Warren
 
  Julian Castro
@@ -67,7 +67,7 @@ const saveAnswers = async answers => {
 
     await candidate.addAnswer(q, {
       through: {
-        response: parseInt(answer.Answer - 1),
+        response: parseInt(answer.Answer),
         comment: answer.Comment,
         source: answer.Source,
       },

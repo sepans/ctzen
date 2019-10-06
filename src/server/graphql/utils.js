@@ -118,7 +118,8 @@ const getAnswerIncludes = queryInfo => {
   const regex = /^([\w]*\.)?answers.([\w]*)$/g
   const attributes = answerQuery
     .map(attr => {
-      const match = regex.exec(attr)
+      regex.lastIndex = 0
+      const match = regex.exec(attr.trim())
       return match && match[2]
     })
     .filter(attr => attr)
