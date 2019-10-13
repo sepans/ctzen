@@ -52,8 +52,12 @@ fragment Question_me on UserInfo {
     score
     candidate {
       name: displayName
+      image
       id
     }
+  }
+  nextQuestion {
+    id
   }
   user {
     answers {
@@ -86,7 +90,10 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v3 = [
+  (v2/*: any*/)
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -251,10 +258,27 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "image",
+                    "args": null,
+                    "storageKey": null
+                  },
                   (v2/*: any*/)
                 ]
               }
             ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "nextQuestion",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Question",
+            "plural": false,
+            "selections": (v3/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -273,9 +297,7 @@ return {
                 "args": null,
                 "concreteType": "UserAnswer",
                 "plural": true,
-                "selections": [
-                  (v2/*: any*/)
-                ]
+                "selections": (v3/*: any*/)
               },
               (v2/*: any*/)
             ]
@@ -288,7 +310,7 @@ return {
     "operationKind": "query",
     "name": "App_Question_Query",
     "id": null,
-    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n  category\n  subcategory\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      id\n    }\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query App_Question_Query(\n  $id: ID!\n) {\n  question(id: $id) {\n    ...Question_question\n    id\n  }\n  me {\n    ...Question_me\n  }\n}\n\nfragment Question_question on Question {\n  id\n  title\n  level\n  option1\n  option2\n  option3\n  option4\n  option5\n  category\n  subcategory\n}\n\nfragment Question_me on UserInfo {\n  matchingCandidates {\n    score\n    candidate {\n      name: displayName\n      image\n      id\n    }\n  }\n  nextQuestion {\n    id\n  }\n  user {\n    answers {\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

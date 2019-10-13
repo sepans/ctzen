@@ -28,11 +28,12 @@ export const Categories: React.FC<CategoriesProps> = ({
       const color = selectedCategory(category, selected) ? 'red' : 'white'
       return (
         <a
+          key={i}
           onClick={() => {
             onSelect && onSelect(category)
           }}
         >
-          <Box key={i}>
+          <Box>
             <Text color={color} block type="secondary">
               {category}
             </Text>

@@ -7,8 +7,12 @@ export type Question_me = {
         readonly score: number | null;
         readonly candidate: {
             readonly name: string | null;
+            readonly image: string | null;
         } | null;
     } | null> | null;
+    readonly nextQuestion: {
+        readonly id: string | null;
+    } | null;
     readonly user: {
         readonly answers: ReadonlyArray<{
             readonly id: string | null;
@@ -19,7 +23,17 @@ export type Question_me = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null
+  }
+];
+return {
   "kind": "Fragment",
   "name": "Question_me",
   "type": "UserInfo",
@@ -57,10 +71,27 @@ const node: ReaderFragment = {
               "name": "displayName",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "image",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "nextQuestion",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Question",
+      "plural": false,
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -79,19 +110,12 @@ const node: ReaderFragment = {
           "args": null,
           "concreteType": "UserAnswer",
           "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            }
-          ]
+          "selections": (v0/*: any*/)
         }
       ]
     }
   ]
 };
-(node as any).hash = 'aaaa9a571adc834f6b90343bed10e502';
+})();
+(node as any).hash = '8ab368eda91e71dfa2cbf740bfbb5822';
 export default node;

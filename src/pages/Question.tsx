@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
 import {
-  PageWrapper,
+  Text,
   Title,
   Button,
   WrapperWithFooter,
+  CandidateImage,
 } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Question_question } from './__generated__/Question_question.graphql'
@@ -43,6 +44,7 @@ const mutation = graphql`
 `
 
 const MATCH_SCORE_THRESHOLD = 0.7
+const MIN_ANSWERS_TO_SHOW_MATCH = 4
 
 const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)
@@ -71,14 +73,19 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     }
   }
 
+  const skipQuestion = () => {
+    return null
+  }
+
   const options = optionArray(question).map(option => {
     const selected = option.index === selection
     return (
       <Box
         key={option.index}
-        width={{ xs: 1, md: 0.5, lg: 0.33, xl: 0.2 }}
+        width={{ xs: 1, md: 1, lg: 0.5, xl: 0.5 }}
         pr={1}
         py={1}
+        display="flex"
       >
         <Button
           width="100%"
@@ -92,41 +99,66 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     )
   })
 
+  const hasMoreQuestions = () => me.nextQuestion
+
   const showNext = selection !== -1
 
-  const hasAnswers = me.user && me.user.answers && me.user.answers.length > 0
+  const answers = (me.user && me.user.answers && me.user.answers) || []
+  const hasAnswers = answers.length > 0
+
+  const topMatches = me && me.matchingCandidates
+
+  const topMatch = topMatches && topMatches[0]
 
   const topScores: (number)[] =
-    (me &&
-      me.matchingCandidates &&
-      me.matchingCandidates.length > 0 &&
-      me.matchingCandidates[0] &&
-      me.matchingCandidates.map(match => (match && match.score) || 0)) ||
+    (topMatches &&
+      topMatches.length > 0 &&
+      topMatches.map(match => (match && match.score) || 0)) ||
     []
 
   const hasMatches =
     topScores && topScores[0] && topScores[0] > MATCH_SCORE_THRESHOLD
 
+  const showMatches = hasMatches && answers.length > MIN_ANSWERS_TO_SHOW_MATCH
+
+  // const nextQuestionsExceptCurrent = me.nextQuestions && me.nextQuestions.filter(q => q!.id !== question.id) || []
+  // const canSkip = nextQuestionsExceptCurrent.length > 0
+  // const skipQuestionId = nextQuestionsExceptCurrent[0]!.id
+
   const buttonSection = (
     <>
       <Box mt={2} display="flex" flexDirection="column">
         <>
-          <Box pb={3} justifyContent="right">
-            <Button width="100%" onClick={submitSelection} disabled={!showNext}>
-              Next >
-            </Button>
-          </Box>
-          <Box display="flex" justifyContent="space-between">
-            {hasAnswers && (
-              <Link to="/responses">
-                <Button>View answers</Button>
-              </Link>
-            )}
-            {hasMatches && (
+          <TopMatchContainer>
+            <Box width={'100%'}>
               <Link to="/candidates">
-                <Button>Show candidate matches</Button>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Box>Your top match so far:</Box>{' '}
+                  {showMatches ? (
+                    <CandidateImage img={topMatch!.candidate!.image || ''} />
+                  ) : (
+                    '?'
+                  )}
+                </Box>
               </Link>
-            )}
+            </Box>
+          </TopMatchContainer>
+          <Box display="flex" justifyContent="space-between">
+            <Button width="50%" disabled={!hasAnswers} mr={1}>
+              <Link to="/responses">You</Link>
+            </Button>
+            <Button
+              width={'50%'}
+              ml={1}
+              onClick={submitSelection}
+              disabled={!showNext}
+            >
+              Submit
+            </Button>
           </Box>
         </>
       </Box>
@@ -141,18 +173,30 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
         </>
       }
     >
-      <Box p={3}>
-        <Title>{title}</Title>
-        <Box my={3}>
-          <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
-            {options}
+      <Box p={3} display="flex" flexDirection="column" height="100%">
+        <QuestionContainer>
+          <Title>{title}</Title>
+          <Box my={3}>
+            <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
+              {options}
+            </Box>
           </Box>
-          {buttonSection}
-        </Box>
+        </QuestionContainer>
+        <ButtonsContainer>{buttonSection}</ButtonsContainer>
       </Box>
     </WrapperWithFooter>
   )
 }
+
+const QuestionContainer = ({ children }) => <Box flex="1">{children}</Box>
+
+const ButtonsContainer = ({ children }) => <Box>{children}</Box>
+
+const TopMatchContainer = ({ children }) => (
+  <Box mb={4} p={2} border={'1px solid #555'} justifyContent="right">
+    {children}
+  </Box>
+)
 
 export default createFragmentContainer(Question, {
   question: graphql`
@@ -175,7 +219,11 @@ export default createFragmentContainer(Question, {
         score
         candidate {
           name: displayName
+          image
         }
+      }
+      nextQuestion {
+        id
       }
       user {
         answers {
