@@ -38,7 +38,7 @@ const Home: React.FC<HomeProps> = ({ me: { nextQuestion, user } }) => {
         borderBottom="1px solid black"
       >
         <Box my={4}>
-          <Title>Find out which candidate matches your your politype:</Title>
+          <Title>Pick where you stand on the issues:</Title>
         </Box>
         <ButtonBox>{questionButton}</ButtonBox>
       </Box>

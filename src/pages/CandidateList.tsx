@@ -91,7 +91,7 @@ const CandidateList: React.FC<CandidateListProps> = ({ candidates, me }) => {
       header={
         <Header noPadding={false}>
           <Title color="white" textAlign="center">
-            {candidates.length} Democrat candidates 2020
+            Top 5 Democratic Candidates Leading the Polls
           </Title>
         </Header>
       }
