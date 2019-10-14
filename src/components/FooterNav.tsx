@@ -7,41 +7,32 @@ interface FooterNavProps {
   selectedNav: 'me' | 'candidate' | 'none'
 }
 
-const restNavStyles = {
-  color: 'black',
-  backgroundColor: 'white',
-  width: '150px',
-}
-
 const selectedNavStyles = {
-  color: 'red',
-  backgroundColor: 'white',
-  width: '150px',
+  borderBottom: '2px solid black',
 }
 
 export const FooterNav: React.FC<FooterNavProps> = ({ selectedNav }) => {
-  const candidateStyles =
-    selectedNav === 'candidate' ? selectedNavStyles : restNavStyles
-  const meStyles = selectedNav === 'me' ? selectedNavStyles : restNavStyles
+  const candidateStyles = selectedNav === 'candidate' ? selectedNavStyles : {}
+  const meStyles = selectedNav === 'me' ? selectedNavStyles : {}
   return (
     <Box
       width="100%"
-      p={2}
-      backgroundColor="black"
+      p={3}
+      backgroundColor="white"
       display="flex"
       flexDirection="row"
-      justifyContent="space-between"
+      justifyContent="space-evenly"
     >
-      <Link to={`/responses`}>
-        <Button {...meStyles}>
-          <Text type="secondary">Me</Text>
-        </Button>
-      </Link>
-      <Link to={`/candidates`}>
-        <Button p={1} {...candidateStyles}>
-          <Text type="secondary">Candidate</Text>
-        </Button>
-      </Link>
+      <Box {...meStyles}>
+        <Link to={`/responses`}>
+          <Text type="primary">YOU</Text>
+        </Link>
+      </Box>
+      <Box {...candidateStyles}>
+        <Link to={`/candidates`}>
+          <Text type="primary">CANDIDATES</Text>
+        </Link>
+      </Box>
     </Box>
   )
 }

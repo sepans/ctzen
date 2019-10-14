@@ -95,7 +95,7 @@ const CandidateList: React.FC<CandidateListProps> = ({ candidates, me }) => {
           </Title>
         </Header>
       }
-      footer={<FooterNav selectedNav="me" />}
+      footer={<FooterNav selectedNav="candidate" />}
     >
       <>
         <Box mt={2}>{candidateList}</Box>
