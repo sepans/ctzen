@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { WrapperWithFooter, Text } from '../components/Layout'
+import { WrapperWithFooter, Text, QuestionBox } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidateComments_candidate } from './__generated__/CandidateComments_candidate.graphql'
 import { Categories } from '../components/Categories'
@@ -28,31 +28,27 @@ export const CandidateComments: React.FC<CandidateCommentsProps> = ({
     const pickText = pickOption!.text
 
     comments = (
-      <Box p={3}>
+      <QuestionBox>
         <Box my={2}>
-          <Text block>{answer.title}</Text>
+          <Text type="primary" block>
+            {answer.title}
+          </Text>
         </Box>
         <Box my={2}>
-          <Text color="green" pb={1} type="primary" block>
-            {candidate.displayName}'s answer:
-          </Text>
           <Text block>{pickText}</Text>
         </Box>
-        <Box my={2}>
-          <Text color="green" pb={1} type="primary" block>
-            Quote:
-          </Text>
-          <Text block>{answer!.CandidateResponse!.comment}</Text>
+        <Box mt={4} py={4} borderTop="1px solid black">
+          <Text block>"{answer!.CandidateResponse!.comment}"</Text>
           <a target="_blank" href={answer!.CandidateResponse!.source || '#'}>
-            <Text block pt={3}>
-              source
+            <Text type="primary" block mt={4}>
+              ⇨ source
             </Text>
           </a>
         </Box>
-      </Box>
+      </QuestionBox>
     )
   } else {
-    comments = <Box p={5}>Question not found</Box>
+    comments = 'Question not found'
   }
   return (
     <WrapperWithFooter
@@ -63,7 +59,7 @@ export const CandidateComments: React.FC<CandidateCommentsProps> = ({
       }
       footer={<FooterNav selectedNav="candidate" />}
     >
-      {comments}
+      <Box p={4}>{comments}</Box>
     </WrapperWithFooter>
   )
 }

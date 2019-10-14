@@ -106,6 +106,18 @@ export const CandidateImage = styled.div`
   display: inline-block;
 `
 
+export const QuestionBox = ({ children }) => (
+  <Box
+    my={2}
+    border="1px solid black"
+    borderRadius="2px"
+    backgroundColor="white"
+    p={3}
+  >
+    {children}
+  </Box>
+)
+
 export const CandidateAvatar = styled(CandidateImage)`
   min-width: 50px;
   height: 50px;

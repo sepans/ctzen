@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { WrapperWithFooter, Text } from '../components/Layout'
+import { WrapperWithFooter, Text, QuestionBox } from '../components/Layout'
 import CandidateInfo from '../components/CandidateInfo'
 import { CandidatePosition_candidate } from './__generated__/CandidatePosition_candidate.graphql'
 import { Box } from '@smooth-ui/core-sc'
@@ -33,15 +33,16 @@ const CandidatePosition: React.FC<Props> = ({ candidate }) => {
         )
         const pickText = pickOption ? pickOption!.text : 'No data'
         return (
-          <Link key={i} to={`/comments/${candidate.id}/${answer.id}`}>
-            <Box py={1} px={3}>
-              {mapCategoryName(answer.category)}
-            </Box>
-            <Box py={2} px={3} borderBottom="1px solid #AAA">
-              <Text block>{answer.title}</Text>
-              <Text color="green">{pickText}</Text>
-            </Box>
-          </Link>
+          <QuestionBox>
+            <Link key={i} to={`/comments/${candidate.id}/${answer.id}`}>
+              <Box py={2} px={3}>
+                <Text type="primary">{answer.title}</Text>
+                <Box my={2}>
+                  <Text>{pickText}</Text>
+                </Box>
+              </Box>
+            </Link>
+          </QuestionBox>
         )
       })
 
@@ -50,12 +51,13 @@ const CandidatePosition: React.FC<Props> = ({ candidate }) => {
       header={
         <>
           <CandidateInfo candidate={candidate} />
+          <Box borderTop="1px solid #050505" />
           <Categories selected={category} onSelect={setCategory} />
         </>
       }
       footer={<FooterNav selectedNav="candidate" />}
     >
-      <Box>{answers}</Box>
+      <Box p={4}>{answers}</Box>
     </WrapperWithFooter>
   )
 }

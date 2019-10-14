@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { WrapperWithFooter, Text, Button } from '../components/Layout'
+import {
+  WrapperWithFooter,
+  Text,
+  Button,
+  QuestionBox,
+} from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Responses_me } from './__generated__/Responses_me.graphql'
 import { optionArray } from '../components/helpers/question_helpers'
@@ -26,17 +31,16 @@ const Responses: React.FC<Props> = ({ me }) => {
 
       return (
         answer && (
-          <Box my={2} borderBottom="1px solid #EEE">
-            <Box>
-              <Text type="primary">{answer.title}</Text>
-            </Box>
-            <Box my={1} display="flex" justifyContent="space-between">
-              <Text>{pickText}</Text>
-              <Link to={`/question/${answer.id}`}>
-                <Button>Edit</Button>
-              </Link>
-            </Box>
-          </Box>
+          <QuestionBox>
+            <Link to={`/question/${answer.id}`}>
+              <Box>
+                <Text type="primary">{answer.title}</Text>
+              </Box>
+              <Box my={1}>
+                <Text>{pickText}</Text>
+              </Box>
+            </Link>
+          </QuestionBox>
         )
       )
     })
@@ -68,7 +72,7 @@ const Responses: React.FC<Props> = ({ me }) => {
   */
   return (
     <WrapperWithFooter footer={<FooterNav selectedNav="me" />}>
-      <Box p={2}>
+      <Box p={4}>
         <Box py={1} justifyContent="center" display="flex">
           {respondQuestions}
         </Box>
