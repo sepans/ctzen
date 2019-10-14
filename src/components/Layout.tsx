@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React, { ReactNode } from 'react'
 import { Typography, Box, Button as SmoothButton } from '@smooth-ui/core-sc'
+import { theme } from '../theme'
 
 export const Section = styled.div`
   padding: 20px 0;
@@ -134,7 +135,12 @@ export const WrapperWithFooter: React.FC<WrapperWithFooterProps> = ({
   footer,
   children,
 }) => (
-  <Box display="flex" flexDirection="column" height="100%">
+  <Box
+    display="flex"
+    flexDirection="column"
+    height="100%"
+    backgroundColor={theme.bgGray}
+  >
     <Box>{header}</Box>
     <Box overflow="scroll" flex={1}>
       {children}

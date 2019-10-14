@@ -3,12 +3,16 @@ import { theme as smoothTheme } from '@smooth-ui/core-sc'
 export const theme = Object.assign({}, smoothTheme, {
   fontFamily: 'Avenir, Roboto, Sans',
   primary: '#FFF',
+  bgGray: '#F4F5F8',
   light: '#FFF',
-  dark: '#0057FF',
+  dark: '#2C2C2C',
   gray: '#A4A4A4',
   black: '#000',
   red: '#FF0000',
   green: '#00FF00',
-  fontSizes: [10, 12, 20, 24, 32, 48, 64, 72],
+  fontSizes: [14, 16, 20],
+  lineHeights: [20, 22, 26],
+  spaces: [0, 5, 10, 15, 20],
+
   btnDisabledOpacity: 0.4,
 })

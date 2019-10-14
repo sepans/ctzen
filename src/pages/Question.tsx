@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
 import {
   Title,
@@ -183,7 +182,7 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
         </>
       }
     >
-      <Box p={3} display="flex" flexDirection="column" height="100%">
+      <Box p={4} display="flex" flexDirection="column" height="100%">
         <QuestionContainer>
           <Title>{title}</Title>
           <Box my={3}>
