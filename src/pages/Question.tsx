@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'found'
 import { graphql, createFragmentContainer, commitMutation } from 'react-relay'
 import {
-  Text,
   Title,
   Button,
   WrapperWithFooter,
@@ -129,27 +128,38 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     <>
       <Box mt={2} display="flex" flexDirection="column">
         <>
-          <TopMatchContainer>
-            <Box width={'100%'}>
-              <Link to="/candidates">
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Box>Your top match so far:</Box>{' '}
-                  {showMatches ? (
-                    <CandidateImage img={topMatch!.candidate!.image || ''} />
-                  ) : (
-                    '?'
-                  )}
-                </Box>
-              </Link>
+          <Button
+            p={2}
+            mb={4}
+            width={'100%'}
+            onClick={() => {
+              router.replace('/candidates')
+            }}
+          >
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Box>Your top match so far:</Box>{' '}
+              {showMatches ? (
+                <CandidateImage img={topMatch!.candidate!.image || ''} />
+              ) : (
+                '?'
+              )}
             </Box>
-          </TopMatchContainer>
+          </Button>
+
           <Box display="flex" justifyContent="space-between">
-            <Button width="50%" disabled={!hasAnswers} mr={1}>
-              <Link to="/responses">You</Link>
+            <Button
+              width="50%"
+              disabled={!hasAnswers}
+              mr={1}
+              onClick={() => {
+                router.replace('/responses')
+              }}
+            >
+              You
             </Button>
             <Button
               width={'50%'}
@@ -191,12 +201,6 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
 const QuestionContainer = ({ children }) => <Box flex="1">{children}</Box>
 
 const ButtonsContainer = ({ children }) => <Box>{children}</Box>
-
-const TopMatchContainer = ({ children }) => (
-  <Box mb={4} p={2} border={'1px solid #555'} justifyContent="right">
-    {children}
-  </Box>
-)
 
 export default createFragmentContainer(Question, {
   question: graphql`
