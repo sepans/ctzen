@@ -5,6 +5,7 @@ import {
   Button,
   WrapperWithFooter,
   CandidateImage,
+  Text,
 } from '../components/Layout'
 import { Box } from '@smooth-ui/core-sc'
 import { Question_question } from './__generated__/Question_question.graphql'
@@ -46,6 +47,7 @@ const MIN_ANSWERS_TO_SHOW_MATCH = 4
 
 const Question: React.FC<Props> = ({ question, me, router }) => {
   const [selection, setSelection] = useState(-1)
+  const [finishedQuestions, setFinishedQuestions] = useState(false)
   const { title, category } = question
 
   const nextQuestionLink = questionId => `/question/${questionId}`
@@ -60,7 +62,11 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
       variables,
       onCompleted: (response, errors) => {
         const { nextQuestion } = response.userAnswerQuestion
-        router.replace(nextQuestionLink(nextQuestion.id))
+        if (nextQuestion) {
+          router.replace(nextQuestionLink(nextQuestion.id))
+        } else {
+          setFinishedQuestions(true)
+        }
       },
       onError: err => console.error(err),
     })
@@ -164,7 +170,7 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
               width={'50%'}
               ml={1}
               onClick={submitSelection}
-              disabled={!showNext}
+              disabled={!showNext || finishedQuestions}
             >
               Submit
             </Button>
@@ -183,14 +189,23 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
       }
     >
       <Box p={4} display="flex" flexDirection="column" height="100%">
-        <QuestionContainer>
-          <Title>{title}</Title>
-          <Box my={3}>
-            <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
-              {options}
+        {!finishedQuestions ? (
+          <QuestionContainer>
+            <Title>{title}</Title>
+            <Box my={3}>
+              <Box my={4} display="flex" flexWrap="wrap" justifyContent="start">
+                {options}
+              </Box>
             </Box>
+          </QuestionContainer>
+        ) : (
+          <Box flex="1" pt={4} textAlign="center">
+            <Title type="primary" block>
+              🎉 You have answered to all questions.{' '}
+            </Title>
+            <Text>Check out your candidate matches!</Text>
           </Box>
-        </QuestionContainer>
+        )}
         <ButtonsContainer>{buttonSection}</ButtonsContainer>
       </Box>
     </WrapperWithFooter>
