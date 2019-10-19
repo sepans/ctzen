@@ -19,6 +19,7 @@ Kamala Harris
 Bernie Sanders
 node import_candidate_answers.js ../../data/10_05_19/sanders.json 'Bernie Sanders'
 Elizabeth Warren
+node import_candidate_answers.js ../../data/10_05_19/warren.json 'Elizabeth Warren'
 
  Julian Castro
  Amy Klobuchar
