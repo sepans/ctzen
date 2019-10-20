@@ -101,6 +101,9 @@ const Router = createFarceRouter({
             me {
               ...Responses_me
             }
+            questions {
+              ...Responses_questions
+            }
           }
         `}
         render={({ props }) => {

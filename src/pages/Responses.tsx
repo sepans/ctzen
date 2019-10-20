@@ -11,12 +11,16 @@ import { Box } from '@smooth-ui/core-sc'
 import { Responses_me } from './__generated__/Responses_me.graphql'
 import { optionArray } from '../components/helpers/question_helpers'
 import { FooterNav } from '../components/FooterNav'
+import { Responses_questions } from './__generated__/Responses_questions.graphql'
+import styled from 'styled-components'
 
 interface Props {
   me: Responses_me
+  questions: Responses_questions
 }
 
-const Responses: React.FC<Props> = ({ me }) => {
+const Responses: React.FC<Props> = ({ me, questions }) => {
+  console.log(questions)
   const answers = me.user && me.user.answers
   const responses =
     answers &&
@@ -45,6 +49,32 @@ const Responses: React.FC<Props> = ({ me }) => {
       )
     })
 
+  const questionItems =
+    questions &&
+    questions.map(question => {
+      const sameAnswer = answers!.find(answer => answer!.id === question.id)
+      return (
+        !sameAnswer && (
+          <QuestionBox>
+            <Link to={`/question/${question.id}`}>
+              <Box>
+                <Text type="primary">{question.title}</Text>
+              </Box>
+              <Box
+                p={2}
+                my={2}
+                backgroundColor={'#F4F5F8'}
+                color={'#A4A4A4'}
+                border={'1px dashed #A4A4A4'}
+              >
+                <Text>Add Answer</Text>
+              </Box>
+            </Link>
+          </QuestionBox>
+        )
+      )
+    })
+
   const nextQuestion = me.nextQuestion && me.nextQuestion.id
 
   const respondQuestions = nextQuestion && (
@@ -55,21 +85,6 @@ const Responses: React.FC<Props> = ({ me }) => {
     </Link>
   )
 
-  /*
-  return <WrapperWithFooter
-    header={(
-      <>
-        <CandidateInfo candidate={candidate} />
-        <Categories categories={categories} selected="Economy" />
-      </>
-    )}
-    footer={<FooterNav selectedNav="candidate" />}>
-      <Box>
-        {answers}
-      </Box>
-    </WrapperWithFooter>
-}
-  */
   return (
     <WrapperWithFooter footer={<FooterNav selectedNav="me" />}>
       <Box p={4}>
@@ -77,10 +92,18 @@ const Responses: React.FC<Props> = ({ me }) => {
           {respondQuestions}
         </Box>
         <Box>{responses}</Box>
+        <Box>{questionItems}</Box>
       </Box>
     </WrapperWithFooter>
   )
 }
+
+// TODO: move color to theme
+// const AddAnswer = <Box></Box>
+//   background-color: #F4F5F8;
+//   color: #A4A4A4;
+//   border: 1px dotted #A4A4A4;
+// `
 
 export default createFragmentContainer(Responses, {
   me: graphql`
@@ -91,8 +114,8 @@ export default createFragmentContainer(Responses, {
           UserResponse {
             response
           }
-          title
           id
+          title
           option1
           option2
           option3
@@ -103,6 +126,17 @@ export default createFragmentContainer(Responses, {
       nextQuestion {
         id
       }
+    }
+  `,
+  questions: graphql`
+    fragment Responses_questions on Question @relay(plural: true) {
+      id
+      title
+      option1
+      option2
+      option3
+      option4
+      option5
     }
   `,
 })
