@@ -16,6 +16,9 @@ export type Question_me = {
     readonly user: {
         readonly answers: ReadonlyArray<{
             readonly id: string | null;
+            readonly UserResponse: {
+                readonly response: number | null;
+            } | null;
         } | null> | null;
     } | null;
     readonly " $refType": Question_me$ref;
@@ -24,15 +27,13 @@ export type Question_me = {
 
 
 const node: ReaderFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "id",
-    "args": null,
-    "storageKey": null
-  }
-];
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "Question_me",
@@ -91,7 +92,9 @@ return {
       "args": null,
       "concreteType": "Question",
       "plural": false,
-      "selections": (v0/*: any*/)
+      "selections": [
+        (v0/*: any*/)
+      ]
     },
     {
       "kind": "LinkedField",
@@ -110,12 +113,32 @@ return {
           "args": null,
           "concreteType": "UserAnswer",
           "plural": true,
-          "selections": (v0/*: any*/)
+          "selections": [
+            (v0/*: any*/),
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "UserResponse",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "UserAnswerPick",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "response",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            }
+          ]
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '8ab368eda91e71dfa2cbf740bfbb5822';
+(node as any).hash = '50fad5321ee5e7f7187c28cb82d55c2c';
 export default node;

@@ -49,6 +49,7 @@ const Responses: React.FC<Props> = ({ me, questions }) => {
       )
     })
 
+  //TODO: move volors to theme
   const questionItems =
     questions &&
     questions.map(question => {
@@ -97,13 +98,6 @@ const Responses: React.FC<Props> = ({ me, questions }) => {
     </WrapperWithFooter>
   )
 }
-
-// TODO: move color to theme
-// const AddAnswer = <Box></Box>
-//   background-color: #F4F5F8;
-//   color: #A4A4A4;
-//   border: 1px dotted #A4A4A4;
-// `
 
 export default createFragmentContainer(Responses, {
   me: graphql`

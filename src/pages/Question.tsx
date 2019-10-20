@@ -81,6 +81,20 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
     return null
   }
 
+  const answers = (me.user && me.user.answers && me.user.answers) || []
+  const hasAnswers = answers.length > 0
+  const thisQuestionAnswer = answers.find(answer => answer!.id === question.id)
+  const thisQuestionResponse =
+    (thisQuestionAnswer &&
+      thisQuestionAnswer.UserResponse &&
+      thisQuestionAnswer!.UserResponse!.response) ||
+    -1
+  console.log(thisQuestionAnswer, thisQuestionResponse)
+
+  if (thisQuestionResponse > -1 && selection === -1) {
+    setSelection(thisQuestionResponse)
+  }
+
   const options = optionArray(question).map(option => {
     const selected = option.index === selection
     return (
@@ -106,9 +120,6 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
   const hasMoreQuestions = () => me.nextQuestion
 
   const showNext = selection !== -1
-
-  const answers = (me.user && me.user.answers && me.user.answers) || []
-  const hasAnswers = answers.length > 0
 
   const topMatches = me && me.matchingCandidates
 
@@ -246,6 +257,9 @@ export default createFragmentContainer(Question, {
       user {
         answers {
           id
+          UserResponse {
+            response
+          }
         }
       }
     }
