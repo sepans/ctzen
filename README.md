@@ -1,7 +1,7 @@
 
 # CTZEN
 
-Find your election candidate match: http://ctzen.herokuapp.com/
+Find your election candidate match: http://ctzen.info/
 
 ## Setup
 
