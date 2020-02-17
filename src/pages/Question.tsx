@@ -98,13 +98,7 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
   const options = optionArray(question).map(option => {
     const selected = option.index === selection
     return (
-      <Box
-        key={option.index}
-        width={{ xs: 1, md: 1, lg: 0.5, xl: 0.5 }}
-        pr={1}
-        py={1}
-        display="flex"
-      >
+      <Box key={option.index} width={1} pr={1} py={1} display="flex">
         <Button
           width="100%"
           py={1}
@@ -223,7 +217,11 @@ const Question: React.FC<Props> = ({ question, me, router }) => {
   )
 }
 
-const QuestionContainer = ({ children }) => <Box flex="1">{children}</Box>
+const QuestionContainer = ({ children }) => (
+  <Box flex="1" maxWidth={600} mx={'auto'}>
+    {children}
+  </Box>
+)
 
 const ButtonsContainer = ({ children }) => <Box>{children}</Box>
 
