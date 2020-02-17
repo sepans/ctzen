@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const { db } = require('../server/models')
 
-const file = '../../data/polls-7-10-19.json'
+const file = '../../data/polls-02-16-2020.json'
 
 const loadJSON = filePath => {
   const filename = path.join(__dirname, filePath)
