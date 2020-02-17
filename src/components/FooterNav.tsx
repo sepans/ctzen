@@ -25,7 +25,7 @@ export const FooterNav: React.FC<FooterNavProps> = ({ selectedNav }) => {
     >
       <Box {...meStyles}>
         <Link to={`/responses`}>
-          <Text type="primary">YOU</Text>
+          <Text type="primary">ANSWERS</Text>
         </Link>
       </Box>
       <Box {...candidateStyles}>

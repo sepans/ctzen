@@ -35,7 +35,11 @@ const resolvers = {
   candidates: async ({ id }, context, info) => {
     const attributes = getTopLevelAttributes(info)
     const include = getAnswerIncludes(info)
-    const where = {}
+    const where = {
+      latestPoll: {
+        [Op.gt]: 0,
+      },
+    }
 
     // Adding where clause, it doesn't return candidates without response
     // const hasAnswerQuery = include.find(item => item.as === 'answers')
