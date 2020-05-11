@@ -3,6 +3,8 @@
 
 Find your election candidate match: http://ctzen.info/
 
+<img width="281" alt="Screen Shot 2020-05-11 at 11 44 42 AM" src="https://user-images.githubusercontent.com/687513/81587682-fa224880-937c-11ea-9be5-c931a6834aa8.png">
+
 ## Setup
 
 - `yarn install`
