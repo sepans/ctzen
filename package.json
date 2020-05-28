@@ -37,7 +37,7 @@
     "relay-compiler-language-typescript": "^4.3.0",
     "relay-runtime": "^5.0.0",
     "relay-test-utils": "^5.0.0",
-    "sequelize": "^5.8.7",
+    "sequelize": "^5.15.1",
     "sequelize-cli": "^5.4.0",
     "styled-components": "^4.2.0",
     "typescript": "^3.4.5"
